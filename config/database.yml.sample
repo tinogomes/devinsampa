@@ -1,0 +1,17 @@
+login: &login
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: 
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
+development:
+  <<: *login
+  database: devinsampa_dev
+
+test:
+  <<: *login
+  database: devinsampa_test
