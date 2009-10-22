@@ -2,25 +2,58 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
   <head>
-    <title><%= h(yield(:title) || "Dev in Sampa") %></title>
+    <title><%= ([(title_for_page = yield(:title)).blank? ? nil : title_for_page, "Dev in Sampa"].compact.join(" - ")) %></title>
     <%= stylesheet_link_tag 'application' %>
     <%= yield(:head) %>
   </head>
   <body>
-    <%- if show_title? -%>
-      <h1><%=h yield(:title) %></h1>
-    <%- end -%>
-    
     <div id="container">
-      <%- flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <%- end -%>
+      <div id="main">
+        <h1 id="dev_in_sampa"><a href="/">Dev in Sampa</a></h1>
+        <%- if show_title? -%>
+          <h2><%=h yield(:title) %></h2>
+        <%- end -%>
+
+        <%- flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <%- end -%>
       
-      <%= yield %>
+        <%= yield %>
+      </div>
+      
+      <div id="sidebar">
+        <div id="sponsors">
+          <div id="abril">
+            Abril
+          </div>
+
+          <div id="GoNow">
+            GoNow
+          </div>
+        </div>
+
+        <div id="supporters">
+          <div id="guru-sp">
+
+          </div>
+        </div>
+
+        <div id="organizers">
+          <a href="http://twitter.com/tinogomes">Celestino Gomes</a>
+          <br/>
+          <a href="http://twitter.com/nuxlli">Everton Ribeiro</a>
+          <br/>
+          <a href="http://twitter.com/lfcipriani">Luis Cipriani</a>
+        </div>
+
+        <div id="promoting">
+          banner 1
+          <br/>
+          <textarea readonly="" name="devinsampa_banner-120x240" style="width: 150px;" rows="5"><a href="http://www.devinsampa.com.br/index.php"><img src="http://www.devinsampa.com.br/images/devinrio_euvou_120x240.gif" alt="Dev in Sampa 2009"/></a></textarea>
+
+        </div>
+      </div>
     </div>
     
-    <div id="sidebar">
-      <%= yield(:sidebar)%>
-    </div>
   </body>
 </html>
