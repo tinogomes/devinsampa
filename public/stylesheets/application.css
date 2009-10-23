@@ -79,10 +79,17 @@ a {
 #nav-menu ul li {
   display: block;
   float: left;
+  height: 35px;
   padding: 0px 10px;
   margin: 0 2px 0 0;
   position: relative;
   background-color: #FFF;
+}
+
+#nav-menu ul li a {
+  float: left;
+  vertical-align: middle;
+  line-height: 35px;
 }
 
 #container {
