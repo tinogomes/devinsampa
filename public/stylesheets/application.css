@@ -73,6 +73,14 @@ a {
 }
 
 /* Dev in Sampa Style */
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
 #nav-menu ul {
   margin-left: -40px;
 }
@@ -123,4 +131,12 @@ a {
 #map-zoom-in, #map-zoom-out {
   width: 580px;
   height: 580px;
+}
+
+.speaker-image {
+  padding: 5px 5px 0 0 ;
+}
+
+.speaker-presentation {
+  clear: both;
 }
