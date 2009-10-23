@@ -1,2 +1,11 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(document).ready(function() {
+  $("#map-zoom-out").click(function () {
+        $("#map-zoom-in").toggle();
+        $("#map-zoom-out").toggle();
+  });
+  
+  $("#map-zoom-in").click(function () {
+        $("#map-zoom-out").toggle();
+        $("#map-zoom-in").toggle();
+  });
+})

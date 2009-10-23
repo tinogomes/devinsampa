@@ -1,5 +1,5 @@
 body {
-  background-color: #4B7399;
+  background-color: #CCC;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
 }
@@ -10,21 +10,13 @@ a img {
 
 a {
   color: #0000FF;
+  text-decoration:none;
 }
 
 .clear {
   clear: both;
   height: 0;
   overflow: hidden;
-}
-
-#container {
-  width: 75%;
-  margin: 0 auto;
-  background-color: #FFF;
-  padding: 20px 40px;
-  border: solid 1px black;
-  margin-top: 20px;
 }
 
 #flash_notice, #flash_error {
@@ -78,4 +70,50 @@ a {
 #errorExplanation ul li {
   font-size: 12px;
   list-style: disc;
+}
+
+/* Dev in Sampa Style */
+#nav-menu ul {
+  margin-left: -40px;
+}
+#nav-menu ul li {
+  display: block;
+  float: left;
+  padding: 0px 10px;
+  margin: 0 2px 0 0;
+  position: relative;
+  background-color: #FFF;
+}
+
+#container {
+  width: 800px;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 5px 0px 5px 5px;
+  margin-top: 20px;
+  border: solid 3px #999;
+  background-color: #AAA;
+}
+
+#container #main {
+  width: 580px;
+  height: auto;
+  float: left;
+  padding: 10px;
+  background-color: #FFF;
+}
+
+#container #sidebar {
+  width: 185px;
+  height: auto;
+  float: left;
+  margin: 0px 5px;
+  padding: 5px 0px 5px 5px;
+  background-color: #CCC;
+}
+
+#map-zoom-in, #map-zoom-out {
+  width: 580px;
+  height: 580px;
 }
