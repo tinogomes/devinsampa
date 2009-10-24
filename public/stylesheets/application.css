@@ -91,6 +91,10 @@ a {
   padding: 0px 10px;
   margin: 0 2px 0 0;
   position: relative;
+  background-color: #CCC;
+}
+
+#nav-menu .selected {
   background-color: #FFF;
 }
 

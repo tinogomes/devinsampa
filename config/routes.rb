@@ -1,9 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => "pages", :action => "index"
-  
-  map.speakers "/palestrantes", :controller => "speakers", :action => "index"
-  map.agenda "/agenda",         :controller => "agenda",   :action => "index"
-  map.contact "/contato",       :controller => "pages",   :action => "contact"
+  map.home "/site",                  :controller => "pages", :action => "index"
+  map.speakers "/site/palestrantes", :controller => "speakers", :action => "index"
+  map.agenda "/site/agenda",         :controller => "agenda",   :action => "index"
+  map.contact "/site/contato",       :controller => "pages",   :action => "contact"
 end
 
 # The priority is based upon order of creation: first created -> highest priority.

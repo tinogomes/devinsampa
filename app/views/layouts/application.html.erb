@@ -12,16 +12,16 @@
   <body>
     <div id="container">
       <div id="hearder">
-        <h1 id="dev_in_sampa"><a href="/">Dev in Sampa</a></h1>
+        <h1 id="dev_in_sampa"><%= link_to "Dev in Sampa", home_path %></h1>
 
       </div>
 
       <div id="nav-menu">
         <ul>
-          <li><a href="/">Dev in Sampa</a></li>
-          <li><a href="/palestrantes">Palestrantes</a></li>
-          <li><a href="/agenda">Agenda</a></li>
-          <li><a href="/contato">Contato</a></li>
+          <li <%= class_selected("pages", "index") %>><%= link_to "Dev in Sampa", home_path %></li>
+          <li <%= class_selected("speakers", "index") %>><%= link_to "Palestrantes", speakers_path %></li>
+          <li <%= class_selected("agenda", "index") %>><%= link_to "Agenda", agenda_path %></li>
+          <li <%= class_selected("pages", "contact") %>><%= link_to "Contato", contact_path %></li>
         </ul>
       </div>
 
@@ -35,6 +35,8 @@
         <%- end -%>
         
         <%= yield %>
+        
+        <p>* Programação sujeita à alteração sem aviso prévio.</p>
       </div>
       
       <div id="sidebar">
