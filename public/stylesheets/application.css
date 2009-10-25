@@ -144,3 +144,7 @@ a {
 .speaker-presentation {
   clear: both;
 }
+
+#can-change {
+  font-weight: bold;
+}

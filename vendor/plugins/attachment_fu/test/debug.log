@@ -1,0 +1,80 @@
+# Logfile created on Sat Oct 24 22:16:17 -0200 2009 by logger.rb/22285
+  [4;36;1mSQL (20.6ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCREATE TABLE "attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "db_file_id" integer, "parent_id" integer, "thumbnail" varchar(255), "filename" varchar(255), "content_type" varchar(255), "size" integer, "width" integer, "height" integer, "aspect_ratio" float) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE "file_attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "parent_id" integer, "thumbnail" varchar(255), "filename" varchar(255), "content_type" varchar(255), "size" integer, "width" integer, "height" integer, "type" varchar(255), "aspect_ratio" float) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE "file_attachments_with_string_id" ("id" varchar(255), "parent_id" varchar(255), "thumbnail" varchar(255), "filename" varchar(255), "content_type" varchar(255), "size" integer, "width" integer, "height" integer, "type" varchar(255), "aspect_ratio" float) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE "gd2_attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "parent_id" integer, "thumbnail" varchar(255), "filename" varchar(255), "content_type" varchar(255), "size" integer, "width" integer, "height" integer, "type" varchar(255)) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE "image_science_attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "parent_id" integer, "thumbnail" varchar(255), "filename" varchar(255), "content_type" varchar(255), "size" integer, "width" integer, "height" integer, "type" varchar(255)) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE "core_image_attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "parent_id" integer, "thumbnail" varchar(255), "filename" varchar(255), "content_type" varchar(255), "size" integer, "width" integer, "height" integer, "type" varchar(255)) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE "mini_magick_attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "parent_id" integer, "thumbnail" varchar(255), "filename" varchar(255), "content_type" varchar(255), "size" integer, "width" integer, "height" integer, "type" varchar(255)) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mDROP TABLE "mini_magick_attachments"[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mCREATE TABLE "mini_magick_attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "parent_id" integer, "thumbnail" varchar(255), "filename" varchar(255), "content_type" varchar(255), "size" integer, "width" integer, "height" integer, "type" varchar(255)) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (3.9ms)[0m   [0mCREATE TABLE "orphan_attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "db_file_id" integer, "filename" varchar(255), "content_type" varchar(255), "size" integer) [0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCREATE TABLE "minimal_attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "size" integer, "content_type" varchar(255)) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE TABLE "db_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "data" blob) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mCREATE TABLE "s3_attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "parent_id" integer, "thumbnail" varchar(255), "filename" varchar(255), "content_type" varchar(255), "size" integer, "width" integer, "height" integer, "type" varchar(255), "aspect_ratio" float) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCREATE TABLE "cloud_files_attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "parent_id" integer, "thumbnail" varchar(255), "filename" varchar(255), "content_type" varchar(255), "size" integer, "width" integer, "height" integer, "type" varchar(255), "aspect_ratio" float) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (3.4ms)[0m   [0mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;36;1mSQL (3.2ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m

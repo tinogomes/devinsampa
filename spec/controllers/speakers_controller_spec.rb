@@ -2,16 +2,15 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe SpeakersController do
 
-  #Delete these examples and add some real ones
-  it "should use SpeakersController" do
-    controller.should be_an_instance_of(SpeakersController)
+  def mock_speaker(stubs={})
+    @mock_speaker ||= mock_model(Speaker, stubs)
   end
 
-
-  describe "GET 'index'" do
-    it "should be successful" do
-      get 'index'
-      response.should be_success
+  describe "GET index" do
+    it "assigns all speakers as @speakers" do
+      Speaker.stub!(:all).and_return([mock_speaker])
+      get :index
+      assigns[:speakers].should == [mock_speaker]
     end
   end
 end

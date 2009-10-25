@@ -1,7 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+  map.namespace :admin do |admin|
+    admin.resources :speakers
+  end
+
   map.home "/site",                  :controller => "pages", :action => "index"
   map.speakers "/site/palestrantes", :controller => "speakers", :action => "index"
-  map.agenda "/site/agenda",         :controller => "agenda",   :action => "index"
+  map.agenda "/site/programacao",    :controller => "agenda",   :action => "index"
   map.contact "/site/contato",       :controller => "pages",   :action => "contact"
 end
 
