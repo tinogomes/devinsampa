@@ -15,6 +15,7 @@ set :use_sudo, false
 server "devinsampa", :app, :web, :db, :primary => true
 
 after "deploy:update_code", "deploy:copy_config_files"
+before "deploy:symlink", "deploy:create_speaker_images_symlink"
 
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
@@ -30,6 +31,11 @@ namespace :deploy do
   desc "[internal] Copy config files to current_release"
   task :copy_config_files do
     run "cp #{shared_path}/config/*.yml #{current_release}/config/"
+  end
+  
+  desc "[internal] Create symlink to speaker images"
+  task :create_speaker_images_symlink do
+    run "cd #{current_release}/public/images && /bin/ln -s #{shared_path}/speakers"
   end
 end
 
