@@ -13,8 +13,14 @@
     <div id="container">
       <div id="hearder">
         <h1 id="dev_in_sampa"><%= link_to "Dev in Sampa", home_path %></h1>
-
       </div>
+
+      <% if current_user %>
+      <div id="user_nav">
+          <%= link_to "Editar perfil", edit_user_path(:current) %> |
+          <%= link_to "Sair", logout_path %>
+      </div>
+      <% end %>
 
       <div id="nav-menu">
         <ul>

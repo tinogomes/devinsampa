@@ -1,12 +1,6 @@
-class Admin::SpeakersController < ApplicationController
-  def index
-    @speakers = Speaker.all :select => "id, name, presentation"
-
-    respond_to do |format|
-      format.html
-    end
-  end
-
+class Admin::SpeakersController < Admin::AdminController
+  before_filter :only_admin
+  
   def new
     @speaker = Speaker.new
   end
@@ -20,7 +14,7 @@ class Admin::SpeakersController < ApplicationController
 
     if @speaker.save
       flash[:notice] = 'Speaker was successfully created.'
-      redirect_to(admin_speakers_path)
+      redirect_to(speakers_path)
     else
       render :action => "new"
     end
@@ -31,7 +25,7 @@ class Admin::SpeakersController < ApplicationController
 
     if @speaker.update_attributes(params[:speaker])
       flash[:notice] = 'Speaker was successfully updated.'
-      redirect_to(admin_speakers_path)
+      redirect_to(speakers_path)
     else
       render :action => "edit"
     end
@@ -41,6 +35,6 @@ class Admin::SpeakersController < ApplicationController
     @speaker = Speaker.find(params[:id])
     @speaker.destroy
     
-    redirect_to(admin_speakers_url)
+    redirect_to(speakers_path)
   end
 end

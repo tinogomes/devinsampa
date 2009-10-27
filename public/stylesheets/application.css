@@ -148,3 +148,9 @@ a {
 #can-change {
   font-weight: bold;
 }
+
+#user_nav {
+  float: right;
+  font-size: 12px;
+  padding: 5px 10px;
+}

@@ -1,9 +1,18 @@
 <% title "Palestrantes" %>
 
+<% if admin? %>
+  <%= link_to 'Adicionar palestrante', new_admin_speaker_path %>
+<% end %>
+
 <div id="speakers">
   <% @speakers.each do |speaker| %>
   <div class="speaker-item">
     <h3 class="speaker-name"><%=h speaker.name%></h3>
+
+    <% if admin? %>
+      <%= link_to "Editar", edit_admin_speaker_url(speaker) %> | 
+      <%= link_to 'Remover', admin_speaker_path(speaker), :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
 
     <%= image_tag speaker.public_filename, :class => "speaker-image left" %>
     
