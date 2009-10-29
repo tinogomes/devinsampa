@@ -13,7 +13,7 @@ body {
 /*****  Commons settings *****/
 fieldset { border: 0; }
 legend { display: none; }
-a { text-decortion: underline; }
+a { text-decoration: underline; }
   a:hover { text-decoration: none; }
   a img { border: 0; }
 
@@ -141,6 +141,10 @@ ul#navigation li a:hover {
 
 #sidebar ul.twitter-list li a:hover {
   text-decoration: underline;
+}
+
+#sidebar #validator-html {
+	float:left;
 }
 
 #content {
