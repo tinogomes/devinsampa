@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  
+
   $('.box').corners('10px');
   
   $("#map-zoom-out").click(function () {
@@ -12,11 +12,18 @@ $(document).ready(function() {
         $("#map-zoom-in").toggle();
   });
 
-	$("input, textarea").focus(function() {
-	  // only select if the text has not changed
-	  if(this.value == this.defaultValue) {
-	   this.select();
-	  }
-	})
+	$("textarea").focus(function() {
+    // only select if the text has not changed
+    if(this.value == this.defaultValue) {
+     this.select();
+    }
+  })
+	
+	$("textarea").click(function() {
+    // only select if the text has not changed
+    if(this.value == this.defaultValue) {
+     this.select();
+    }
+  })
 
 })
