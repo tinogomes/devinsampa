@@ -6,5 +6,8 @@ class PagesController < ApplicationController
 
   def contact
   end
+  
+  def banners
+  end
 
 end

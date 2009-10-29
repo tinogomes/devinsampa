@@ -13,6 +13,8 @@ ActionController::Routing::Routes.draw do |map|
   # map.speakers "/palestrantes", :controller => "speakers", :action => "index"
   map.agenda "/programacao",    :controller => "agenda",   :action => "index"
   # map.contact "/contato",       :controller => "pages",   :action => "contact"
+  
+  map.banners "/divulgar", :controller => "pages", :action => "banners"
 end
 
 # The priority is based upon order of creation: first created -> highest priority.

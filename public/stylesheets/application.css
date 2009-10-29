@@ -219,6 +219,16 @@ ul#navigation li a:hover {
   padding: 22px 0 0 80px;
 }
 
+#content .banner {
+	height: 160px;
+}
+
+#content .banner textarea {
+	float: left;
+	margin: 25px;
+	height: 90px;
+}
+
 #footer {
   clear: both;
   font-size: 9pt;

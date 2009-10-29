@@ -11,4 +11,12 @@ $(document).ready(function() {
         $("#map-zoom-out").toggle();
         $("#map-zoom-in").toggle();
   });
+
+	$("input, textarea").focus(function() {
+	  // only select if the text has not changed
+	  if(this.value == this.defaultValue) {
+	   this.select();
+	  }
+	})
+
 })
