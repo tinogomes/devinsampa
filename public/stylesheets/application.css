@@ -10,10 +10,6 @@ body {
   background: #fff;
 }
 
-a span {
-  display: none;
-}
-
 /*****  Commons settings *****/
 fieldset { border: 0; }
 legend { display: none; }
@@ -36,20 +32,6 @@ a { text-decortion: underline; }
   height: 150px;
   margin: 10px auto;
   padding-top: 20px;
-}
-
-#header h1 div#title-name {
-  background-image:url("/images/logo_dev.jpg");
-  background-repeat:no-repeat;
-  height:135px;
-}
-
-#header h1 div#title-when {
-  background-image:url("/images/banner_data.jpg");
-  background-repeat:no-repeat;
-  background-position: right;
-  margin: -90px 0px;
-  height:135px;
 }
 
 #header img.banner-data {
@@ -111,24 +93,6 @@ ul#navigation li a:hover {
 #sidebar {
   width: 200px;
   float: right;
-}
-
-#sidebar #i-want div {
-  background-image:url("/images/ico_patrocinio.jpg");
-  background-repeat:no-repeat;
-  height:67px;
-}
-
-#sidebar #guru-sp a div {
-  background-image:url("/images/logo_guru.png");
-  background-repeat:no-repeat;
-  height:130px;  
-}
-
-#sidebar #eu-vou-no-twitter a div {
-  background-image:url("/images/banner_dev_in_sampa.jpg");
-  background-repeat:no-repeat;
-  height:67px;  
 }
 
 #sidebar h3 {
