@@ -3,98 +3,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
 
 <head>
-	<meta name="description" content="Descrição" />
-	<meta name="keywords" content="keywords" />
-	<meta name="copyright" content="copyright" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	
-	<title><%= ([(title_for_page = yield(:title)).blank? ? nil : title_for_page, "Dev in Sampa"].compact.join(" - ")) %></title>
-	
-	<%= stylesheet_link_tag 'application' %>
-	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
-	<%= javascript_include_tag "application", "jquery.corners.min" %>
-	
-	<%= yield(:head) %>	
+  <meta name="description" content="Dev in Sampa, que acontece dia 28/11/2009, das 09:00 às 18:00, é o encontro de desenvolvedores de sistemas em São Paulo, Brasil" />
+  <meta name="keywords" content="ruby python java .net visualbasic perl delphi goo desenvolvimento software sistemas conferência sãopaulo saopaulo encontro 28/11/2009 brasil brazil" />
+  <meta name="copyright" content="2009, Dev in Sampa" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+  <title><%= ([(title_for_page = yield(:title)).blank? ? nil : title_for_page, "Dev in Sampa"].compact.join(" - ")) %></title>
+  
+  <%= stylesheet_link_tag 'application' %>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+  <%= javascript_include_tag "application", "jquery.corners.min" %>
+  
+  <%= yield(:head) %> 
 </head>
 <body>
-	
-	<div id="header" class="clearfix">
-		<h1 class="site-name"><%= link_to image_tag('logo_dev.jpg'), home_path %></h1>
-		<%= image_tag 'banner_data.jpg', :alt => '28/11/2009 das 9:00 às 18:00', :class => 'banner-data' %>
-	</div>
-	
-	<div id="menu">
-		<ul id="navigation" class="clearfix">
-			<li <%= class_selected("pages", "index") %>><%= link_to "Página inicial", home_path %></li>
-			<li <%= class_selected("speakers", "index") %>><%= link_to "Palestrantes", speakers_path %></li>
-			<li <%= class_selected("agenda", "index") %>><%= link_to "Programação", agenda_path %></li>
-			<li <%= class_selected("pages", "contact") %>><%= link_to "Contato", contact_path %></li>
-		</ul>
-	</div>
-	
-	<div id="container" class="clearfix">
-		
-		<div id="sidebar" class="clearfix">
-			<h3 class="first">Siga-me</h3>
-			
-			<a href="http://twitter.com/devinsampa" class="twitter">@devinsampa</a>
-			
-			<h3>Patrocínio</h3>
-			
-			<div id="i-want">
-				<a href="mailto:tinorj+devinrio@gmail.com?subject=Quero patrocinar!"><%= image_tag 'ico_patrocinio.jpg', :alt => 'Quero patrocinar!' %></a>
-			</div>
-			
-			<h3>Apoio</h3>
-			
-			<div id="guru-sp">
-				<a href="http://www.guru-sp.org/"><img src="/images/logo_guru.png" alt="Logo Guru" /></a>
-			</div>
-			
-			<h3>Idealização</h3>
-			
-			<ul class="twitter-list">
-				<li><a href="http://twitter.com/tinogomes">Celestino Gomes</a></li>
-				<li><a href="http://twitter.com/nuxlli">Everton Ribeiro</a></li>
-				<li><a href="http://twitter.com/lfcipriani">Luis Cipriani</a></li>
-			</ul>
-			
-			<h3>Divulge</h3>
-			
-			<div id="eu-vou-no-twitter">
-				<a href="http://twitter.com/?status=Eu+vou+no+%23devinsampa"><%= image_tag 'banner_dev_in_sampa.jpg', :alt => 'Eu vou no #devinsampa', :title => 'Divulge o Dev in Sampa' %></a>
-			</div>
-			
-			<!--div id="banner-1">
-				<p>banner 1</p>
-					<textarea readonly="" name="devinsampa_banner-120x240" style="width: 140px;" rows="5"><a href="http://www.devinsampa.com.br/index.php"><img src="http://www.devinsampa.com.br/images/devinrio_euvou_120x240.gif" alt="Dev in Sampa 2009"/></a></textarea>
-			</div-->
-		</div>
-		
-		<div id="content" class="clearfix">
-			<%- if show_title? -%>
-				<h2><%=h yield(:title) %></h2>
-			<%- end -%>
-		
-			<%- flash.each do |name, msg| -%>
-				<%= content_tag :div, msg, :id => "flash_#{name}" %>
-			<%- end -%>
-		
-			<%= yield %>
-		
-			<div id="warning">
-				<p><strong>* Programação sujeita à alteração sem aviso prévio!!!</strong></p>
-			</div>
-		</div>
-		
-		<div id="footer">
-			<address>
-				&copy; Copyright 2009, Dev in Sampa - Todos os direitos reservados. Tema desenvolvido por <a href="http://www.gustavocardoso.com" title="Gustavo Cardoso">Gustavo Cardoso</a>
-			</address>
-		</div>
-		
-	</div>
-	
+  
+  <%= render :partial => '/layouts/header' %>
+  
+  <%= render :partial => '/layouts/menu' %>
+  
+  <div id="container" class="clearfix">
+    <%= render :partial => '/layouts/content' %>
+    <%= render :partial => '/layouts/sidebar' %>
+    <%= render :partial => '/layouts/footer' %>
+  </div>
+  
+  <%= render :partial => '/layouts/analytics' %>
+
 </body>
+
 </html>

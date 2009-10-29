@@ -1,18 +1,18 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :user_sessions
-  map.resources :users
-
-  map.login "login", :controller => "user_sessions", :action => "new"
-  map.logout "logout", :controller => "user_sessions", :action => "destroy"
-  
-  map.namespace :admin do |admin|
-    admin.resources :speakers
-  end
-
-  map.home "/site",                  :controller => "pages", :action => "index"
-  map.speakers "/site/palestrantes", :controller => "speakers", :action => "index"
-  map.agenda "/site/programacao",    :controller => "agenda",   :action => "index"
-  map.contact "/site/contato",       :controller => "pages",   :action => "contact"
+  # map.resources :user_sessions
+  # map.resources :users
+  # 
+  # map.login "acesso", :controller => "user_sessions", :action => "new"
+  # map.logout "sair", :controller => "user_sessions", :action => "destroy"
+  # 
+  # map.namespace :admin do |admin|
+  #   admin.resources :speakers
+  # end
+  # 
+  map.home "/",                  :controller => "pages", :action => "index"
+  # map.speakers "/palestrantes", :controller => "speakers", :action => "index"
+  map.agenda "/programacao",    :controller => "agenda",   :action => "index"
+  # map.contact "/contato",       :controller => "pages",   :action => "contact"
 end
 
 # The priority is based upon order of creation: first created -> highest priority.

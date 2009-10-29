@@ -1,0 +1,15 @@
+<div id="content" class="clearfix">
+  <%- if show_title? -%>
+    <h2><%=h yield(:title) %></h2>
+  <%- end -%>
+
+  <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <%- end -%>
+
+  <%= yield %>
+
+  <div id="warning">
+    <p><strong>* Programação sujeita à alteração sem aviso prévio!!!</strong></p>
+  </div>
+</div>
