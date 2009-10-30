@@ -48,6 +48,11 @@ a { text-decoration: underline; }
   margin: 15px 0 50px 0;
 }
 
+#menu li {
+  min-width: 120px;
+  text-align: center;
+}
+
 ul#navigation {
   width: 980px;
   list-style: none;

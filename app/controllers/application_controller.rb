@@ -16,8 +16,11 @@ class ApplicationController < ActionController::Base
   
   private
     def class_selected(current_controller_name, current_action_name)
-      return 'class="selected"' if current_controller_name.to_s === controller_name.to_s && 
-                                   current_action_name.to_s === action_name.to_s
+      return "selected" if current_controller_and_action(current_controller_name, current_action_name)
+    end
+    
+    def current_controller_and_action(current_controller_name, current_action_name)
+      current_controller_name.to_s === controller_name.to_s && current_action_name.to_s === action_name.to_s
     end
 
     def current_user_session
