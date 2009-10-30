@@ -5,4 +5,5 @@ User-Agent: *
 Disallow: /admin
 Disallow: /acesso
 Disallow: /sair
+Disallow: /quero-palestrar
 
