@@ -15,6 +15,8 @@ ActionController::Routing::Routes.draw do |map|
   # map.contact "/contato",       :controller => "pages",   :action => "contact"
   
   map.banners "/divulgar", :controller => "pages", :action => "banners"
+  
+  map.wanna_talk "/quero-palestrar", :controller => "pages", :action => "talker"
 end
 
 # The priority is based upon order of creation: first created -> highest priority.
