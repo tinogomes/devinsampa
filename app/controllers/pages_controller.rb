@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  caches_action :index, :banners, :talker
+  # caches_action :index, :banners, :talker
   
   def index
   end

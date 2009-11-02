@@ -228,7 +228,11 @@ ul#navigation li a:hover {
 	height: 160px;
 }
 
-#content .banner textarea {
+#content .banner-quadrado {
+  height: 200px;
+}
+
+#content .banner textarea, #content .banner-quadrado textarea {
 	float: left;
 	margin: 25px;
 	height: 90px;
