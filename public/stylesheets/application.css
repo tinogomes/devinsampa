@@ -213,6 +213,30 @@ ul#navigation li a:hover {
   margin: 10px 15px;
 }
 
+#content .box table.agenda {
+	width: 96%;
+	text-align: left;
+	margin: 0 15px 15px 15px;
+	border: 0;
+}
+
+#content .box table.agenda tr.head {
+	background: #ccc;
+	border-top: 0;
+	padding: 5px;
+}
+
+#content .box table.agenda td, #content .box table.agenda th {
+	font-size: 11pt;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff;
+	padding: 4px 5px;
+}
+
+#content .box table.agenda tr.odd {
+	background: #e5e5e5;
+}
+
 #content #warning {
   height: 70px;
   background: #FFDB70 url('/images/bg_warning.jpg') no-repeat;
