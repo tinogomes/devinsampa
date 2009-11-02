@@ -1,11 +1,36 @@
-<% title "Contato" %>
+<% title "Contato", false %>
 
-<p>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-culpa qui officia deserunt mollit anim id est laborum.
-</p>
+<div class="box">
+  <h2>Contato</h2>  
+
+  <p>No formulário abaixo você pode nos mandar uma mensagem, que será enviado para <a href="mailto:devisampa@gmail.com">devinsampa@gmail.com</a></p>
+  
+  <p>
+    <strong>Todos os campos são obrigatórios.</strong>
+    <% form_for :contact do |f| %>
+      <p>
+        <%= f.label :name, "Nome" %><br />
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.label :email, "E-mail" %><br />
+        <%= f.text_field :email %>
+      </p>
+      <p>
+        <%= f.label :subject, "Assunto" %><br />
+        <%= f.text_field :subject %>
+      </p>
+      <p>
+        <%= f.label :description, "Mensagem" %><br />
+        <%= f.text_area :description %>
+      </p>
+      
+      <p>
+        <%= f.label :receive_a_copy, "Quero receber uma cópia" %>
+        <%= f.check_box :receive_a_copy %>
+      </p>
+      <p><%= f.submit "Submit" %></p>
+    <% end %>
+    
+  </p>
+</div>

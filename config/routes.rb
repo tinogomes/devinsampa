@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.home "/",                  :controller => "pages", :action => "index"
   # map.speakers "/palestrantes", :controller => "speakers", :action => "index"
   map.agenda "/programacao",    :controller => "agenda",   :action => "index"
-  # map.contact "/contato",       :controller => "pages",   :action => "contact"
+  map.contact "/contato",       :controller => "pages",   :action => "contact"
   
   map.banners "/divulgar", :controller => "pages", :action => "banners"
   

@@ -42,3 +42,6 @@ Rails::Initializer.run do |config|
   
   config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
 end
+
+ExceptionNotifier.exception_recipients = %w(tinorj+devisampa@gmail.com lfcipriani@gmail.com nuxlli@gmail.com devinsampa@gmail.com)
+ExceptionNotifier.sender_address = %("Exception Notification" <devinsampa@gmail.com>)

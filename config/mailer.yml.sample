@@ -1,0 +1,7 @@
+—-
+  address: smtp.gmail.com
+  port: 587
+  user_name: your@gmail.com 
+  password: drowssaPruoY
+  authentication: :plain
+  domain: yourdomain.com
