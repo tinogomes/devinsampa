@@ -17,6 +17,8 @@ ActionController::Routing::Routes.draw do |map|
   map.banners "/divulgar", :controller => "pages", :action => "banners"
   
   map.wanna_talk "/quero-palestrar", :controller => "pages", :action => "talker"
+  
+  map.register "/inscricao", :controller => "pages", :action => "register"
 end
 
 # The priority is based upon order of creation: first created -> highest priority.

@@ -11,7 +11,9 @@ class PagesController < ApplicationController
   end
   
   def talker
-    
+  end
+  
+  def register
   end
 
 end
