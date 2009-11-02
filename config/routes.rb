@@ -21,7 +21,9 @@ ActionController::Routing::Routes.draw do |map|
     pages.speakers   "/palestrantes",    :action => "speakers"
     pages.agenda     "/programacao",     :action => "agenda"
   end
-  
+
+  map.register "/inscricao", :controller => "pages", :action => "register"
+  map.pagseguro_confirmation "/inscricao/pagseguro/confirmacao", :controller => "", :action => "pagseguro"
 end
 
 # The priority is based upon order of creation: first created -> highest priority.

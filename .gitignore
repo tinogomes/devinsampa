@@ -4,3 +4,4 @@ config/database.yml
 .DS_Store
 public/images/speakers
 config/mailer.yml
+config/pagseguro.yml
