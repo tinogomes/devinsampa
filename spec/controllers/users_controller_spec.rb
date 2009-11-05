@@ -1,7 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
  
 describe UsersController do
-  fixtures :all
   integrate_views
   
   it "new action should render new template" do
@@ -10,31 +9,31 @@ describe UsersController do
   end
   
   it "create action should render new template when model is invalid" do
-    User.any_instance.stubs(:valid?).returns(false)
+    # User.any_instance.stubs(:save?).returns(false)
     post :create
     response.should render_template(:new)
   end
   
   it "create action should redirect when model is valid" do
-    User.any_instance.stubs(:valid?).returns(true)
-    post :create
-    response.should redirect_to(root_url)
+    post :create, :user => Factory.attributes_for(:user)
+    response.should redirect_to(home_url)
   end
   
   it "edit action should render edit template" do
-    get :edit, :id => User.first
+    @controller.stub!(:current_user).and_return(Factory(:user))
+    get :edit
     response.should render_template(:edit)
   end
   
   it "update action should render edit template when model is invalid" do
-    User.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => User.first
+    user = Factory(:user)
+    put :update, :user => {:name => ''}
     response.should render_template(:edit)
   end
   
   it "update action should redirect when model is valid" do
-    User.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => User.first
-    response.should redirect_to(root_url)
+    user = Factory(:user)
+    put :update, :user => {:name => "New Name"}
+    response.should redirect_to(home_url)
   end
 end

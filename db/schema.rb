@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(:version => 20091027001050) do
     t.datetime "updated_at"
   end
 
+  add_index "speakers", ["name"], :name => "index_speakers_on_name"
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "username"
