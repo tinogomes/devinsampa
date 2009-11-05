@@ -152,7 +152,7 @@ ul#navigation li a:hover {
 	float:left;
 }
 
-#sidebar .sponsor {
+#sidebar .sponsor, #sidebar .supporter {
   padding: 5px 0 5px 0;
 }
 
