@@ -152,6 +152,10 @@ ul#navigation li a:hover {
 	float:left;
 }
 
+#sidebar .sponsor {
+  padding: 5px 0 5px 0;
+}
+
 #content {
   width: 740px;
   float: left;
