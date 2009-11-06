@@ -1,7 +1,7 @@
 require "ostruct"
 
 class PagesController < ApplicationController
-  caches_action :index, :banners, :talker, :register, :contact, :speakers, :agenda
+  caches_action :index, :banners, :register
   
   def index
   end
@@ -28,9 +28,6 @@ class PagesController < ApplicationController
   end
   
   def banners
-  end
-  
-  def talker
   end
   
   def register
