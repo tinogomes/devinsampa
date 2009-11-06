@@ -16,8 +16,6 @@ class CreateSpeakers < ActiveRecord::Migration
   end
 
   def self.down
-    remove_index :speakers, :name
-    
     drop_table :speakers
   end
 end

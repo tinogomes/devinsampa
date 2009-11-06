@@ -1,19 +1,26 @@
 ActionController::Routing::Routes.draw do |map|
-  # map.resources :user_sessions
-  # map.resources :users
-  # 
-  # map.login "acesso", :controller => "user_sessions", :action => "new"
-  # map.logout "sair", :controller => "user_sessions", :action => "destroy"
+  map.namespace :admin do |admin|
+    admin.resources :speakers
+  end
   
-  map.home "/",                  :controller => "pages", :action => "index"
-  map.agenda "/programacao",    :controller => "agenda",   :action => "index"
-  map.contact "/contato",       :controller => "pages",   :action => "contact"
+  map.resources :users, :as => "usuarios"
+  map.resources :user_sessions, :as => "acesso"
   
-  map.banners "/divulgar", :controller => "pages", :action => "banners"
+  map.with_options :controller => 'user_sessions' do |user_sessions|
+    user_sessions.login         "/login",        :action => "new"
+    user_sessions.logout        "/logout",       :action => "destroy"
+  end
   
-  map.wanna_talk "/quero-palestrar", :controller => "pages", :action => "talker"
+  map.with_options :controller => 'pages' do |pages|
+    pages.home       "/",                :action => "index"
+    pages.contact    "/contato",         :action => "contact"
+    pages.banners    "/divulgar",        :action => "banners"
+    pages.wanna_talk "/quero-palestrar", :action => "talker"
+    pages.register   "/inscricao",       :action => "register"
+    pages.speakers   "/palestrantes",    :action => "speakers"
+    pages.agenda     "/programacao",     :action => "agenda"
+  end
   
-  map.register "/inscricao", :controller => "pages", :action => "register"
 end
 
 # The priority is based upon order of creation: first created -> highest priority.

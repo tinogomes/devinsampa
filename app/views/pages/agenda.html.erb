@@ -1,0 +1,27 @@
+<% title "Programação", false %>
+
+<div class="box">
+  <h2>Programação</h2>
+  <p>Segue abaixo nossa agenda:</p>
+  <table border="0" cellspacing="0" cellpadding="0" class="agenda">
+    <tr class="head">
+      <th>Horário</th>
+      <th>O que rola?</th>
+    </tr>
+    
+    <% @agenda.each_with_index do |item, i| %>
+      <tr <%= i % 2 == 0 ? "" : 'class="odd"' %>>
+        <td><%= item.start_at %> - <%= item.end_at %></td>
+        <td><%= item.what_happen %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
+<div class="box">
+  <h2>Observações</h2>
+  <p><strong>* Almoço não incluso, infelizmente... :(</strong></p>
+  <p>Em breve, vamos disponiblizar uma lista de restaurantes na região</p>
+</div>
+

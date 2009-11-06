@@ -1,0 +1,26 @@
+<% title "Palestrantes", false %>
+
+<div class='box'>
+  <h2>Palestrantes</h2> 
+  <p>Espaço reservado para informações sobre os palestrantes</p>
+</div>
+
+<% if admin? %><%= link_to "Cadastrar palestrante", new_admin_speaker_url %><% end %>
+
+<% @speakers.each do |speaker| %>
+<a name="speaker-<%= speaker.id %>"></a>
+<div class="box speaker">
+  <% if admin? %>
+  <h2>
+  <%= speaker.name %> (<%= link_to("Editar", edit_admin_speaker_path(speaker))%>) (<%= link_to("Apagar", admin_speaker_path(speaker), :confirm => "Não tem mais volta. Tem certeza?", :method => "DELETE")%>)</h2>
+  <% else %>
+  <h2><%= speaker.name -%></h2>
+  <% end %>
+  <%= image_tag speaker.public_filename, :alt => "Foto de #{speaker.name}", :class => cycle("float-left", "float-right") %>
+  <p class="speaker-bio"><%=textilize speaker.bio, :filter_html %></p>
+  <h3><%=h speaker.presentation %></h3>
+  <p class="speaker-description"><%=textilize speaker.description %></p>
+</div>
+<% end %>
+
+<% if admin? %><%= link_to "Cadastrar palestrante", new_admin_speaker_url %><% end %>

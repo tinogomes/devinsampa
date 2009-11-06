@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+h1, h2, h3, h4 {
+  clear: both;
+}
+
 body {
   color: #000;
   font-family: "Lucida Grande", arial, verdana, sans-serif;
@@ -10,6 +14,10 @@ body {
   background: #fff;
 }
 
+label span {
+  color: #666;
+  font-size: .6em ;
+}
 /*****  Commons settings *****/
 fieldset { border: 0; }
 legend { display: none; }
@@ -20,6 +28,14 @@ a { text-decoration: underline; }
 /***** Helpers *****/
 .clearfix { height: 1%; }
 .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
 
 #container {
   width: 980px;
@@ -37,6 +53,12 @@ a { text-decoration: underline; }
 #header img.banner-data {
   position: absolute;
   top: 90px;
+  right: 0;
+}
+
+#header #logged_menu {
+  position: absolute;
+  top: 30px;
   right: 0;
 }
 
@@ -70,7 +92,8 @@ ul#navigation li {
 ul#navigation li.selected {
   color: #fff;
   background: #666;
-  padding: 10px 7px;
+  padding: 0;
+  padding: 10px 0px;
 }
 
 ul#navigation li.selected a {
@@ -239,6 +262,11 @@ ul#navigation li a:hover {
 
 #content .box table.agenda tr.odd {
 	background: #e5e5e5;
+}
+
+#content .speaker img {
+  max-width: 300px;
+  margin: 25px 15px 5px;
 }
 
 #content #warning {

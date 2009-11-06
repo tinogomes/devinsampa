@@ -9,14 +9,20 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Seja bem vindo #{current_user.name}"
       redirect_to home_url
     else
+      flash[:error] = "Você não está tentando hackear, né?"
       render :action => 'new'
     end
   end
   
   def destroy
-    @user_session = UserSession.find
-    flash[:notice] = "Volte sempre #{current_user.name}."
-    @user_session.destroy
+    if current_user
+      @user_session = UserSession.find
+      flash[:notice] = "Volte sempre #{current_user.name}."
+      @user_session.destroy
+    else
+      flash[:notice] = "Você nem estava logado"
+    end
+    
     redirect_to home_url
   end
 end

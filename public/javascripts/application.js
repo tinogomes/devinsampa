@@ -12,20 +12,20 @@ $(document).ready(function() {
 		$("#map-zoom-in").toggle();
 	});
 
-	$("textarea").focus(function() {
+	$(".banner textarea, .banner-quadrado textarea").focus(function() {
 		// only select if the text has not changed
     	if(this.value == this.defaultValue) {
      		this.select();
     	}
 	});
 	
-	$("textarea").click(function() {
+	$(".banner textarea, .banner-quadrado textarea").click(function() {
 		// only select if the text has not changed
 		if(this.value == this.defaultValue) {
 			this.select();
 		}
 	});
 	
-	$("table.agenda tr:odd").addClass('odd');
+  // $("table.agenda tr:odd").addClass('odd');
 
 })

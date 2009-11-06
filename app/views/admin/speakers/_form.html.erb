@@ -1,0 +1,26 @@
+<%= f.error_messages %>
+
+<p>
+  <%= f.label :name, "Nome" %><br />
+  <%= f.text_field :name %>
+</p>
+<p>
+  <%= f.label :bio, "Mini-currículo <span>(Textile)</span>" %><br />
+  <%= f.text_area :bio %>
+</p>
+<p>
+  <%= f.label :presentation, "Titulo da palestra" %><br />
+  <%= f.text_field :presentation %>
+</p>
+<p>
+  <%= f.label :description, "Detalhes da palestra <span>(Textile)</span>" %><br />
+  <%= f.text_area :description %>
+</p>
+
+<p>
+  <%= f.label :uploaded_data, "Foto" %><br />
+  <% unless @speaker.filename.blank? %>
+  <%= image_tag @speaker.public_filename, :alt => "Foto de #{@speaker.name}" %> <br />
+  <% end %>
+  <%= f.file_field :uploaded_data %>
+</p>

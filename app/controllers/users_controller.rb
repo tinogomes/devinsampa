@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = "Registration successfully."
+      flash[:notice] = "Seja bem vindo #{@user.name}"
       redirect_to home_url
     else
       render :action => 'new'
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated profile."
+      flash[:notice] = "Seu dados foram atualizados"
       redirect_to home_url
     else
       render :action => 'edit'

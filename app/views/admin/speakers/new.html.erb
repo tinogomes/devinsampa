@@ -1,0 +1,8 @@
+<% title "Cadastrar novo palestrante", false %>
+
+<% form_for(:speaker, :url => { :action => "create" }, :html => { :multipart => true }) do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <%= f.submit "Cadastrar", :disable_with => 'Aguarde...' %>
+<% end %>
+
+<%= link_to 'Voltar', speakers_path %>
