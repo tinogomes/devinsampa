@@ -1,0 +1,8 @@
+<% title "Cadastrar novo item da agenda", false %>
+
+<% form_for(:agenda, :url => { :action => "create" }) do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <%= f.submit "Cadastrar", :disable_with => 'Aguarde...' %>
+<% end %>
+
+<%= link_to 'Voltar', agenda_path %>

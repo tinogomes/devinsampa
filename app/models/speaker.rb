@@ -4,7 +4,7 @@ class Speaker < ActiveRecord::Base
                  :size => 1..300.kilobytes,
                  :path_prefix => "public/images/speakers"
                  
-  validates_as_attachment
+  # validates_as_attachment
   
   validates_presence_of :name
   validates_presence_of :bio

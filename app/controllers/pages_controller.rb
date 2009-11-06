@@ -41,7 +41,7 @@ class PagesController < ApplicationController
   end
   
   def agenda
-    @agenda = Agenda.all :order => "start_at"
+    @agenda = Agenda.all :order => "start_time"
   end
   
   private

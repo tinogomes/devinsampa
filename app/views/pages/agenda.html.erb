@@ -3,6 +3,8 @@
 <div class="box">
   <h2>Programação</h2>
   <p>Segue abaixo nossa agenda:</p>
+  <% if admin? %><p><%= link_to "Cadastrar item da agenda", new_admin_agenda_url %></p><% end %>
+
   <table border="0" cellspacing="0" cellpadding="0" class="agenda">
     <tr class="head">
       <th>Horário</th>
@@ -10,14 +12,17 @@
     </tr>
     
     <% @agenda.each_with_index do |item, i| %>
-      <tr <%= i % 2 == 0 ? "" : 'class="odd"' %>>
-        <td><%= item.start_at %> - <%= item.end_at %></td>
-        <td><%= item.what_happen %></td>
+      <tr class="<%= cycle('odd', 'pair') %>">
+        <td><%= item.start_time %> - <%= item.end_time %></td>
+        <td>
+          <%= item.what_happen %> <% if admin? %>(<%= link_to("Editar", edit_admin_agenda_path(item))%> | <%= link_to("Apagar", admin_agenda_path(item), :confirm => "Não tem mais volta. Tem certeza?", :method => "DELETE")%>)<% end %>
+        </td>
       </tr>
     <% end %>
   </table>
-</div>
 
+  <% if admin? %><p><%= link_to "Cadastrar item da agenda", new_admin_agenda_url %></p><% end %>
+</div>
 
 <div class="box">
   <h2>Observações</h2>

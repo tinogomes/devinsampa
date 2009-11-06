@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
 
   attr_accessible :name, :username, :email, :password, :password_confirmation
+  
+  def give_power
+    self.role = "admin"
+    self.save
+  end
 end

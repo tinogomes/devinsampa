@@ -1,0 +1,22 @@
+<%= f.error_messages %>
+
+<p>
+  <%= f.label :start_time, "Hora de início" %><br />
+  <%= f.text_field :start_time %>
+</p>
+
+<p>
+  <%= f.label :end_time, "Hora de término" %><br />
+  <%= f.text_field :end_time %>
+</p>
+
+<p>
+  <%= f.label :event, "O que vai acontecer?" %><br />
+  <%= f.text_field :event %>
+</p>
+
+<p>
+  <%= f.label :speaker, "Quem vai falar?" %><br />
+  <%= f.collection_select(:speaker_id, @speakers, :id, :name, :include_blank => true)  %>
+</p>
+

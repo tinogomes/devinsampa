@@ -1,6 +1,8 @@
 <% title "Cadastro de #{@speaker.name}", false %>
 
-<% form_for(:speaker, :url => { :action => "update" }, :method => "PUT", :html => { :multipart => true, :method => "PUT" }) do |f| %>
+<% form_for(:speaker, :url => { :action => "update" }, :html => { :multipart => true, :method => "PUT" }) do |f| %>
   <%= render :partial => "form", :locals => {:f => f} %>
   <%= f.submit "Alterar", :disable_with => 'Aguarde...' %>
 <% end %>
+
+<%= link_to 'Voltar', speakers_path %>

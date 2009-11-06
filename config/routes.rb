@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :speakers
+    admin.resources :agendas
   end
   
   map.resources :users, :as => "usuarios"
