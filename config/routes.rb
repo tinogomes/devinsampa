@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :agendas
   end
   
-  map.resources :users, :as => "usuarios"
+  # map.resources :users, :as => "usuarios"
   map.resources :user_sessions, :as => "acesso"
   
   map.with_options :controller => 'user_sessions' do |user_sessions|

@@ -10,8 +10,19 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :username, :email, :password, :password_confirmation
   
+  #TODO: kill this power feature
   def give_power
     self.role = "admin"
     self.save
+  end
+  
+  #TODO: kill this power feature
+  def self.name_username_email_password_admin(name, username, email, password)
+    admin = User.create :name => name, 
+                        :username => username, 
+                        :email => email, 
+                        :password => password, 
+                        :password_confirmation => password
+    admin.give_power
   end
 end

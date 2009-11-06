@@ -10,4 +10,6 @@ class Speaker < ActiveRecord::Base
   validates_presence_of :bio
   validates_presence_of :presentation
   validates_presence_of :description
+  validates_presence_of :email
+  validates_format_of :email, :with => User::EMAIL_REGEX, :if => proc { |obj| !obj.email.blank? }
 end
