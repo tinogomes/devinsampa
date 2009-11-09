@@ -1,11 +1,11 @@
 require "ostruct"
 
 class PagesController < ApplicationController
-  caches_action :index, :banners, :register, :speakers, :agenda
-  
-  def index
-  end
+  FLAG_FILE = "#{RAILS_CACHE_STORE}/disabled.txt"
 
+  before_filter :enable_or_disable_cache
+  caches_action :index, :banners, :talker, :speakers, :agenda, :if => Proc.new { |c| !File.exists?(FLAG_FILE) }
+  
   def contact
     @contact = OpenStruct.new
     
@@ -17,7 +17,7 @@ class PagesController < ApplicationController
           logger.info "Trying send email from #{@contact.inspect}"
           Contact.deliver_from_site(@contact, params[:contact][:receive_a_copy] == "1")
         end
-
+        
         flash[:notice] = "Sua mensagem foi encaminhada."
         @contact.subject = ""
         @contact.description = ""
@@ -25,9 +25,6 @@ class PagesController < ApplicationController
         flash[:error] = "Não foi possível enviar seu email."
       end
     end
-  end
-  
-  def banners
   end
   
   def speakers
@@ -39,6 +36,20 @@ class PagesController < ApplicationController
   end
   
   private
+    def enable_or_disable_cache
+      cached = params[:cached]
+
+      unless cached.nil?
+        if cached == "on"
+          FileUtils.rm_f(FLAG_FILE) if File.exists?(FLAG_FILE)
+        else
+          
+          `rake tmp:cache:clear`
+          FileUtils.touch(FLAG_FILE)
+        end
+      end
+    end
+    
     def contact_valid?(contact)
       contact.errors = []
       contact.errors << :name unless valid_contact_name?(contact)
@@ -66,7 +77,7 @@ class PagesController < ApplicationController
       return false if contact.subject.blank?
       true
     end
-    
+      
     def valid_contact_description?(contact)
       return false unless contact
       return false if contact.description.blank?
@@ -82,5 +93,4 @@ class PagesController < ApplicationController
         @contact.description = contact[:description] unless contact[:description].blank?
       end
     end
-  
 end
