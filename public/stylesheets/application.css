@@ -362,3 +362,25 @@ ul#navigation li a:hover {
   font-size: 12px;
   list-style: disc;
 }
+
+/*JUITTER PLUGIN CSS*/
+
+#juitterContainer {height: 300px; width: 100%; overflow:auto; border: 1px solid #999;}
+
+#juitterContainer .twittList{margin:0;padding:0; font-size: 10px;} /* UL that will contain the list of tweets */
+
+/* Bellow the list of tweets "<li>" */
+
+#juitterContainer .twittLI{list-style:none;margin:0;border-bottom:dashed 1px;padding:6px 3px;clear:both;background-color:#FCFFBA;} 
+#juitterContainer .twittList SPAN.time{color:#777;font-size:10px}
+#juitterContainer .twittList A{color:#3D3BEF;} /*Links inside the tweets list */
+
+/* Bellow the CSS for the avatar image  */
+#juitterContainer div {clear:both;}
+#juitterContainer .juitterAvatar{float:left; border:solid 1px #D3EECA;background:#FFF;margin-right:5px;padding:2px;width:48px;display:block;height:48px;}
+
+#juitterContainer .extLink{} /*CSS for the external links*/
+
+#juitterContainer .hashLink{} /*CSS for the hash links*/
+
+/*end of Juitter CSS*/

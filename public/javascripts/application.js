@@ -27,5 +27,14 @@ $(document).ready(function() {
 	});
 	
   // $("table.agenda tr:odd").addClass('odd');
+  	$.Juitter.start({
+		searchType:"searchWord", 
+		searchObject:"devinsampa",
+		live:"live-20", 
+		placeHolder:"juitterContainer", 
+		loadMSG: "Carregando mensagens...", 
+		total: 30,
+		openExternalLinks:"newWindow"
+	});
 
 })
