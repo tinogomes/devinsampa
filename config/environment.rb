@@ -40,7 +40,8 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
   
-  config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
+  RAILS_CACHE_STORE = "#{Rails.root}/tmp/cache"
+  config.cache_store = :file_store, RAILS_CACHE_STORE
 end
 
 ExceptionNotifier.exception_recipients = %w(tinorj+devisampa@gmail.com lfcipriani@gmail.com nuxlli@gmail.com devinsampa@gmail.com)
