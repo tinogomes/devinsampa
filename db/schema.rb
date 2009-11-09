@@ -12,9 +12,9 @@
 ActiveRecord::Schema.define(:version => 20091110181816) do
 
   create_table "agendas", :force => true do |t|
-    t.string   "start_time"
-    t.string   "end_time"
-    t.string   "event"
+    t.binary   "start_time", :limit => 255
+    t.binary   "end_time",   :limit => 255
+    t.binary   "event",      :limit => 255
     t.integer  "speaker_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -41,28 +41,28 @@ ActiveRecord::Schema.define(:version => 20091110181816) do
   add_index "attendees", ["token"], :name => "index_attendees_on_token"
 
   create_table "speakers", :force => true do |t|
-    t.string   "name"
-    t.text     "bio"
-    t.string   "presentation"
-    t.text     "description"
-    t.string   "filename"
+    t.binary   "name",         :limit => 255
+    t.binary   "bio"
+    t.binary   "presentation", :limit => 255
+    t.binary   "description"
+    t.binary   "filename",     :limit => 255
     t.integer  "size"
-    t.string   "content_type"
+    t.binary   "content_type", :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
+    t.binary   "email",        :limit => 255
   end
 
   add_index "speakers", ["name"], :name => "index_speakers_on_name"
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "username"
-    t.string   "email"
-    t.string   "crypted_password"
-    t.string   "password_salt"
-    t.string   "persistence_token"
-    t.string   "role",              :default => "attendee"
+    t.binary   "name",              :limit => 255
+    t.binary   "username",          :limit => 255
+    t.binary   "email",             :limit => 255
+    t.binary   "crypted_password",  :limit => 255
+    t.binary   "password_salt",     :limit => 255
+    t.binary   "persistence_token", :limit => 255
+    t.binary   "role",              :limit => 255, :default => "attendee"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
