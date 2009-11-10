@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091106203147) do
+ActiveRecord::Schema.define(:version => 20091110005044) do
 
   create_table "agendas", :force => true do |t|
     t.string   "start_time"
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(:version => 20091106203147) do
   end
 
   add_index "agendas", ["start_time"], :name => "index_agendas_on_start_time"
+
+  create_table "attendees", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "doc"
+    t.string   "company"
+    t.string   "status"
+    t.string   "payment_method"
+    t.datetime "processed_at"
+    t.text     "buyer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "speakers", :force => true do |t|
     t.string   "name"

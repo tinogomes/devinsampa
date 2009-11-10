@@ -329,7 +329,11 @@ ul#navigation li a:hover {
   display: inline;
 }
 
-#errorExplanation {
+.fieldWithErrors label {
+	color: #CF0000;
+}
+
+.box #errorExplanation, #errorExplanation {
   width: 400px;
   border: 2px solid #CF0000;
   padding: 0px;
@@ -338,7 +342,12 @@ ul#navigation li a:hover {
   background-color: #f0f0f0;
 }
 
-#errorExplanation h2 {
+.box #errorExplanation {
+  width: auto;
+  margin: 0 20px;
+}
+
+.box #errorExplanation h2, #errorExplanation h2 {
   text-align: left;
   font-weight: bold;
   padding: 5px 5px 5px 15px;

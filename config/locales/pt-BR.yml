@@ -101,26 +101,13 @@ pt-BR:
   # Active Record
   activerecord:
     models:
-      post: "Artigo Técnico"
-      user: "Usuário"
-      calendar: "Evento"
-      page: "Página"
-      product: "Produto"
+      attendee: "Inscrição"
     attributes:
-      user:
-        name: "Nome"
-        user: "Usuário"
-        email: "E-mail"
-        last_login_at: "Último login"
-      calendar:
-        start_date: "Data inicial"
-        end_date: "Data final"
-        location: "Local"
-        description: "Descrição"
-      product:
-        category: "Categoria"
-        desc: "Descrição"
+      attendee:
+        doc: "Documento de indetificação"
       _all:
+        name: "Nome"
+        email: "E-mail"
         created_date: "Data de criação"
         updated_at: "Data de atualização"
         title: "Título"
@@ -143,7 +130,7 @@ pt-BR:
         too_long: "é muito longo (não mais do que {{count}} caracteres)"
         too_short: "é muito curto (não menos do que {{count}} caracteres)"
         wrong_length: "não é do tamanho correto (precisa ter {{count}} caracteres)"
-        taken: "não está disponível"
+        taken: "já esta cadastrado"
         not_a_number: "não é um número"
         greater_than: "precisa ser maior do que {{count}}"
         greater_than_or_equal_to: "precisa ser maior ou igual a {{count}}"

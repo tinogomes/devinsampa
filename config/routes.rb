@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   
   # map.resources :users, :as => "usuarios"
   map.resources :user_sessions, :as => "acesso"
+  map.resources :attendees, :as => "inscricao", :only => [:index, :show, :new, :create], :path_names => { :new => 'nova' }
   
   map.with_options :controller => 'user_sessions' do |user_sessions|
     user_sessions.login         "/login",        :action => "new"
@@ -17,12 +18,10 @@ ActionController::Routing::Routes.draw do |map|
     pages.contact    "/contato",         :action => "contact"
     pages.banners    "/divulgar",        :action => "banners"
     pages.wanna_talk "/quero-palestrar", :action => "talker"
-    pages.register   "/inscricao",       :action => "register"
     pages.speakers   "/palestrantes",    :action => "speakers"
     pages.agenda     "/programacao",     :action => "agenda"
   end
 
-  map.register "/inscricao", :controller => "pages", :action => "register"
   map.pagseguro_confirmation "/inscricao/pagseguro/confirmacao", :controller => "", :action => "pagseguro"
 end
 
