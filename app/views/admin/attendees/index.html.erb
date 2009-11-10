@@ -1,0 +1,30 @@
+<h1>Listing attendees</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Doc</th>
+    <th>Company</th>
+    <th>Status</th>
+    <th>Payment method</th>
+    <th>Processed at</th>
+    <th>Buyer</th>
+  </tr>
+
+<% @attendees.each do |attendee| %>
+  <tr>
+    <td><%=h attendee.name %></td>
+    <td><%=h attendee.email %></td>
+    <td><%=h attendee.doc %></td>
+    <td><%=h attendee.company %></td>
+    <td><%=h attendee.status %></td>
+    <td><%=h attendee.payment_method %></td>
+    <td><%=h attendee.processed_at %></td>
+    <td><%=h attendee.buyer %></td>
+    <td><%= link_to 'Show', admin_attendee_path(attendee) %></td>
+    <td><%= link_to 'Edit', edit_admin_attendee_path(attendee) %></td>
+    <td><%= link_to 'Destroy', admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

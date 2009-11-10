@@ -1,0 +1,43 @@
+<p>
+  <b>Name:</b>
+  <%=h @attendee.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @attendee.email %>
+</p>
+
+<p>
+  <b>Doc:</b>
+  <%=h @attendee.doc %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%=h @attendee.company %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @attendee.status %>
+</p>
+
+<p>
+  <b>Payment method:</b>
+  <%=h @attendee.payment_method %>
+</p>
+
+<p>
+  <b>Processed at:</b>
+  <%=h @attendee.processed_at %>
+</p>
+
+<p>
+  <b>Buyer:</b>
+  <%=h @attendee.buyer %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_attendee_path(@attendee) %> |
+<%= link_to 'Back', admin_attendees_path %>
