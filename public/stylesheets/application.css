@@ -371,3 +371,7 @@ ul#navigation li a:hover {
   font-size: 12px;
   list-style: disc;
 }
+
+.pagseguro div {
+	text-align: center;
+}

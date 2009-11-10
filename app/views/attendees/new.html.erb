@@ -1,34 +1,19 @@
 <% title "Inscrição", false %>
 
-<% form_for(@attendee) do |f| %>
+<div class="box">
+  <h2>Inscrição</h2>
 
-  <div class="box">
-    <h2>Inscrição</h2>
-  
-    <p>Para se inscrever preencha o formulário a baixo, em seguida você recebera um e-mail confirmando sua inscrição, e será redirecionado a página do PagSeguro para proceder com o processo de pagamento.</p>
-  
-    <p><strong>*</strong> Campos em negrito são de preenchimento obrigatório.</p>    
+  <p>Todos estão perguntado: O Evento será gratuíto? Qual o valor da inscrição? Bom, gostaríamos de fazer o evento gratuíto, mas devido a limitação de vagas (apenas 100), vamos cobrar uma taxa simbólica, que usaremos para limitar as inscrições </p>
+</div>
 
-      <%= f.error_messages :object_name => 'a inscrição', :header_message => 'Ops! Alguma coisa errada.' %>
-      
-      <p>
-        <strong><%= f.label :name, "Nome:" %></strong><br />
-        <%= f.text_field :name %>
-      </p>
-      <p>
-        <strong><%= f.label :email, "E-mail" %></strong><br />
-        <%= f.text_field :email %>
-      </p>
-      <p>
-        <strong><%= f.label :doc, "Número do documento de indetificação:" %></strong><br />
-        <%= f.text_field :doc %>
-      </p>
-      <p>
-        <%= f.label :company, "Nome da empresa:" %><br />
-        <%= f.text_field :company %>
-      </p>
-      <p>
-        <%= f.submit 'Create' %>
-      </p>
-  </div>
-<% end %>
+<div class="box">
+  <h2>Valor da inscrição</h2>
+  
+  <p>R$ 35,00 (trinta e cinco reais).</p>
+</div>
+
+<div class="box">
+  <h2>Formulário de inscrição</h2>
+  
+  <%= render :partial => "form" %>
+</div>

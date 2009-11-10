@@ -6,12 +6,16 @@ class AttendeesController < ApplicationController
 
   # GET /attendees/1
   # GET /attendees/1.xml
-  def show
-    @attendee = Attendee.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @attendee }
+  def payment
+    @attendee = Attendee.find_by_token(params[:token])
+    
+    if @attendee
+      # Instanciando o objeto para geração do formulário
+      @order = PagSeguro::Order.new(@attendee.token)
+      @order.add :id => 1, :price => 35, :describe => "Inscrição do devinsampa"
+    else
+      flash[:error] = "Inscrição não encontrada"
+      redirect_to(register_path)
     end
   end
 
@@ -19,11 +23,6 @@ class AttendeesController < ApplicationController
   # GET /attendees/new.xml
   def new
     @attendee = Attendee.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @attendee }
-    end
   end
 
   # POST /attendees
@@ -31,15 +30,18 @@ class AttendeesController < ApplicationController
   def create
     @attendee = Attendee.new(params[:attendee])
 
-    respond_to do |format|
-      if @attendee.save
-        flash[:notice] = 'Attendee was successfully created.'
-        format.html { redirect_to(@attendee) }
-        format.xml  { render :xml => @attendee, :status => :created, :location => @attendee }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @attendee.errors, :status => :unprocessable_entity }
+    if @attendee.save
+      spawn do
+        Contact.deliver_attendee_created(@attendee)
       end
+      flash[:notice] = 'Inscrição efetuado com sucesso.'
+      redirect_to(payment_path(:token => @attendee.token))
+    else
+      render :action => "new"
     end
+  end
+  
+  # POST /attendees/pagseguro
+  def pagseguro
   end
 end

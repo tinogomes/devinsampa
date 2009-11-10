@@ -6,7 +6,11 @@ ActionController::Routing::Routes.draw do |map|
   
   # map.resources :users, :as => "usuarios"
   map.resources :user_sessions, :as => "acesso"
-  map.resources :attendees, :as => "inscricao", :only => [:index, :show, :new, :create], :path_names => { :new => 'nova' }
+  
+  map.resources :attendees, :as => "inscricao", :only => [:create]
+  map.register '/inscricao', :controller => "attendees", :action => "new"
+  map.payment  '/inscricao/pagamento/:token', :controller => "attendees", :action => "payment"
+  map.pagseguro_confirmation "/inscricao/pagseguro/confirmacao", :controller => "attendees", :action => "pagseguro"
   
   map.with_options :controller => 'user_sessions' do |user_sessions|
     user_sessions.login         "/login",        :action => "new"
@@ -21,8 +25,6 @@ ActionController::Routing::Routes.draw do |map|
     pages.speakers   "/palestrantes",    :action => "speakers"
     pages.agenda     "/programacao",     :action => "agenda"
   end
-
-  map.pagseguro_confirmation "/inscricao/pagseguro/confirmacao", :controller => "", :action => "pagseguro"
 end
 
 # The priority is based upon order of creation: first created -> highest priority.
