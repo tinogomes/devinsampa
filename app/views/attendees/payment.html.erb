@@ -2,6 +2,6 @@
 
 <div class="box">
   <h2>Processo de pagamento</h2>
-  <p>Sua inscrição já consta no nosso sistema click no botão a baixo para dar continuidade no processo de pagamento</p>
+  <p><%= @attendee.name %>, sua inscrição já consta no nosso sistema, click no botão a baixo para dar continuidade no processo de pagamento</p>
   <%= pagseguro_form @order, :submit => "Efetuar pagamento!" %>
 </div>

@@ -51,8 +51,12 @@ class Attendee < ActiveRecord::Base
     final_status == :canceled
   end
   
+  def really_pending?
+    (!status.nil? && final_status == :pending)
+  end
+  
   def self.overload?
-    !(Attendee.count <= LIMIT_ATTENDEE)
+    Attendee.count >= LIMIT_ATTENDEE
   end
     
   private
