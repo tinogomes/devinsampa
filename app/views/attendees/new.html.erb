@@ -13,7 +13,14 @@
 </div>
 
 <div class="box">
-  <h2>Formulário de inscrição</h2>
+  <% if Attendee.overload? %>
+    <h2>Inscrições encerradas</h2>
+    
+    <p>Infelizmente as vagas para participar do Devinsampa esgotaram. Atualmente estamos processando as inscrições efetuadas, dentro disso pode ser que abra novamente, neste caso fique ligado no <a href="http://twitter.com/devinsampa">@devinsampa</a>, para saber sobre possíveis vagas.</p>
+    
+  <% else %>
+    <h2>Formulário de inscrição</h2>
   
-  <%= render :partial => "form" %>
+    <%= render :partial => "form" %>
+  <% end %>
 </div>

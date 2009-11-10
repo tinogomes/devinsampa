@@ -1,4 +1,6 @@
 class Attendee < ActiveRecord::Base
+  LIMIT_ATTENDEE = 80
+
   validates_presence_of   :name
   validates_presence_of   :email
   validates_uniqueness_of :email
@@ -47,6 +49,10 @@ class Attendee < ActiveRecord::Base
   
   def canceled?
     final_status == :canceled
+  end
+  
+  def self.overload?
+    !(Attendee.count <= LIMIT_ATTENDEE)
   end
     
   private

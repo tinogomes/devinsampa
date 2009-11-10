@@ -34,16 +34,21 @@ class AttendeesController < ApplicationController
   # POST /attendees
   # POST /attendees.xml
   def create
-    @attendee = Attendee.new(params[:attendee])
+    unless Attendee.overload?
+      @attendee = Attendee.new(params[:attendee])
 
-    if @attendee.save
-      spawn do
-        Contact.deliver_attendee_created(@attendee)
+      if @attendee.save
+        spawn do
+          Contact.deliver_attendee_created(@attendee)
+        end
+        flash[:notice] = 'Inscrição efetuado com sucesso.'
+        redirect_to(payment_path(:token => @attendee.token))
+      else
+        render :action => "new"
       end
-      flash[:notice] = 'Inscrição efetuado com sucesso.'
-      redirect_to(payment_path(:token => @attendee.token))
     else
-      render :action => "new"
+      flash[:error] = "Não insista. Vagas encerradas, seu bobão!!"
+      redirect_to(home_path)
     end
   end
 
