@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
     user_sessions.login         "/login",        :action => "new"
     user_sessions.logout        "/logout",       :action => "destroy"
   end
-  
+
   map.with_options :controller => 'pages' do |pages|
     pages.home       "/",                :action => "index"
     pages.contact    "/contato",         :action => "contact"
