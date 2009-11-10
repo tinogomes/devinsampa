@@ -139,6 +139,7 @@ pt-BR:
         less_than_or_equal_to: "precisa ser menor ou igual a {{count}}"
         odd: "precisa ser ímpar"
         even: "precisa ser par"
+        record_invalid: "o valor esta fora do range estabelecido"
 
   # Controllers and views
   controllers:
