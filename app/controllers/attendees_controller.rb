@@ -69,12 +69,12 @@ class AttendeesController < ApplicationController
   
     def capture_information
       pagseguro_notification do |notification|
-        #begin
+        begin
           attendee = Attendee.find_by_token!(notification.order_id)
           attendee.update_payment_data(notification)
-        #rescue Exception => e
-        #  RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
-        #end
+        rescue Exception => e
+          RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
+        end
       end
     end
 end

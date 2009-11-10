@@ -9,7 +9,60 @@ class Attendee < ActiveRecord::Base
   
   before_create :set_token
   
+  symbolize :status, :allow_blank => true, :in => Hash[*PagSeguro::Notification::STATUS.map { |k,v| [v, k] }.flatten]
+  symbolize :payment_method, :allow_blank => true, :in => Hash[*PagSeguro::Notification::PAYMENT_METHOD.map { |k,v| [v, k] }.flatten]
+  
+  def update_payment_data(notification)
+    old_status    = self.status
+
+    self[:notes]  = notification.notes
+    self[:buyer]  = notification.buyer.to_json
+    self[:status] = notification.status
+    self[:processed_at]   = notification.processed_at
+    self[:transaction_id] = notification.transaction_id
+    self[:payment_method] = notification.payment_method
+    self.save!
+
+    send_emails_before_change_status if self.status != old_status
+  end
+  
+  def final_status
+    case self.status
+    when :completed, :approved
+      :completed
+    when :canceled, :refunded
+      :canceled
+    else
+      :pending
+    end
+  end
+  
+  def pending?
+    final_status == :pending
+  end
+  
+  def completed?
+    final_status == :completed
+  end
+  
+  def canceled?
+    final_status == :canceled
+  end
+    
   private
+  
+    def send_emails_before_change_status
+      if completed?
+        spawn do
+          Contact.deliver_attendee_confirmation(self)
+        end
+      elsif canceled?
+        spawn do
+          Contact.deliver_attendee_problem(self)
+        end
+      end
+    end
+    
     def set_token
       self[:token] = Digest::SHA1.hexdigest("#{Time.now}#{email}").slice(0,30).upcase
     end

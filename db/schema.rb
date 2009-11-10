@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091110030445) do
+ActiveRecord::Schema.define(:version => 20091110181816) do
 
   create_table "agendas", :force => true do |t|
     t.string   "start_time"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20091110030445) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
+    t.string   "notes"
+    t.string   "transaction_id"
   end
 
   add_index "attendees", ["token"], :name => "index_attendees_on_token"
