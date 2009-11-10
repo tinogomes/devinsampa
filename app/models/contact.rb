@@ -9,7 +9,7 @@ class Contact < ActionMailer::Base
   end
   
   def attendee_created(attendee)
-    default_url_options[:host] = "http://www.devinsampa.com.br"
+    default_url_options[:host] = "www.devinsampa.com.br"
     recipients   attendee.email
     from         "devinsampa@gmail.com"
     subject      "[devinsampa] Confirmação de inscrição"
@@ -17,7 +17,7 @@ class Contact < ActionMailer::Base
   end
   
   def attendee_confirmation(attendee)
-    default_url_options[:host] = "http://www.devinsampa.com.br"
+    default_url_options[:host] = "www.devinsampa.com.br"
     recipients   attendee.email
     from         "devinsampa@gmail.com"
     subject      "[devinsampa] Confirmação de pagamento"
@@ -25,7 +25,7 @@ class Contact < ActionMailer::Base
   end
   
   def attendee_problem(attendee)
-    default_url_options[:host] = "http://www.devinsampa.com.br"
+    default_url_options[:host] = "www.devinsampa.com.br"
     recipients   attendee.email
     from         "devinsampa@gmail.com"
     subject      "[devinsampa] Problemas no pagamento da inscrição"
