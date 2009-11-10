@@ -145,6 +145,18 @@ ul#navigation li a:hover {
   margin-bottom: 20px;
 }
 
+#sidebar a.wave {
+  display: block;
+  height: 33px;
+  font-size: 12pt;
+  color: #333;
+  text-decoration: none;
+  background: url('/images/ico_wave.png') left center no-repeat;
+  padding: 2px 0 0 35px;
+  margin-bottom: 20px;
+  
+}
+
 #sidebar a.twitter:hover {
   text-decoration: underline;
 }
