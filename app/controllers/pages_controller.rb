@@ -30,9 +30,6 @@ class PagesController < ApplicationController
   def banners
   end
   
-  def register
-  end
-  
   def speakers
     @speakers = Speaker.all :order => "name"
   end
