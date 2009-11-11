@@ -10,6 +10,8 @@ class Attendee < ActiveRecord::Base
   attr_accessible :name, :email, :doc, :compay
   
   before_create :set_token
+  after_create :send_mail_after_create
+  before_destroy :send_mail_before_delete
   
   symbolize :status, :allow_blank => true, :in => Hash[*PagSeguro::Notification::STATUS.map { |k,v| [v, k] }.flatten]
   symbolize :payment_method, :allow_blank => true, :in => Hash[*PagSeguro::Notification::PAYMENT_METHOD.map { |k,v| [v, k] }.flatten]
@@ -58,8 +60,20 @@ class Attendee < ActiveRecord::Base
   def self.overload?
     Attendee.count >= LIMIT_ATTENDEE
   end
-    
+  
+  def send_mail_after_create
+    spawn do
+      Contact.deliver_attendee_created(self)
+    end
+  end
+
   private
+  
+    def send_mail_before_delete
+      spawn do
+        Contact.deliver_attendee_unregister(self)
+      end
+    end
   
     def send_emails_before_change_status
       if completed?

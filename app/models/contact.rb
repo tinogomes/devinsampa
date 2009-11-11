@@ -32,4 +32,12 @@ class Contact < ActionMailer::Base
     status       = {"canceled" => "Cancelado", "refunded" => "Devolvido"}
     body         :status => status[attendee.status], :name => attendee.name, :link => payment_url(:token => attendee.token)
   end
+  
+  def attendee_unregister(attendee)
+    default_url_options[:host] = "www.devinsampa.com.br"
+    recipients   attendee.email
+    from         "devinsampa@gmail.com"
+    subject      "[devinsampa] Cancelamento de inscrição"
+    body         :attendee => attendee
+  end
 end

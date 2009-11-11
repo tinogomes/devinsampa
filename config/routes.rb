@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :speakers
     admin.resources :agendas
-    admin.resources :attendees
+    admin.resources :attendees, :member => {:resend => :get}
   end
   
   # map.resources :users, :as => "usuarios"

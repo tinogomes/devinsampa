@@ -1,4 +1,6 @@
 class AttendeesController < ApplicationController
+  OPEN_REGISTER_DATE = "2009/11/11 13:00:00"
+  
   skip_before_filter :verify_authenticity_token, :only => :pagseguro
 
   helper_method :no_time_to_register?
@@ -36,24 +38,20 @@ class AttendeesController < ApplicationController
       render :action => "new" and return
     end
     
-    attendee_saved = false
     Attendee.transaction do
       if Attendee.overload?
         flash[:error] = "Vagas encerradas, mas tenha esperança ;)"
         redirect_to(home_path) and return
       else
-        attendee_saved = (@attendee = Attendee.new(params[:attendee])).save
+        @attendee = Attendee.new(params[:attendee])
+        if @attendee.save
+          redirect_to(payment_path(:token => @attendee.token))
+        else
+          render :action => "new"
+        end
       end
     end
     
-    if attendee_saved
-      spawn do
-        Contact.deliver_attendee_created(@attendee)
-      end
-      redirect_to(payment_path(:token => @attendee.token))
-    else
-      render :action => "new"
-    end
   end
 
   def pagseguro
@@ -93,7 +91,7 @@ class AttendeesController < ApplicationController
     end
     
     def no_time_to_register?
-      Time.now.utc <  "2009/11/11 13:00:00".to_time.utc
+      Time.now.utc <  OPEN_REGISTER_DATE.to_time.utc
     end
     
     def no_time_message(times)
