@@ -22,6 +22,12 @@
       <%= f.text_field :company %>
     </p>
     <p>
-      <%= f.submit 'Create' %>
+      <% if no_time_to_register? && !params[:attendee].nil?%>
+      <%= f.submit 'Tá com muita pressa, hein!?', :id => "summit_register_disabled" %>
+      <% elsif no_time_to_register? %>
+        <%= f.submit 'Inscrição somente após às 11:00', :id => "summit_register_disabled" %>
+      <% else %>
+        <%= f.submit 'Inscrever',   :id => "summit_register" %>
+      <% end %>
     </p>
 <% end %>

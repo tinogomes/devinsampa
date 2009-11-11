@@ -1,6 +1,8 @@
 class AttendeesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :pagseguro
-  
+
+  helper_method :no_time_to_register?
+    
   def payment
     @attendee = Attendee.find_by_token(params[:token])
     
@@ -25,6 +27,15 @@ class AttendeesController < ApplicationController
   end
 
   def create
+    if ( no_time_to_register? )
+      session[:try_register_before_time] ||= 0
+      session[:try_register_before_time] += 1
+      
+      flash[:error] = no_time_message(session[:try_register_before_time])
+      @attendee = Attendee.new(params[:attendee])
+      render :action => "new" and return
+    end
+    
     attendee_saved = false
     Attendee.transaction do
       if Attendee.overload?
@@ -78,6 +89,21 @@ class AttendeesController < ApplicationController
         rescue Exception => e
           RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
         end
+      end
+    end
+    
+    def no_time_to_register?
+      Time.now.utc <  "2009/11/11 13:00:00".to_time.utc
+    end
+    
+    def no_time_message(times)
+      case times
+      when 1
+        "Apressado você hein!? Só depois das 11:00, ok?"
+      when 2
+        "É a segunda vez, espera dar 11:00, né?"
+      else
+        "Já vi que você não sabe esperar."
       end
     end
 end

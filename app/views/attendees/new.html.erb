@@ -17,10 +17,13 @@
     <h2>Inscrições encerradas</h2>
     
     <p>Infelizmente as vagas para participar do Dev in Sampa se esgotaram. Atualmente estamos processando as inscrições efetuadas, dentro disso pode ser que abra novamente, neste caso fique ligado no <a href="http://twitter.com/devinsampa">@devinsampa no twitter</a>, para saber sobre possíveis vagas.</p>
-    
   <% else %>
     <h2>Formulário de inscrição</h2>
   
+    <% if no_time_to_register? %>
+    <p><strong>Ontem, quando liberamos as inscrições, além de uns BUGs que rolaram e corrigidos on the fly, tivemos problemas quanto a forma de pagamnto via PagSeguro. Então, resolvemos suspender as inscrições. Parece que já normalizou e vamos reabrir as inscrições às 11:00 (horário de Brasília e baseado no horário do nosso servidor), isso se não rolar outro <a href="http://live.blogblogs.com.br/apagao">apagão</a>.</strong></p>
+    <% end %>
+    
     <%= render :partial => "form" %>
   <% end %>
 </div>
