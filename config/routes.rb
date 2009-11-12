@@ -12,8 +12,7 @@ ActionController::Routing::Routes.draw do |map|
                                               }
   end
   
-  # map.resources :users, :as => "usuarios"
-  map.resources :user_sessions, :as => "acesso"
+  map.resources :user_sessions, :as => "admin/acesso"
   
   map.resources :attendees, :as => "inscricao", :only => [:create]
   map.register '/inscricao', :controller => "attendees", :action => "new"
@@ -33,6 +32,8 @@ ActionController::Routing::Routes.draw do |map|
     pages.speakers   "/palestrantes",    :action => "speakers"
     pages.agenda     "/programacao",     :action => "agenda"
   end
+  
+  map.admin "/admin", :controller => "Admin::Admin", :action => "index"
 end
 
 # The priority is based upon order of creation: first created -> highest priority.

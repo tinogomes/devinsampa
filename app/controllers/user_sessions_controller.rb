@@ -1,4 +1,6 @@
 class UserSessionsController < ApplicationController
+  layout 'admin/admin'
+  
   def new
     @user_session = UserSession.new
   end
@@ -6,10 +8,8 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      flash[:notice] = "Seja bem vindo #{current_user.name}"
-      redirect_to home_url
+      redirect_to admin_url
     else
-      flash[:error] = "Você não está tentando hackear, né?"
       render :action => 'new'
     end
   end
@@ -17,10 +17,7 @@ class UserSessionsController < ApplicationController
   def destroy
     if current_user
       @user_session = UserSession.find
-      flash[:notice] = "Volte sempre #{current_user.name}."
       @user_session.destroy
-    else
-      flash[:notice] = "Você nem estava logado"
     end
     
     redirect_to home_url

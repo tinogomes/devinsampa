@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+
+<head>
+  <title><%= action_name %> <%= controller_name %> - Dev in Sampa</title>
+</head>
+<body>
+  <% if current_user %>
+  <ul>
+    <li><%= link_to "Speakers", admin_speakers_path %></li>
+    <li><%= link_to "Agendas", admin_agendas_path %></li>
+    <li><%= link_to "Attendees", admin_attendees_path %></li>
+    <li><%= link_to "Logout", logout_path %></li>
+  </ul>
+  <% end %>
+
+  <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <%- end -%>
+
+  <%= yield %>  
+</body>
+</html>

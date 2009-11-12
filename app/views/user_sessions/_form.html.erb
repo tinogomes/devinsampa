@@ -1,5 +1,4 @@
 <% form_for @user_session do |f| %>
-  <%= f.error_messages %>
   <p>
     <%= f.label :username, "Usuário" %><br />
     <%= f.text_field :username %>
@@ -8,5 +7,5 @@
     <%= f.label :password, "Senha" %><br />
     <%= f.password_field :password %>
   </p>
-  <p><%= f.submit "Confirmar" %></p>
+  <p><%= f.submit "Login" %></p>
 <% end %>

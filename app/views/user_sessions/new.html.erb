@@ -1,3 +1,4 @@
-<% title "Login" %>
-
+<% if params[:user_session] %>
+  <p>Errou a senha ou tá tentando hackear?</p>
+<% end %>
 <%= render :partial => 'form' %>

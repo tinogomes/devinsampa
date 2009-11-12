@@ -1,8 +1,8 @@
 <% title "Alterar cadastro de item da agenda", false %>
 
-<% form_for(:agenda, :url => { :action => "update" }, :html => {:method => "PUT"}) do |f| %>
+<% form_for(@agenda, :url => { :action => "update" }, :html => {:method => "PUT"}) do |f| %>
   <%= render :partial => "form", :locals => {:f => f} %>
   <%= f.submit "Alterar", :disable_with => 'Aguarde...' %>
 <% end %>
 
-<%= link_to 'Voltar', agenda_path %>
+<%= link_to 'Voltar', admin_agendas_path %>

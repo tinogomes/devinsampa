@@ -1,5 +1,4 @@
 class Admin::AttendeesController < Admin::AdminController
-  layout false
   before_filter :set_attendee, :except => [:index]
   
   def index

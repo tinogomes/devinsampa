@@ -1,0 +1,24 @@
+<h1>Listing speakers</h1>
+
+<table border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Presentation</th>
+    <th colspan="2">Actions</th>
+    
+  </tr>
+
+<% @speakers.each do |speaker| %>
+  <tr style="background-color: <%= cycle('#CCC', '#999') %>">
+    <td><%=h speaker.name %> </td>
+    <td><%=h speaker.email %> </td>
+    <td><%=h speaker.presentation %></td> 
+
+    <td><%= link_to 'Edit', edit_admin_speaker_path(speaker) %></td>
+    <td><%= link_to 'Destroy', admin_speaker_path(speaker), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to "New", new_admin_speaker_path %>

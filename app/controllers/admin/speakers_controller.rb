@@ -1,14 +1,20 @@
 class Admin::SpeakersController < Admin::AdminController
+  
+  before_filter :set_speaker, :except => [:index, :new, :create]
+  
+  def index
+    @speakers = Speaker.all :select => "id, name, email, presentation", :order => "name"
+  end
+  
   def new
     @speaker = Speaker.new
   end
   
   def create
     @speaker = Speaker.new(params[:speaker])
-
     if @speaker.valid? && @speaker.save
       flash[:notice] = "#{@speaker.name} cadastrado"
-      redirect_to speakers_path
+      redirect_to admin_speakers_path
     else
       render :action => "new"
     end
@@ -16,18 +22,21 @@ class Admin::SpeakersController < Admin::AdminController
   end
   
   def edit
-    set_speaker
   end
   
   def update
-    set_speaker
     @speaker.attributes = params[:speaker]
     if @speaker.valid? && @speaker.save
       flash[:notice] = "Os dados de #{@speaker.name} foram atualizados"
-      redirect_to speakers_path
+      redirect_to admin_speakers_path
     else
       render :action => "edit"
     end
+  end
+  
+  def destroy
+    @speaker.destroy
+    redirect_to(admin_speakers_url)
   end
   
   private

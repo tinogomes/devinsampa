@@ -1,0 +1,26 @@
+<h1>Listing Agenda</h1>
+
+<table border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Event</th>
+    <th>Speaker</th>
+    <th colspan="2">Actions</th>
+    
+  </tr>
+
+<% @agendas.each do |agenda| %>
+  <tr style="background-color: <%= cycle('#CCC', '#999') %>">
+    <td><%=h agenda.start_time %>&nbsp;</td>
+    <td><%=h agenda.end_time %>&nbsp;</td>
+    <td><%=h agenda.event %>&nbsp;</td>
+    <td><%=h agenda.speaker.name if agenda.speaker %>&nbsp;</td>
+
+    <td><%= link_to 'Edit', edit_admin_agenda_path(agenda) %></td>
+    <td><%= link_to 'Destroy', admin_agenda_path(agenda), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to "New", new_admin_agenda_path %>

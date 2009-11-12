@@ -20,7 +20,8 @@ module Technoweenie # :nodoc:
         # The optional thumbnail argument will output the thumbnail's filename.
         def full_filename(thumbnail = nil)
           file_system_path = (thumbnail ? thumbnail_class : self).attachment_options[:path_prefix].to_s
-          File.join(RAILS_ROOT, file_system_path, *partitioned_path(thumbnail_name_for(thumbnail)))
+          filename = [RAILS_ROOT, file_system_path, *partitioned_path(thumbnail_name_for(thumbnail)) ].join
+          File.join(filename)
         end
       
         # Used as the base path that #public_filename strips off full_filename to create the public path
@@ -85,6 +86,7 @@ module Technoweenie # :nodoc:
         protected
           # Destroys the file.  Called in the after_destroy callback
           def destroy_file
+            return unless File.exist?(full_filename)
             FileUtils.rm full_filename
             # remove directory also if it is now empty
             Dir.rmdir(File.dirname(full_filename)) if (Dir.entries(File.dirname(full_filename))-['.','..']).empty?
