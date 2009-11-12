@@ -5,6 +5,7 @@ class Admin::AttendeesController < Admin::AdminController
   def index
     session_admin_order(params[:o])
     @attendees = Attendee.all :order => (session[:admin_attendee_order])
+    @attendees_counts = Attendee.count("status", :group => "status")
   end
 
   def show

@@ -2,6 +2,19 @@
 
 <table border="1" cellspacing="0" cellpadding="3">
   <tr>
+    <th>Status</th>
+    <th>Qtde</th>
+  </tr>
+<% @attendees_counts.each do |status,qtde| %>
+  <tr>
+    <td><%= status %></td>
+    <td><%= qtde %></td>
+  </tr>
+<% end %>
+</table>
+
+<table border="1" cellspacing="0" cellpadding="3">
+  <tr>
     <th><%= current_admin_attendee_order("Name") %></th>
     <th><%= current_admin_attendee_order("Email") %></th>
     <th><%= current_admin_attendee_order("Status") %></th>
