@@ -1,11 +1,9 @@
 <h1>Listing attendees</h1>
 
-<table>
+<table border="1" cellspacing="0" cellpadding="3">
   <tr>
     <th><%= current_admin_attendee_order("Name") %></th>
     <th><%= current_admin_attendee_order("Email") %></th>
-    <th><%= current_admin_attendee_order("Doc") %></th>
-    <th><%= current_admin_attendee_order("Company") %></th>
     <th><%= current_admin_attendee_order("Status") %></th>
     <th colspan="6">Change status</th>
     <th colspan="3">Actions</th>
@@ -13,12 +11,10 @@
   </tr>
 
 <% @attendees.each do |attendee| %>
-  <tr>
+  <tr style="background-color: <%= cycle('#CCC', '999') %>">
     <td><%=h attendee.name %></td>
     <td><%=h attendee.email %></td>
-    <td><%=h attendee.doc %></td>
-    <td><%=h attendee.company %></td>
-    <td><%=h (attendee.status || "unprocessed") %></td>
+    <td><%=h attendee.status %></td>
 
     <td><%= link_to 'Completed', completed_admin_attendee_path(attendee), :method => :put %></td>
     <td><%= link_to 'Pending', pending_admin_attendee_path(attendee), :method => :put %></td>
