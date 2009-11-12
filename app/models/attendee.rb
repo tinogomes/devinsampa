@@ -9,16 +9,15 @@ class Attendee < ActiveRecord::Base
   
   attr_accessible :name, :email, :doc, :compay
   
+  after_update :send_emails_after_change_status
   before_create :set_token
   after_create :send_mail_after_create
   before_destroy :send_mail_before_delete
   
-  symbolize :status, :allow_blank => true, :in => Hash[*PagSeguro::Notification::STATUS.map { |k,v| [v, k] }.flatten]
-  symbolize :payment_method, :allow_blank => true, :in => Hash[*PagSeguro::Notification::PAYMENT_METHOD.map { |k,v| [v, k] }.flatten]
+  symbolize :status, :allow_blank => true, :in => Hash[*PagSeguro::Notification::STATUS.map { |k,v| [v, v.to_s] }.flatten]
+  symbolize :payment_method, :allow_blank => true, :in => Hash[*PagSeguro::Notification::PAYMENT_METHOD.map { |k,v| [v, v.to_s] }.flatten]
   
   def update_payment_data(notification)
-    old_status    = self.status
-
     self[:notes]  = notification.notes
     self[:buyer]  = notification.buyer.to_json
     self[:status] = notification.status
@@ -26,8 +25,6 @@ class Attendee < ActiveRecord::Base
     self[:transaction_id] = notification.transaction_id
     self[:payment_method] = notification.payment_method
     self.save!
-
-    send_emails_before_change_status if self.status != old_status
   end
   
   def final_status
@@ -75,14 +72,20 @@ class Attendee < ActiveRecord::Base
       end
     end
   
-    def send_emails_before_change_status
-      if completed?
-        spawn do
-          Contact.deliver_attendee_confirmation(self)
-        end
-      elsif canceled?
-        spawn do
-          Contact.deliver_attendee_problem(self)
+    def send_emails_after_change_status
+      if self.changed.include?("status")
+        if self.completed?
+          spawn do
+            Contact.deliver_attendee_confirmation(self)
+          end
+        elsif self.canceled?
+          spawn do
+            Contact.deliver_attendee_problem(self)
+          end
+        elsif !self.status.nil?
+          spawn do
+            Contact.deliver_attendee_pending(self)
+          end
         end
       end
     end
@@ -90,4 +93,5 @@ class Attendee < ActiveRecord::Base
     def set_token
       self[:token] = Digest::SHA1.hexdigest("#{Time.now}#{email}").slice(0,30).upcase
     end
+    
 end

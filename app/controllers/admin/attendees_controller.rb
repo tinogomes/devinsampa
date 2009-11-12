@@ -1,5 +1,4 @@
 class Admin::AttendeesController < Admin::AdminController
-
   layout false
   before_filter :set_attendee, :except => [:index]
   
@@ -34,7 +33,38 @@ class Admin::AttendeesController < Admin::AdminController
     redirect_to(admin_attendees_url)
   end
   
+  def completed
+    change_status
+  end
+  
+  def pending
+    change_status
+  end
+  
+  def approved
+    change_status
+  end
+  
+  def verifying
+    change_status
+  end
+  
+  def canceled
+    change_status
+  end
+  
+  def refunded
+    change_status
+  end
+
   private
+    def change_status
+      @attendee.status = action_name.to_sym
+      @attendee.save!
+      
+      redirect_to(admin_attendees_url)
+    end
+    
     def set_attendee
       @attendee = Attendee.find(params[:id])
     end

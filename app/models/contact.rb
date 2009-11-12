@@ -1,6 +1,7 @@
 class Contact < ActionMailer::Base
   
   def from_site(contact, receive_a_copy = false)
+    reply_to      contact.email
     recipients    "devinsampa@gmail.com"
     cc            contact.email if receive_a_copy
     from          "devinsampa@gmail.com"
@@ -24,12 +25,21 @@ class Contact < ActionMailer::Base
     body         :name => attendee.name, :doc => attendee.doc
   end
   
+  def attendee_pending(attendee)
+    default_url_options[:host] = "www.devinsampa.com.br"
+    recipients   attendee.email
+    from         "devinsampa@gmail.com"
+    subject      "[devinsampa] Aguardando confirmação de pagamento pelo PagSeguro"
+    status       = {:pending => "Aguardando pagamento", :verifying => "Em análise"}
+    body         :status => status[attendee.status], :name => attendee.name, :link => payment_url(:token => attendee.token)
+  end
+  
   def attendee_problem(attendee)
     default_url_options[:host] = "www.devinsampa.com.br"
     recipients   attendee.email
     from         "devinsampa@gmail.com"
     subject      "[devinsampa] Problemas no pagamento da inscrição"
-    status       = {"canceled" => "Cancelado", "refunded" => "Devolvido"}
+    status       = {:canceled => "Cancelado", :refunded => "Devolvido"}
     body         :status => status[attendee.status], :name => attendee.name, :link => payment_url(:token => attendee.token)
   end
   
