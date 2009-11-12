@@ -11,7 +11,7 @@
   </tr>
 
 <% @attendees.each do |attendee| %>
-  <tr style="background-color: <%= cycle('#CCC', '999') %>">
+  <tr style="background-color: <%= cycle('#CCC', '#999') %>">
     <td><%=h attendee.name %></td>
     <td><%=h attendee.email %></td>
     <td><%=h attendee.status %></td>
