@@ -12,9 +12,9 @@
 
 <% @attendees.each do |attendee| %>
   <tr style="background-color: <%= cycle('#CCC', '#999') %>">
-    <td><%=h attendee.name %></td>
-    <td><%=h attendee.email %></td>
-    <td><%=h attendee.status %></td>
+    <td><%=h attendee.name %> </td>
+    <td><%=h attendee.email %> </td>
+    <td><%=h attendee.status %> &nbsp; </td> 
 
     <td><%= link_to 'Completed', completed_admin_attendee_path(attendee), :method => :put %></td>
     <td><%= link_to 'Pending', pending_admin_attendee_path(attendee), :method => :put %></td>
