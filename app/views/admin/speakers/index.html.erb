@@ -13,6 +13,7 @@
   <tr style="background-color: <%= cycle('#CCC', '#999') %>">
     <td><%=h speaker.name %> </td>
     <td><%=h speaker.email %> </td>
+	<td><%=h speaker.twitter %> </td>
     <td><%=h speaker.presentation %></td> 
 
     <td><%= link_to 'Edit', edit_admin_speaker_path(speaker) %></td>

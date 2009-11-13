@@ -3,7 +3,7 @@ class Admin::SpeakersController < Admin::AdminController
   before_filter :set_speaker, :except => [:index, :new, :create]
   
   def index
-    @speakers = Speaker.all :select => "id, name, email, presentation", :order => "name"
+    @speakers = Speaker.all :select => "id, name, email, presentation, twitter", :order => "name"
   end
   
   def new
