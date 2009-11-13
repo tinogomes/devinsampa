@@ -79,8 +79,15 @@ class AttendeesController < ApplicationController
     def capture_information
       pagseguro_notification do |notification|
         begin
-          attendee = Attendee.find_by_token!(notification.order_id)
-          attendee.update_payment_data!(notification)
+          if notification.valid?(true)
+            attendee = Attendee.find_by_token!(notification.order_id)
+            attendee.update_payment_data!(notification)
+          else
+            spawn do
+              Contact.alert_us(notification, request, params)
+            end
+            RAILS_DEFAULT_LOGGER.error("Alguém tentou simular um POST do PagSeguro: #{notification.inspect}")
+          end
         rescue Exception => e
           RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
         end

@@ -58,4 +58,12 @@ class Contact < ActionMailer::Base
     subject      "[devinsampa] Sua inscrição será cancelada"
     body         :name => attendee.name, :link => payment_url(:token => attendee.token)
   end
+  
+  def alert_us(notification, request, params)
+    default_url_options[:host] = "www.devinsampa.com.br"
+    recipients   "tinorj@gmail.com, lfcipriani@gmail.com, nuxlli@gmail.com"
+    from         "devinsampa@gmail.com"
+    subject      "[devinsampa] Algum esperado querendo fazer baixa em nome do PagSeguro"
+    body         :notification => notification.inspect, :request => request.inspect, :params => params.inspect
+  end
 end
