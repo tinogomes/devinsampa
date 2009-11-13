@@ -63,6 +63,18 @@ class Attendee < ActiveRecord::Base
       Contact.deliver_attendee_created(self)
     end
   end
+  
+  def send_mail_will_unregister
+    return false unless status.nil?
+    self.will_unregister = true
+    result = self.save
+    if result
+      spawn do
+        Contact.deliver_attendee_will_unregister(self)
+      end
+    end
+    result
+  end
 
   private
   

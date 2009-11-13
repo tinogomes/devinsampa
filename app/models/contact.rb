@@ -50,4 +50,12 @@ class Contact < ActionMailer::Base
     subject      "[devinsampa] Cancelamento de inscrição"
     body         :attendee => attendee
   end
+  
+  def attendee_will_unregister(attendee)
+    default_url_options[:host] = "www.devinsampa.com.br"
+    recipients   attendee.email
+    from         "devinsampa@gmail.com"
+    subject      "[devinsampa] Sua inscrição será cancelada"
+    body         :name => attendee.name, :link => payment_url(:token => attendee.token)
+  end
 end

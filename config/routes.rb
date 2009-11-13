@@ -8,7 +8,8 @@ ActionController::Routing::Routes.draw do |map|
                                              :approved => :put,
                                              :verifying => :put,
                                              :canceled => :put,
-                                             :refunded => :put
+                                             :refunded => :put,
+                                             :warning => :get
                                               }
   end
   

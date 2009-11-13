@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091110181816) do
+ActiveRecord::Schema.define(:version => 20091113113624) do
 
   create_table "agendas", :force => true do |t|
     t.string   "start_time"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20091110181816) do
     t.string   "token"
     t.string   "notes"
     t.string   "transaction_id"
+    t.boolean  "will_unregister", :default => false
   end
 
   add_index "attendees", ["token"], :name => "index_attendees_on_token"

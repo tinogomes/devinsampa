@@ -56,6 +56,15 @@ class Admin::AttendeesController < Admin::AdminController
   def refunded
     change_status
   end
+  
+  def warning
+    if @attendee.send_mail_will_unregister
+      flash[:notice] = "Depois diz que não avisei!"
+    else
+      flash[:error] = "Deu alguma coisa errada e não sei o que foi!"
+    end
+    redirect_to(admin_attendees_url)
+  end
 
   private
     def change_status
