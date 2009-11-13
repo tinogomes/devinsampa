@@ -1,5 +1,5 @@
 class AttendeesController < ApplicationController
-  OPEN_REGISTER_DATE = "2009/11/11 13:00:00"
+  OPEN_REGISTER_DATE = "2009/11/17 10:00:00"
   
   skip_before_filter :verify_authenticity_token, :only => :pagseguro
 
@@ -97,9 +97,9 @@ class AttendeesController < ApplicationController
     def no_time_message(times)
       case times
       when 1
-        "Apressado você hein!? Só depois das 11:00, ok?"
+        "Apressado você hein!?"
       when 2
-        "É a segunda vez, espera dar 11:00, né?"
+        "É a segunda vez, espera mais um pouco"
       else
         "Já vi que você não sabe esperar."
       end

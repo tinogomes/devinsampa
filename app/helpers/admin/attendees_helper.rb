@@ -1,9 +1,9 @@
 module Admin::AttendeesHelper
-  def current_admin_attendee_order(order)
+  def current_admin_attendee_order(label, order = label.downcase)
     if order === session[:admin_attendee_order]
-      order
+      label
     else
-      link_to(order, admin_attendees_path(:o => order))
+      link_to(label, admin_attendees_path(:o => order))
     end
   end
   

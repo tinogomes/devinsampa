@@ -55,7 +55,7 @@ class Attendee < ActiveRecord::Base
   end
   
   def self.overload?
-    Attendee.count >= LIMIT_ATTENDEE
+    Attendee.count(:id) >= LIMIT_ATTENDEE
   end
   
   def send_mail_after_create

@@ -23,11 +23,11 @@
     </p>
     <p>
       <% if no_time_to_register? && !params[:attendee].nil?%>
-      <%= f.submit 'Tá com muita pressa, hein!?', :id => "summit_register_disabled" %>
+        <%= f.submit 'Tá com muita pressa, hein!?' %>
       <% elsif no_time_to_register? %>
-        <%= f.submit 'Inscrição somente após às 11:00', :id => "summit_register_disabled" %>
+        <%= f.submit 'Inscrição somente após dia 17/11 às 10:00' %>
       <% else %>
-        <%= f.submit 'Inscrever',   :id => "summit_register" %>
+        <%= f.submit 'Inscrever' %>
       <% end %>
     </p>
 <% end %>
