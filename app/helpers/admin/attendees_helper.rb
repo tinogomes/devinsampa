@@ -8,14 +8,12 @@ module Admin::AttendeesHelper
   end
   
   def status_or_link(attendee)
-    if attendee.will_unregister 
+    if attendee.status.nil? && attendee.will_unregister 
       return "bye?"
-    else 
-      if attendee.status.nil?
+    elsif attendee.status.nil?
         link_to "wr?", warning_admin_attendee_path(attendee)
-      else
-        h(attendee.status)
-      end
+    else
+      h(attendee.status)
     end
   end
 end
