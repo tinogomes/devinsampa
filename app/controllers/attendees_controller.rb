@@ -1,5 +1,5 @@
 class AttendeesController < ApplicationController
-  OPEN_REGISTER_DATE = "2009/11/13 10:00:00"
+  OPEN_REGISTER_DATE = "2009/11/17 11:00:00"
   
   skip_before_filter :verify_authenticity_token, :only => :pagseguro
 
