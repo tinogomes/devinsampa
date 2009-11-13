@@ -1,5 +1,5 @@
 class AttendeesController < ApplicationController
-  OPEN_REGISTER_DATE = "2009/11/17 10:00:00"
+  OPEN_REGISTER_DATE = "2009/11/13 10:00:00"
   
   skip_before_filter :verify_authenticity_token, :only => :pagseguro
 
@@ -30,10 +30,7 @@ class AttendeesController < ApplicationController
 
   def create
     if ( no_time_to_register? )
-      session[:try_register_before_time] ||= 0
-      session[:try_register_before_time] += 1
-      
-      flash[:error] = no_time_message(session[:try_register_before_time])
+      flash[:error] = no_time_message
       @attendee = Attendee.new(params[:attendee])
       render :action => "new" and return
     end
@@ -83,7 +80,7 @@ class AttendeesController < ApplicationController
       pagseguro_notification do |notification|
         begin
           attendee = Attendee.find_by_token!(notification.order_id)
-          attendee.update_payment_data(notification)
+          attendee.update_payment_data!(notification)
         rescue Exception => e
           RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
         end
@@ -94,14 +91,15 @@ class AttendeesController < ApplicationController
       Time.now.utc <  OPEN_REGISTER_DATE.to_time.utc
     end
     
-    def no_time_message(times)
-      case times
-      when 1
-        "Apressado você hein!?"
-      when 2
-        "É a segunda vez, espera mais um pouco"
-      else
-        "Já vi que você não sabe esperar."
-      end
+    def no_time_message
+      messages = [
+        "Apressado você hein!?",
+        "De novo? Paciência.",
+        "Já vi que você não sabe esperar.",
+        "Ainda não deu a hora.",
+        "Rails não escala?",
+        "Quer que eu conte uma piada para descontrair?"
+      ]
+      messages[rand(messages.size)]
     end
 end

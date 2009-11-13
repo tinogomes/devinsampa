@@ -14,7 +14,8 @@ body {
   background: #fff;
 }
 
-label span {
+form span {
+  padding-left: 10px;
   color: #666;
   font-size: .6em ;
 }

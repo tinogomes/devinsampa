@@ -1,5 +1,5 @@
 class Attendee < ActiveRecord::Base
-  LIMIT_ATTENDEE = 80
+  LIMIT_ATTENDEE = 100
 
   validates_presence_of   :name
   validates_presence_of   :email
@@ -7,7 +7,7 @@ class Attendee < ActiveRecord::Base
   validates_format_of :email, :with => User::EMAIL_REGEX
   validates_presence_of :doc
   
-  attr_accessible :name, :email, :doc, :compay
+  attr_accessible :name, :email, :doc, :company
   
   after_update :send_emails_after_change_status
   before_create :set_token
@@ -17,13 +17,11 @@ class Attendee < ActiveRecord::Base
   symbolize :status, :allow_blank => true, :in => Hash[*PagSeguro::Notification::STATUS.map { |k,v| [v, v.to_s] }.flatten]
   symbolize :payment_method, :allow_blank => true, :in => Hash[*PagSeguro::Notification::PAYMENT_METHOD.map { |k,v| [v, v.to_s] }.flatten]
   
-  def update_payment_data(notification)
-    self[:notes]  = notification.notes
-    self[:buyer]  = notification.buyer.to_json
-    self[:status] = notification.status
-    self[:processed_at]   = notification.processed_at
-    self[:transaction_id] = notification.transaction_id
-    self[:payment_method] = notification.payment_method
+  def update_payment_data!(notification)
+    self.payment_method = notification.payment_method
+    self.status = notification.status
+    self.processed_at = notification.processed_at
+    self.buyer = notification.buyer.to_json
     self.save!
   end
   

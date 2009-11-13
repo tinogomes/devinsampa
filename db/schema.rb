@@ -12,9 +12,9 @@
 ActiveRecord::Schema.define(:version => 20091113121227) do
 
   create_table "agendas", :force => true do |t|
-    t.binary   "start_time", :limit => 255
-    t.binary   "end_time",   :limit => 255
-    t.binary   "event",      :limit => 255
+    t.string   "start_time"
+    t.string   "end_time"
+    t.string   "event"
     t.integer  "speaker_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -23,48 +23,48 @@ ActiveRecord::Schema.define(:version => 20091113121227) do
   add_index "agendas", ["start_time"], :name => "index_agendas_on_start_time"
 
   create_table "attendees", :force => true do |t|
-    t.binary   "name",            :limit => 255
-    t.binary   "email",           :limit => 255
-    t.binary   "doc",             :limit => 255
-    t.binary   "company",         :limit => 255
-    t.binary   "status",          :limit => 255
-    t.binary   "payment_method",  :limit => 255
+    t.string   "name"
+    t.string   "email"
+    t.string   "doc"
+    t.string   "company"
+    t.string   "status"
+    t.string   "payment_method"
     t.datetime "processed_at"
-    t.binary   "buyer"
+    t.text     "buyer"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.binary   "token",           :limit => 255
-    t.binary   "notes",           :limit => 255
-    t.binary   "transaction_id",  :limit => 255
-    t.boolean  "will_unregister",                :default => false
+    t.string   "token"
+    t.string   "notes"
+    t.string   "transaction_id"
+    t.boolean  "will_unregister", :default => false
   end
 
   add_index "attendees", ["token"], :name => "index_attendees_on_token"
 
   create_table "speakers", :force => true do |t|
-    t.binary   "name",         :limit => 255
-    t.binary   "bio"
-    t.binary   "presentation", :limit => 255
-    t.binary   "description"
-    t.binary   "filename",     :limit => 255
+    t.string   "name"
+    t.text     "bio"
+    t.string   "presentation"
+    t.text     "description"
+    t.string   "filename"
     t.integer  "size"
-    t.binary   "content_type", :limit => 255
+    t.string   "content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.binary   "email",        :limit => 255
-    t.binary   "twitter",      :limit => 255
+    t.string   "email"
+    t.string   "twitter"
   end
 
   add_index "speakers", ["name"], :name => "index_speakers_on_name"
 
   create_table "users", :force => true do |t|
-    t.binary   "name",              :limit => 255
-    t.binary   "username",          :limit => 255
-    t.binary   "email",             :limit => 255
-    t.binary   "crypted_password",  :limit => 255
-    t.binary   "password_salt",     :limit => 255
-    t.binary   "persistence_token", :limit => 255
-    t.binary   "role",              :limit => 255, :default => "attendee"
+    t.string   "name"
+    t.string   "username"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.string   "role",              :default => "attendee"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
