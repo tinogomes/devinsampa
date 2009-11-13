@@ -8,7 +8,14 @@
 <% @speakers.each do |speaker| %>
 <a name="speaker-<%= speaker.id %>"></a>
 <div class="box speaker">
-  <h2><%= speaker.name -%></h2>
+  <h2>
+	<%= speaker.name -%>
+	<% unless speaker.twitter.blank? %>
+		<% speaker.twitter.split("#").each do |account| %>
+			- <%= link_to "@#{account}", "http://www.twitter.com/#{account}", :target => "_blank", :title => "Veja o Twitter desse palestrante" -%>
+		<% end %>
+	<% end %>
+  </h2>
   <% unless speaker.filename.blank? %>
   <%= image_tag speaker.public_filename, :alt => "Foto de #{speaker.name}", :class => cycle("float-left", "float-right") %>
   <% end %>
