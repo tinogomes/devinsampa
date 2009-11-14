@@ -52,7 +52,9 @@ class AttendeesController < ApplicationController
   end
 
   def pagseguro
-    unless request.post?
+    if request.post?
+      capture_information and render :nothing => true
+    else
       begin
         @attendee = Attendee.find_by_token!(session[:token])
       rescue
@@ -69,28 +71,25 @@ class AttendeesController < ApplicationController
       else
         return true
       end
-    else
-      capture_information and render :nothing => true
     end
   end
   
   private
   
     def capture_information
-      pagseguro_notification do |notification|
-        begin
-          if notification.valid?(true)
-            attendee = Attendee.find_by_token!(notification.order_id)
-            attendee.update_payment_data!(notification)
-          else
-            spawn do
-              Contact.alert_us(notification, request, params)
-            end
-            RAILS_DEFAULT_LOGGER.error("Alguém tentou simular um POST do PagSeguro: #{notification.inspect}")
+      notification = PagSeguro::Notification.new(params)
+      begin
+        if notification.valid?(true)
+          attendee = Attendee.find_by_token!(notification.order_id)
+          attendee.update_payment_data!(notification)
+        else
+          spawn do
+            Contact.alert_us(notification, request, params)
           end
-        rescue Exception => e
-          RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
+          RAILS_DEFAULT_LOGGER.error("Alguém tentou simular um POST do PagSeguro: #{notification.inspect}")
         end
+      rescue Exception => e
+        RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
       end
     end
     
