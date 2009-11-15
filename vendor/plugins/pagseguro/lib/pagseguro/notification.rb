@@ -1,6 +1,6 @@
 module PagSeguro
   class Notification
-    API_URL = "https://pagseguro.uol.com.br/Security/NPI/Default.aspx/"
+    API_URL = "https://pagseguro.uol.com.br/pagseguro-ws/checkout/NPI.jhtml"
     
     # Map all the attributes from PagSeguro
     MAPPING = {
