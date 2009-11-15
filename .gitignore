@@ -1,7 +1,15 @@
-log/*
+log
 tmp
 config/database.yml
 .DS_Store
 public/images/speakers
 config/mailer.yml
 config/pagseguro.yml
+REVISION
+public/divulgar.html
+public/googlehostedservice.html
+public/hackers.html
+public/index.html
+public/palestrantes.html
+public/programacao.html
+public/system
