@@ -4,6 +4,10 @@ describe UserSessionsController do
   fixtures :all
   integrate_views
   
+  before(:each) do
+    @user = Factory(:user)
+  end
+  
   it "new action should render new template" do
     get :new
     response.should render_template(:new)

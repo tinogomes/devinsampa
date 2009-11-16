@@ -7,7 +7,6 @@ describe PagesController do
     controller.should be_an_instance_of(PagesController)
   end
 
-
   describe "GET 'index'" do
     it "should be successful" do
       get 'index'
