@@ -1,0 +1,13 @@
+development: &development
+  developer: true
+  base: "http://localhost:3000"
+  return_to: "/inscricao/pagseguro/confirmacao"
+  email: user@email.com
+
+test:
+  <<: *development
+
+production:
+  authenticity_token: 1234567890ABCDEFGHIKJLMNOPQRSTUVWXYZ
+  email: user@email.com
+  return_to: "/inscricao/pagseguro/confirmacao"
