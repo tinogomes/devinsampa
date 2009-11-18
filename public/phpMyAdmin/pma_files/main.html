@@ -1,0 +1,597 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="/phpMyAdmin/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/phpMyAdmin/favicon.ico" type="image/x-icon">
+    <title>phpMyAdmin</title>
+    <link rel="stylesheet" type="text/css" href="main_data/phpmyadmin.css">
+    <link rel="stylesheet" type="text/css" href="main_data/mooRainbow.css">
+    <link rel="stylesheet" type="text/css" href="main_data/print.css" media="print">
+    <meta name="robots" content="noindex,nofollow">
+
+<script src="main_data/mootools.js" type="text/javascript"></script>
+<script src="main_data/mooRainbow.js" type="text/javascript"></script>
+<script src="main_data/mootools-domready-rainbow.js" type="text/javascript"></script>
+<script src="main_data/tooltip.js" type="text/javascript"></script>
+
+    <meta name="OBGZip" content="true">
+        <!--[if IE 6]>
+    <style type="text/css">
+    /* <![CDATA[ */
+    html {
+        overflow-y: scroll;
+    }
+    /* ]]> */
+    </style>
+    <![endif]-->
+</head><body>
+    <div id="serverinfo">
+<a href="javascript:alert('você achou mesmo que tinha invadido?');" class="item">        <img class="icon" src="main_data/s_host.png" alt="" height="16" width="16"> 
+www.devinsampa.com.br</a>
+</div><div id="topmenucontainer">
+<ul id="topmenu">
+<li><a class="tab" href="javascript:alert('você achou mesmo que tinha invadido?');"><img class="icon" src="main_data/s_db.png" alt="" height="16" width="16">Databases</a></li>
+<li><a class="tab" href="javascript:alert('você achou mesmo que tinha invadido?');"><img class="icon" src="main_data/b_sql.png" alt="" height="16" width="16">SQL</a></li>
+<li><a class="tab" href="javascript:alert('você achou mesmo que tinha invadido?');"><img class="icon" src="main_data/s_status.png" alt="" height="16" width="16">Status</a></li>
+<li><a class="tab" href="javascript:alert('você achou mesmo que tinha invadido?');"><img class="icon" src="main_data/s_vars.png" alt="" height="16" width="16">Variables</a></li>
+<li><a class="tab" href="javascript:alert('você achou mesmo que tinha invadido?');"><img class="icon" src="main_data/s_asci.png" alt="" height="16" width="16">Charsets</a></li>
+<li><a class="tab" href="javascript:alert('você achou mesmo que tinha invadido?');"><img class="icon" src="main_data/b_engine.png" alt="" height="16" width="16">Engines</a></li>
+<li><a class="tab" href="javascript:alert('você achou mesmo que tinha invadido?');"><img class="icon" src="main_data/s_rights.png" alt="" height="16" width="16">Privileges</a></li>
+<li><a class="tab" href="javascript:alert('você achou mesmo que tinha invadido?');"><img class="icon" src="main_data/s_tbl.png" alt="" height="16" width="16">Binary log</a></li>
+<li><a class="tab" href="javascript:alert('você achou mesmo que tinha invadido?');"><img class="icon" src="main_data/s_process.png" alt="" height="16" width="16">Processes</a></li>
+<li><a class="tab" href="javascript:alert('você achou mesmo que tinha invadido?');"><img class="icon" src="main_data/b_export.png" alt="" height="16" width="16">Export</a></li>
+<li><a class="tab" href="javascript:alert('você achou mesmo que tinha invadido?');"><img class="icon" src="main_data/b_import.png" alt="" height="16" width="16">Import</a></li>
+</ul>
+<div class="clearfloat"></div></div>
+<div id="maincontainer">
+<div id="main_pane_left"><div class="group"><h2>Actions</h2><ul></ul></div><div class="group"><h2>MySQL www.devinsampa.com.br</h2><ul>
+<li id="li_create_database">        <form method="get" action="#" onsummit="javascript:alert('você insiste hein!?')"><strong>
+            <label for="text_create_db">Create new database</label>&nbsp;<a href="javascript:alert('você achou mesmo que tinha invadido?');" target="mysql_doc"><img class="icon" src="main_data/b_help.png" alt="Documentation" title="Documentation" height="11" width="11"></a></strong><br>
+            <input name="token" value="10dc7d1c8f1d78a3e75fb7abe598fe0b" type="hidden">            <input name="reload" value="1" type="hidden">
+            <input name="new_db" maxlength="64" class="textfield" id="text_create_db" type="text">
+    <select xml:lang="en" dir="ltr" name="db_collation">
+<option selected="selected" value="">Collation</option>
+<option value=""></option>
+<optgroup label="armscii8" title="ARMSCII-8 Armenian">
+<option value="armscii8_bin" title="Armenian, Binary">armscii8_bin</option>
+<option value="armscii8_general_ci" title="Armenian, case-insensitive">armscii8_general_ci</option>
+</optgroup>
+<optgroup label="ascii" title="US ASCII">
+<option value="ascii_bin" title="West European (multilingual), Binary">ascii_bin</option>
+<option value="ascii_general_ci" title="West European (multilingual), case-insensitive">ascii_general_ci</option>
+</optgroup>
+<optgroup label="big5" title="Big5 Traditional Chinese">
+<option value="big5_bin" title="Traditional Chinese, Binary">big5_bin</option>
+<option value="big5_chinese_ci" title="Traditional Chinese, case-insensitive">big5_chinese_ci</option>
+</optgroup>
+<optgroup label="binary" title="Binary pseudo charset">
+<option value="binary" title="Binary">binary</option>
+</optgroup>
+<optgroup label="cp1250" title="Windows Central European">
+<option value="cp1250_bin" title="Central European (multilingual), Binary">cp1250_bin</option>
+<option value="cp1250_croatian_ci" title="Croatian, case-insensitive">cp1250_croatian_ci</option>
+<option value="cp1250_czech_cs" title="Czech, case-sensitive">cp1250_czech_cs</option>
+<option value="cp1250_general_ci" title="Central European (multilingual), case-insensitive">cp1250_general_ci</option>
+<option value="cp1250_polish_ci" title="Polish, case-insensitive">cp1250_polish_ci</option>
+</optgroup>
+<optgroup label="cp1251" title="Windows Cyrillic">
+<option value="cp1251_bin" title="Cyrillic (multilingual), Binary">cp1251_bin</option>
+<option value="cp1251_bulgarian_ci" title="Bulgarian, case-insensitive">cp1251_bulgarian_ci</option>
+<option value="cp1251_general_ci" title="Cyrillic (multilingual), case-insensitive">cp1251_general_ci</option>
+<option value="cp1251_general_cs" title="Cyrillic (multilingual), case-sensitive">cp1251_general_cs</option>
+<option value="cp1251_ukrainian_ci" title="Ukrainian, case-insensitive">cp1251_ukrainian_ci</option>
+</optgroup>
+<optgroup label="cp1256" title="Windows Arabic">
+<option value="cp1256_bin" title="Arabic, Binary">cp1256_bin</option>
+<option value="cp1256_general_ci" title="Arabic, case-insensitive">cp1256_general_ci</option>
+</optgroup>
+<optgroup label="cp1257" title="Windows Baltic">
+<option value="cp1257_bin" title="Baltic (multilingual), Binary">cp1257_bin</option>
+<option value="cp1257_general_ci" title="Baltic (multilingual), case-insensitive">cp1257_general_ci</option>
+<option value="cp1257_lithuanian_ci" title="Lithuanian, case-insensitive">cp1257_lithuanian_ci</option>
+</optgroup>
+<optgroup label="cp850" title="DOS West European">
+<option value="cp850_bin" title="West European (multilingual), Binary">cp850_bin</option>
+<option value="cp850_general_ci" title="West European (multilingual), case-insensitive">cp850_general_ci</option>
+</optgroup>
+<optgroup label="cp852" title="DOS Central European">
+<option value="cp852_bin" title="Central European (multilingual), Binary">cp852_bin</option>
+<option value="cp852_general_ci" title="Central European (multilingual), case-insensitive">cp852_general_ci</option>
+</optgroup>
+<optgroup label="cp866" title="DOS Russian">
+<option value="cp866_bin" title="Russian, Binary">cp866_bin</option>
+<option value="cp866_general_ci" title="Russian, case-insensitive">cp866_general_ci</option>
+</optgroup>
+<optgroup label="cp932" title="SJIS for Windows Japanese">
+<option value="cp932_bin" title="Japanese, Binary">cp932_bin</option>
+<option value="cp932_japanese_ci" title="Japanese, case-insensitive">cp932_japanese_ci</option>
+</optgroup>
+<optgroup label="dec8" title="DEC West European">
+<option value="dec8_bin" title="West European (multilingual), Binary">dec8_bin</option>
+<option value="dec8_swedish_ci" title="Swedish, case-insensitive">dec8_swedish_ci</option>
+</optgroup>
+<optgroup label="eucjpms" title="UJIS for Windows Japanese">
+<option value="eucjpms_bin" title="Japanese, Binary">eucjpms_bin</option>
+<option value="eucjpms_japanese_ci" title="Japanese, case-insensitive">eucjpms_japanese_ci</option>
+</optgroup>
+<optgroup label="euckr" title="EUC-KR Korean">
+<option value="euckr_bin" title="Korean, Binary">euckr_bin</option>
+<option value="euckr_korean_ci" title="Korean, case-insensitive">euckr_korean_ci</option>
+</optgroup>
+<optgroup label="gb2312" title="GB2312 Simplified Chinese">
+<option value="gb2312_bin" title="Simplified Chinese, Binary">gb2312_bin</option>
+<option value="gb2312_chinese_ci" title="Simplified Chinese, case-insensitive">gb2312_chinese_ci</option>
+</optgroup>
+<optgroup label="gbk" title="GBK Simplified Chinese">
+<option value="gbk_bin" title="Simplified Chinese, Binary">gbk_bin</option>
+<option value="gbk_chinese_ci" title="Simplified Chinese, case-insensitive">gbk_chinese_ci</option>
+</optgroup>
+<optgroup label="geostd8" title="GEOSTD8 Georgian">
+<option value="geostd8_bin" title="Georgian, Binary">geostd8_bin</option>
+<option value="geostd8_general_ci" title="Georgian, case-insensitive">geostd8_general_ci</option>
+</optgroup>
+<optgroup label="greek" title="ISO 8859-7 Greek">
+<option value="greek_bin" title="Greek, Binary">greek_bin</option>
+<option value="greek_general_ci" title="Greek, case-insensitive">greek_general_ci</option>
+</optgroup>
+<optgroup label="hebrew" title="ISO 8859-8 Hebrew">
+<option value="hebrew_bin" title="Hebrew, Binary">hebrew_bin</option>
+<option value="hebrew_general_ci" title="Hebrew, case-insensitive">hebrew_general_ci</option>
+</optgroup>
+<optgroup label="hp8" title="HP West European">
+<option value="hp8_bin" title="West European (multilingual), Binary">hp8_bin</option>
+<option value="hp8_english_ci" title="English, case-insensitive">hp8_english_ci</option>
+</optgroup>
+<optgroup label="keybcs2" title="DOS Kamenicky Czech-Slovak">
+<option value="keybcs2_bin" title="Czech-Slovak, Binary">keybcs2_bin</option>
+<option value="keybcs2_general_ci" title="Czech-Slovak, case-insensitive">keybcs2_general_ci</option>
+</optgroup>
+<optgroup label="koi8r" title="KOI8-R Relcom Russian">
+<option value="koi8r_bin" title="Russian, Binary">koi8r_bin</option>
+<option value="koi8r_general_ci" title="Russian, case-insensitive">koi8r_general_ci</option>
+</optgroup>
+<optgroup label="koi8u" title="KOI8-U Ukrainian">
+<option value="koi8u_bin" title="Ukrainian, Binary">koi8u_bin</option>
+<option value="koi8u_general_ci" title="Ukrainian, case-insensitive">koi8u_general_ci</option>
+</optgroup>
+<optgroup label="latin1" title="cp1252 West European">
+<option value="latin1_bin" title="West European (multilingual), Binary">latin1_bin</option>
+<option value="latin1_danish_ci" title="Danish, case-insensitive">latin1_danish_ci</option>
+<option value="latin1_general_ci" title="West European (multilingual), case-insensitive">latin1_general_ci</option>
+<option value="latin1_general_cs" title="West European (multilingual), case-sensitive">latin1_general_cs</option>
+<option value="latin1_german1_ci" title="German (dictionary), case-insensitive">latin1_german1_ci</option>
+<option value="latin1_german2_ci" title="German (phone book), case-insensitive">latin1_german2_ci</option>
+<option value="latin1_spanish_ci" title="Spanish, case-insensitive">latin1_spanish_ci</option>
+<option value="latin1_swedish_ci" title="Swedish, case-insensitive">latin1_swedish_ci</option>
+</optgroup>
+<optgroup label="latin2" title="ISO 8859-2 Central European">
+<option value="latin2_bin" title="Central European (multilingual), Binary">latin2_bin</option>
+<option value="latin2_croatian_ci" title="Croatian, case-insensitive">latin2_croatian_ci</option>
+<option value="latin2_czech_cs" title="Czech, case-sensitive">latin2_czech_cs</option>
+<option value="latin2_general_ci" title="Central European (multilingual), case-insensitive">latin2_general_ci</option>
+<option value="latin2_hungarian_ci" title="Hungarian, case-insensitive">latin2_hungarian_ci</option>
+</optgroup>
+<optgroup label="latin5" title="ISO 8859-9 Turkish">
+<option value="latin5_bin" title="Turkish, Binary">latin5_bin</option>
+<option value="latin5_turkish_ci" title="Turkish, case-insensitive">latin5_turkish_ci</option>
+</optgroup>
+<optgroup label="latin7" title="ISO 8859-13 Baltic">
+<option value="latin7_bin" title="Baltic (multilingual), Binary">latin7_bin</option>
+<option value="latin7_estonian_cs" title="Estonian, case-sensitive">latin7_estonian_cs</option>
+<option value="latin7_general_ci" title="Baltic (multilingual), case-insensitive">latin7_general_ci</option>
+<option value="latin7_general_cs" title="Baltic (multilingual), case-sensitive">latin7_general_cs</option>
+</optgroup>
+<optgroup label="macce" title="Mac Central European">
+<option value="macce_bin" title="Central European (multilingual), Binary">macce_bin</option>
+<option value="macce_general_ci" title="Central European (multilingual), case-insensitive">macce_general_ci</option>
+</optgroup>
+<optgroup label="macroman" title="Mac West European">
+<option value="macroman_bin" title="West European (multilingual), Binary">macroman_bin</option>
+<option value="macroman_general_ci" title="West European (multilingual), case-insensitive">macroman_general_ci</option>
+</optgroup>
+<optgroup label="sjis" title="Shift-JIS Japanese">
+<option value="sjis_bin" title="Japanese, Binary">sjis_bin</option>
+<option value="sjis_japanese_ci" title="Japanese, case-insensitive">sjis_japanese_ci</option>
+</optgroup>
+<optgroup label="swe7" title="7bit Swedish">
+<option value="swe7_bin" title="Swedish, Binary">swe7_bin</option>
+<option value="swe7_swedish_ci" title="Swedish, case-insensitive">swe7_swedish_ci</option>
+</optgroup>
+<optgroup label="tis620" title="TIS620 Thai">
+<option value="tis620_bin" title="Thai, Binary">tis620_bin</option>
+<option value="tis620_thai_ci" title="Thai, case-insensitive">tis620_thai_ci</option>
+</optgroup>
+<optgroup label="ucs2" title="UCS-2 Unicode">
+<option value="ucs2_bin" title="Unicode (multilingual), Binary">ucs2_bin</option>
+<option value="ucs2_czech_ci" title="Czech, case-insensitive">ucs2_czech_ci</option>
+<option value="ucs2_danish_ci" title="Danish, case-insensitive">ucs2_danish_ci</option>
+<option value="ucs2_esperanto_ci" title="Esperanto, case-insensitive">ucs2_esperanto_ci</option>
+<option value="ucs2_estonian_ci" title="Estonian, case-insensitive">ucs2_estonian_ci</option>
+<option value="ucs2_general_ci" title="Unicode (multilingual), case-insensitive">ucs2_general_ci</option>
+<option value="ucs2_hungarian_ci" title="Hungarian, case-insensitive">ucs2_hungarian_ci</option>
+<option value="ucs2_icelandic_ci" title="Icelandic, case-insensitive">ucs2_icelandic_ci</option>
+<option value="ucs2_latvian_ci" title="Latvian, case-insensitive">ucs2_latvian_ci</option>
+<option value="ucs2_lithuanian_ci" title="Lithuanian, case-insensitive">ucs2_lithuanian_ci</option>
+<option value="ucs2_persian_ci" title="Persian, case-insensitive">ucs2_persian_ci</option>
+<option value="ucs2_polish_ci" title="Polish, case-insensitive">ucs2_polish_ci</option>
+<option value="ucs2_roman_ci" title="West European, case-insensitive">ucs2_roman_ci</option>
+<option value="ucs2_romanian_ci" title="Romanian, case-insensitive">ucs2_romanian_ci</option>
+<option value="ucs2_slovak_ci" title="Slovak, case-insensitive">ucs2_slovak_ci</option>
+<option value="ucs2_slovenian_ci" title="Slovenian, case-insensitive">ucs2_slovenian_ci</option>
+<option value="ucs2_spanish2_ci" title="Traditional Spanish, case-insensitive">ucs2_spanish2_ci</option>
+<option value="ucs2_spanish_ci" title="Spanish, case-insensitive">ucs2_spanish_ci</option>
+<option value="ucs2_swedish_ci" title="Swedish, case-insensitive">ucs2_swedish_ci</option>
+<option value="ucs2_turkish_ci" title="Turkish, case-insensitive">ucs2_turkish_ci</option>
+<option value="ucs2_unicode_ci" title="Unicode (multilingual), case-insensitive">ucs2_unicode_ci</option>
+</optgroup>
+<optgroup label="ujis" title="EUC-JP Japanese">
+<option value="ujis_bin" title="Japanese, Binary">ujis_bin</option>
+<option value="ujis_japanese_ci" title="Japanese, case-insensitive">ujis_japanese_ci</option>
+</optgroup>
+<optgroup label="utf8" title="UTF-8 Unicode">
+<option value="utf8_bin" title="Unicode (multilingual), Binary">utf8_bin</option>
+<option value="utf8_czech_ci" title="Czech, case-insensitive">utf8_czech_ci</option>
+<option value="utf8_danish_ci" title="Danish, case-insensitive">utf8_danish_ci</option>
+<option value="utf8_esperanto_ci" title="Esperanto, case-insensitive">utf8_esperanto_ci</option>
+<option value="utf8_estonian_ci" title="Estonian, case-insensitive">utf8_estonian_ci</option>
+<option value="utf8_general_ci" title="Unicode (multilingual), case-insensitive">utf8_general_ci</option>
+<option value="utf8_hungarian_ci" title="Hungarian, case-insensitive">utf8_hungarian_ci</option>
+<option value="utf8_icelandic_ci" title="Icelandic, case-insensitive">utf8_icelandic_ci</option>
+<option value="utf8_latvian_ci" title="Latvian, case-insensitive">utf8_latvian_ci</option>
+<option value="utf8_lithuanian_ci" title="Lithuanian, case-insensitive">utf8_lithuanian_ci</option>
+<option value="utf8_persian_ci" title="Persian, case-insensitive">utf8_persian_ci</option>
+<option value="utf8_polish_ci" title="Polish, case-insensitive">utf8_polish_ci</option>
+<option value="utf8_roman_ci" title="West European, case-insensitive">utf8_roman_ci</option>
+<option value="utf8_romanian_ci" title="Romanian, case-insensitive">utf8_romanian_ci</option>
+<option value="utf8_slovak_ci" title="Slovak, case-insensitive">utf8_slovak_ci</option>
+<option value="utf8_slovenian_ci" title="Slovenian, case-insensitive">utf8_slovenian_ci</option>
+<option value="utf8_spanish2_ci" title="Traditional Spanish, case-insensitive">utf8_spanish2_ci</option>
+<option value="utf8_spanish_ci" title="Spanish, case-insensitive">utf8_spanish_ci</option>
+<option value="utf8_swedish_ci" title="Swedish, case-insensitive">utf8_swedish_ci</option>
+<option value="utf8_turkish_ci" title="Turkish, case-insensitive">utf8_turkish_ci</option>
+<option value="utf8_unicode_ci" title="Unicode (multilingual), case-insensitive">utf8_unicode_ci</option>
+</optgroup>
+</select>
+            <input value="Create" id="buttonGo" type="submit">
+        </form>
+    </li>
+    <li id="li_select_mysql_collation">        <form method="get" action="#" onsummit="javascript:alert('você insiste hein!?')" target="_parent">
+<input name="token" value="10dc7d1c8f1d78a3e75fb7abe598fe0b" type="hidden">            <label for="select_collation_connection">
+                MySQL connection collation: 
+            </label>
+<select xml:lang="en" dir="ltr" name="collation_connection" id="select_collation_connection" onchange="this.form.submit();">
+<option value="">Collation</option>
+<option value=""></option>
+<optgroup label="armscii8" title="ARMSCII-8 Armenian">
+<option value="armscii8_bin" title="Armenian, Binary">armscii8_bin</option>
+<option value="armscii8_general_ci" title="Armenian, case-insensitive">armscii8_general_ci</option>
+</optgroup>
+<optgroup label="ascii" title="US ASCII">
+<option value="ascii_bin" title="West European (multilingual), Binary">ascii_bin</option>
+<option value="ascii_general_ci" title="West European (multilingual), case-insensitive">ascii_general_ci</option>
+</optgroup>
+<optgroup label="big5" title="Big5 Traditional Chinese">
+<option value="big5_bin" title="Traditional Chinese, Binary">big5_bin</option>
+<option value="big5_chinese_ci" title="Traditional Chinese, case-insensitive">big5_chinese_ci</option>
+</optgroup>
+<optgroup label="binary" title="Binary pseudo charset">
+<option value="binary" title="Binary">binary</option>
+</optgroup>
+<optgroup label="cp1250" title="Windows Central European">
+<option value="cp1250_bin" title="Central European (multilingual), Binary">cp1250_bin</option>
+<option value="cp1250_croatian_ci" title="Croatian, case-insensitive">cp1250_croatian_ci</option>
+<option value="cp1250_czech_cs" title="Czech, case-sensitive">cp1250_czech_cs</option>
+<option value="cp1250_general_ci" title="Central European (multilingual), case-insensitive">cp1250_general_ci</option>
+<option value="cp1250_polish_ci" title="Polish, case-insensitive">cp1250_polish_ci</option>
+</optgroup>
+<optgroup label="cp1251" title="Windows Cyrillic">
+<option value="cp1251_bin" title="Cyrillic (multilingual), Binary">cp1251_bin</option>
+<option value="cp1251_bulgarian_ci" title="Bulgarian, case-insensitive">cp1251_bulgarian_ci</option>
+<option value="cp1251_general_ci" title="Cyrillic (multilingual), case-insensitive">cp1251_general_ci</option>
+<option value="cp1251_general_cs" title="Cyrillic (multilingual), case-sensitive">cp1251_general_cs</option>
+<option value="cp1251_ukrainian_ci" title="Ukrainian, case-insensitive">cp1251_ukrainian_ci</option>
+</optgroup>
+<optgroup label="cp1256" title="Windows Arabic">
+<option value="cp1256_bin" title="Arabic, Binary">cp1256_bin</option>
+<option value="cp1256_general_ci" title="Arabic, case-insensitive">cp1256_general_ci</option>
+</optgroup>
+<optgroup label="cp1257" title="Windows Baltic">
+<option value="cp1257_bin" title="Baltic (multilingual), Binary">cp1257_bin</option>
+<option value="cp1257_general_ci" title="Baltic (multilingual), case-insensitive">cp1257_general_ci</option>
+<option value="cp1257_lithuanian_ci" title="Lithuanian, case-insensitive">cp1257_lithuanian_ci</option>
+</optgroup>
+<optgroup label="cp850" title="DOS West European">
+<option value="cp850_bin" title="West European (multilingual), Binary">cp850_bin</option>
+<option value="cp850_general_ci" title="West European (multilingual), case-insensitive">cp850_general_ci</option>
+</optgroup>
+<optgroup label="cp852" title="DOS Central European">
+<option value="cp852_bin" title="Central European (multilingual), Binary">cp852_bin</option>
+<option value="cp852_general_ci" title="Central European (multilingual), case-insensitive">cp852_general_ci</option>
+</optgroup>
+<optgroup label="cp866" title="DOS Russian">
+<option value="cp866_bin" title="Russian, Binary">cp866_bin</option>
+<option value="cp866_general_ci" title="Russian, case-insensitive">cp866_general_ci</option>
+</optgroup>
+<optgroup label="cp932" title="SJIS for Windows Japanese">
+<option value="cp932_bin" title="Japanese, Binary">cp932_bin</option>
+<option value="cp932_japanese_ci" title="Japanese, case-insensitive">cp932_japanese_ci</option>
+</optgroup>
+<optgroup label="dec8" title="DEC West European">
+<option value="dec8_bin" title="West European (multilingual), Binary">dec8_bin</option>
+<option value="dec8_swedish_ci" title="Swedish, case-insensitive">dec8_swedish_ci</option>
+</optgroup>
+<optgroup label="eucjpms" title="UJIS for Windows Japanese">
+<option value="eucjpms_bin" title="Japanese, Binary">eucjpms_bin</option>
+<option value="eucjpms_japanese_ci" title="Japanese, case-insensitive">eucjpms_japanese_ci</option>
+</optgroup>
+<optgroup label="euckr" title="EUC-KR Korean">
+<option value="euckr_bin" title="Korean, Binary">euckr_bin</option>
+<option value="euckr_korean_ci" title="Korean, case-insensitive">euckr_korean_ci</option>
+</optgroup>
+<optgroup label="gb2312" title="GB2312 Simplified Chinese">
+<option value="gb2312_bin" title="Simplified Chinese, Binary">gb2312_bin</option>
+<option value="gb2312_chinese_ci" title="Simplified Chinese, case-insensitive">gb2312_chinese_ci</option>
+</optgroup>
+<optgroup label="gbk" title="GBK Simplified Chinese">
+<option value="gbk_bin" title="Simplified Chinese, Binary">gbk_bin</option>
+<option value="gbk_chinese_ci" title="Simplified Chinese, case-insensitive">gbk_chinese_ci</option>
+</optgroup>
+<optgroup label="geostd8" title="GEOSTD8 Georgian">
+<option value="geostd8_bin" title="Georgian, Binary">geostd8_bin</option>
+<option value="geostd8_general_ci" title="Georgian, case-insensitive">geostd8_general_ci</option>
+</optgroup>
+<optgroup label="greek" title="ISO 8859-7 Greek">
+<option value="greek_bin" title="Greek, Binary">greek_bin</option>
+<option value="greek_general_ci" title="Greek, case-insensitive">greek_general_ci</option>
+</optgroup>
+<optgroup label="hebrew" title="ISO 8859-8 Hebrew">
+<option value="hebrew_bin" title="Hebrew, Binary">hebrew_bin</option>
+<option value="hebrew_general_ci" title="Hebrew, case-insensitive">hebrew_general_ci</option>
+</optgroup>
+<optgroup label="hp8" title="HP West European">
+<option value="hp8_bin" title="West European (multilingual), Binary">hp8_bin</option>
+<option value="hp8_english_ci" title="English, case-insensitive">hp8_english_ci</option>
+</optgroup>
+<optgroup label="keybcs2" title="DOS Kamenicky Czech-Slovak">
+<option value="keybcs2_bin" title="Czech-Slovak, Binary">keybcs2_bin</option>
+<option value="keybcs2_general_ci" title="Czech-Slovak, case-insensitive">keybcs2_general_ci</option>
+</optgroup>
+<optgroup label="koi8r" title="KOI8-R Relcom Russian">
+<option value="koi8r_bin" title="Russian, Binary">koi8r_bin</option>
+<option value="koi8r_general_ci" title="Russian, case-insensitive">koi8r_general_ci</option>
+</optgroup>
+<optgroup label="koi8u" title="KOI8-U Ukrainian">
+<option value="koi8u_bin" title="Ukrainian, Binary">koi8u_bin</option>
+<option value="koi8u_general_ci" title="Ukrainian, case-insensitive">koi8u_general_ci</option>
+</optgroup>
+<optgroup label="latin1" title="cp1252 West European">
+<option value="latin1_bin" title="West European (multilingual), Binary">latin1_bin</option>
+<option value="latin1_danish_ci" title="Danish, case-insensitive">latin1_danish_ci</option>
+<option value="latin1_general_ci" title="West European (multilingual), case-insensitive">latin1_general_ci</option>
+<option value="latin1_general_cs" title="West European (multilingual), case-sensitive">latin1_general_cs</option>
+<option value="latin1_german1_ci" title="German (dictionary), case-insensitive">latin1_german1_ci</option>
+<option value="latin1_german2_ci" title="German (phone book), case-insensitive">latin1_german2_ci</option>
+<option value="latin1_spanish_ci" title="Spanish, case-insensitive">latin1_spanish_ci</option>
+<option value="latin1_swedish_ci" title="Swedish, case-insensitive">latin1_swedish_ci</option>
+</optgroup>
+<optgroup label="latin2" title="ISO 8859-2 Central European">
+<option value="latin2_bin" title="Central European (multilingual), Binary">latin2_bin</option>
+<option value="latin2_croatian_ci" title="Croatian, case-insensitive">latin2_croatian_ci</option>
+<option value="latin2_czech_cs" title="Czech, case-sensitive">latin2_czech_cs</option>
+<option value="latin2_general_ci" title="Central European (multilingual), case-insensitive">latin2_general_ci</option>
+<option value="latin2_hungarian_ci" title="Hungarian, case-insensitive">latin2_hungarian_ci</option>
+</optgroup>
+<optgroup label="latin5" title="ISO 8859-9 Turkish">
+<option value="latin5_bin" title="Turkish, Binary">latin5_bin</option>
+<option value="latin5_turkish_ci" title="Turkish, case-insensitive">latin5_turkish_ci</option>
+</optgroup>
+<optgroup label="latin7" title="ISO 8859-13 Baltic">
+<option value="latin7_bin" title="Baltic (multilingual), Binary">latin7_bin</option>
+<option value="latin7_estonian_cs" title="Estonian, case-sensitive">latin7_estonian_cs</option>
+<option value="latin7_general_ci" title="Baltic (multilingual), case-insensitive">latin7_general_ci</option>
+<option value="latin7_general_cs" title="Baltic (multilingual), case-sensitive">latin7_general_cs</option>
+</optgroup>
+<optgroup label="macce" title="Mac Central European">
+<option value="macce_bin" title="Central European (multilingual), Binary">macce_bin</option>
+<option value="macce_general_ci" title="Central European (multilingual), case-insensitive">macce_general_ci</option>
+</optgroup>
+<optgroup label="macroman" title="Mac West European">
+<option value="macroman_bin" title="West European (multilingual), Binary">macroman_bin</option>
+<option value="macroman_general_ci" title="West European (multilingual), case-insensitive">macroman_general_ci</option>
+</optgroup>
+<optgroup label="sjis" title="Shift-JIS Japanese">
+<option value="sjis_bin" title="Japanese, Binary">sjis_bin</option>
+<option value="sjis_japanese_ci" title="Japanese, case-insensitive">sjis_japanese_ci</option>
+</optgroup>
+<optgroup label="swe7" title="7bit Swedish">
+<option value="swe7_bin" title="Swedish, Binary">swe7_bin</option>
+<option value="swe7_swedish_ci" title="Swedish, case-insensitive">swe7_swedish_ci</option>
+</optgroup>
+<optgroup label="tis620" title="TIS620 Thai">
+<option value="tis620_bin" title="Thai, Binary">tis620_bin</option>
+<option value="tis620_thai_ci" title="Thai, case-insensitive">tis620_thai_ci</option>
+</optgroup>
+<optgroup label="ucs2" title="UCS-2 Unicode">
+<option value="ucs2_bin" title="Unicode (multilingual), Binary">ucs2_bin</option>
+<option value="ucs2_czech_ci" title="Czech, case-insensitive">ucs2_czech_ci</option>
+<option value="ucs2_danish_ci" title="Danish, case-insensitive">ucs2_danish_ci</option>
+<option value="ucs2_esperanto_ci" title="Esperanto, case-insensitive">ucs2_esperanto_ci</option>
+<option value="ucs2_estonian_ci" title="Estonian, case-insensitive">ucs2_estonian_ci</option>
+<option value="ucs2_general_ci" title="Unicode (multilingual), case-insensitive">ucs2_general_ci</option>
+<option value="ucs2_hungarian_ci" title="Hungarian, case-insensitive">ucs2_hungarian_ci</option>
+<option value="ucs2_icelandic_ci" title="Icelandic, case-insensitive">ucs2_icelandic_ci</option>
+<option value="ucs2_latvian_ci" title="Latvian, case-insensitive">ucs2_latvian_ci</option>
+<option value="ucs2_lithuanian_ci" title="Lithuanian, case-insensitive">ucs2_lithuanian_ci</option>
+<option value="ucs2_persian_ci" title="Persian, case-insensitive">ucs2_persian_ci</option>
+<option value="ucs2_polish_ci" title="Polish, case-insensitive">ucs2_polish_ci</option>
+<option value="ucs2_roman_ci" title="West European, case-insensitive">ucs2_roman_ci</option>
+<option value="ucs2_romanian_ci" title="Romanian, case-insensitive">ucs2_romanian_ci</option>
+<option value="ucs2_slovak_ci" title="Slovak, case-insensitive">ucs2_slovak_ci</option>
+<option value="ucs2_slovenian_ci" title="Slovenian, case-insensitive">ucs2_slovenian_ci</option>
+<option value="ucs2_spanish2_ci" title="Traditional Spanish, case-insensitive">ucs2_spanish2_ci</option>
+<option value="ucs2_spanish_ci" title="Spanish, case-insensitive">ucs2_spanish_ci</option>
+<option value="ucs2_swedish_ci" title="Swedish, case-insensitive">ucs2_swedish_ci</option>
+<option value="ucs2_turkish_ci" title="Turkish, case-insensitive">ucs2_turkish_ci</option>
+<option value="ucs2_unicode_ci" title="Unicode (multilingual), case-insensitive">ucs2_unicode_ci</option>
+</optgroup>
+<optgroup label="ujis" title="EUC-JP Japanese">
+<option value="ujis_bin" title="Japanese, Binary">ujis_bin</option>
+<option value="ujis_japanese_ci" title="Japanese, case-insensitive">ujis_japanese_ci</option>
+</optgroup>
+<optgroup label="utf8" title="UTF-8 Unicode">
+<option value="utf8_bin" title="Unicode (multilingual), Binary">utf8_bin</option>
+<option value="utf8_czech_ci" title="Czech, case-insensitive">utf8_czech_ci</option>
+<option value="utf8_danish_ci" title="Danish, case-insensitive">utf8_danish_ci</option>
+<option value="utf8_esperanto_ci" title="Esperanto, case-insensitive">utf8_esperanto_ci</option>
+<option value="utf8_estonian_ci" title="Estonian, case-insensitive">utf8_estonian_ci</option>
+<option value="utf8_general_ci" title="Unicode (multilingual), case-insensitive" selected="selected">utf8_general_ci</option>
+<option value="utf8_hungarian_ci" title="Hungarian, case-insensitive">utf8_hungarian_ci</option>
+<option value="utf8_icelandic_ci" title="Icelandic, case-insensitive">utf8_icelandic_ci</option>
+<option value="utf8_latvian_ci" title="Latvian, case-insensitive">utf8_latvian_ci</option>
+<option value="utf8_lithuanian_ci" title="Lithuanian, case-insensitive">utf8_lithuanian_ci</option>
+<option value="utf8_persian_ci" title="Persian, case-insensitive">utf8_persian_ci</option>
+<option value="utf8_polish_ci" title="Polish, case-insensitive">utf8_polish_ci</option>
+<option value="utf8_roman_ci" title="West European, case-insensitive">utf8_roman_ci</option>
+<option value="utf8_romanian_ci" title="Romanian, case-insensitive">utf8_romanian_ci</option>
+<option value="utf8_slovak_ci" title="Slovak, case-insensitive">utf8_slovak_ci</option>
+<option value="utf8_slovenian_ci" title="Slovenian, case-insensitive">utf8_slovenian_ci</option>
+<option value="utf8_spanish2_ci" title="Traditional Spanish, case-insensitive">utf8_spanish2_ci</option>
+<option value="utf8_spanish_ci" title="Spanish, case-insensitive">utf8_spanish_ci</option>
+<option value="utf8_swedish_ci" title="Swedish, case-insensitive">utf8_swedish_ci</option>
+<option value="utf8_turkish_ci" title="Turkish, case-insensitive">utf8_turkish_ci</option>
+<option value="utf8_unicode_ci" title="Unicode (multilingual), case-insensitive">utf8_unicode_ci</option>
+</optgroup>
+</select>
+            <noscript><input type="submit" value="Go" /></noscript>
+<a href="javascript:alert('você achou mesmo que tinha invadido?');" target="mysql_doc"><img class="icon" src="main_data/b_help.png" alt="Documentation" title="Documentation" height="11" width="11"></a>
+        </form>
+    </li>
+  </ul> </div><div class="group"><h2>Interface</h2>  <ul><li id="li_select_lang">
+<form method="get" action="#" onsummit="javascript:alert('você insiste hein!?')" target="_parent">
+    <input name="db" value="" type="hidden"><input name="table" value="" type="hidden"><input name="token" value="10dc7d1c8f1d78a3e75fb7abe598fe0b" type="hidden"><bdo xml:lang="en" dir="ltr">Language <a href="javascript:alert('você achou mesmo que tinha invadido?');" target="documentation"><img class="icon" src="main_data/b_info.png" alt="Info" height="11" width="11"></a>:</bdo>
+    <select name="lang" onchange="this.form.submit();" xml:lang="en" dir="ltr">
+            <option value="af-utf-8">Afrikaans</option>
+        <option value="sq-utf-8">Shqip - Albanian</option>
+        <option value="ar-utf-8">العربية - Arabic</option>
+        <option value="az-utf-8">Azərbaycanca - Azerbaijani</option>
+        <option value="bn-utf-8">Bangla</option>
+        <option value="eu-utf-8">Euskara - Basque</option>
+        <option value="becyr-utf-8">Беларуская - Belarusian</option>
+        <option value="belat-utf-8">Biełaruskaja - Belarusian latin</option>
+        <option value="bs-utf-8">Bosanski - Bosnian</option>
+        <option value="ptbr-utf-8">Português - Brazilian portuguese</option>
+        <option value="bg-utf-8">Български - Bulgarian</option>
+        <option value="ca-utf-8">Català - Catalan</option>
+        <option value="zh-utf-8">中文 - Chinese simplified</option>
+        <option value="zhtw-utf-8">中文 - Chinese traditional</option>
+        <option value="hr-utf-8">Hrvatski - Croatian</option>
+        <option value="cs-utf-8">Česky - Czech</option>
+        <option value="da-utf-8">Dansk - Danish</option>
+        <option value="nl-utf-8">Nederlands - Dutch</option>
+        <option value="en-utf-8" selected="selected">English</option>
+        <option value="et-utf-8">Eesti - Estonian</option>
+        <option value="fi-utf-8">Suomi - Finnish</option>
+        <option value="fr-utf-8">Français - French</option>
+        <option value="gl-utf-8">Galego - Galician</option>
+        <option value="ka-utf-8">ქართული - Georgian</option>
+        <option value="de-utf-8">Deutsch - German</option>
+        <option value="el-utf-8">Ελληνικά - Greek</option>
+        <option value="he-utf-8">עברית - Hebrew</option>
+        <option value="hi-utf-8">हिन्दी - Hindi</option>
+        <option value="hu-utf-8">Magyar - Hungarian</option>
+        <option value="id-utf-8">Bahasa Indonesia - Indonesian</option>
+        <option value="it-utf-8">Italiano - Italian</option>
+        <option value="ja-utf-8">日本語 - Japanese</option>
+        <option value="ko-utf-8">한국어 - Korean</option>
+        <option value="lv-utf-8">Latviešu - Latvian</option>
+        <option value="lt-utf-8">Lietuvių - Lithuanian</option>
+        <option value="mkcyr-utf-8">Macedonian - Macedonian</option>
+        <option value="ms-utf-8">Bahasa Melayu - Malay</option>
+        <option value="mn-utf-8">Монгол - Mongolian</option>
+        <option value="no-utf-8">Norsk - Norwegian</option>
+        <option value="fa-utf-8">فارسی - Persian</option>
+        <option value="pl-utf-8">Polski - Polish</option>
+        <option value="pt-utf-8">Português - Portuguese</option>
+        <option value="ro-utf-8">Română - Romanian</option>
+        <option value="ru-utf-8">Русский - Russian</option>
+        <option value="srcyr-utf-8">Српски - Serbian</option>
+        <option value="srlat-utf-8">Srpski - Serbian latin</option>
+        <option value="si-utf-8">සිංහල - Sinhala</option>
+        <option value="sk-utf-8">Slovenčina - Slovak</option>
+        <option value="sl-utf-8">Slovenščina - Slovenian</option>
+        <option value="es-utf-8">Español - Spanish</option>
+        <option value="sv-utf-8">Svenska - Swedish</option>
+        <option value="tt-utf-8">Tatarça - Tatarish</option>
+        <option value="th-utf-8">ภาษาไทย - Thai</option>
+        <option value="tr-utf-8">Türkçe - Turkish</option>
+        <option value="uk-utf-8">Українська - Ukrainian</option>
+
+    </select>
+    
+    <noscript>
+    
+        <input type="submit" value="Go" />
+    
+    </noscript>
+</form>
+    </li><li id="li_select_theme"><form name="setTheme" method="get" action="#" onsummit="javascript:alert('você insiste hein!?')" target="_parent"><input name="token" value="10dc7d1c8f1d78a3e75fb7abe598fe0b" type="hidden"><a href="javascript:alert('você achou mesmo que tinha invadido?');" target="themes" onclick="window.open('./themes.php','themes','left=10,top=20,width=510,height=350,scrollbars=yes,status=yes,resizable=yes');">Theme / Style</a>:
+<select name="set_theme" xml:lang="en" dir="ltr" onchange="this.form.submit();"><option value="darkblue_orange">Darkblue/orange</option><option value="original" selected="selected">Original</option></select><noscript><input type="submit" value="Go" /></noscript></form></li>    <li id="li_custom_color">Custom color: <img id="myRainbow" src="main_data/rainbow.png" alt="[r]" height="16" width="16"><form name="rainbowform" id="rainbowform" method="get" action="#" onsummit="javascript:alert('você insiste hein!?')" target="_parent"><input name="token" value="10dc7d1c8f1d78a3e75fb7abe598fe0b" type="hidden"><input name="custom_color" type="hidden"><input name="custom_color_rgb" type="hidden"><input name="custom_color_reset" value="Reset" type="submit"></form></li>
+    <li id="li_select_fontsize"><form name="form_fontsize_selection" id="form_fontsize_selection" method="get" action="#" onsummit="javascript:alert('você insiste hein!?')" target="_parent">
+<input name="token" value="10dc7d1c8f1d78a3e75fb7abe598fe0b" type="hidden">
+<label for="select_fontsize">Font size:</label>
+<select name="fontsize" id="select_fontsize" onchange="this.form.submit();">
+<option value="32%">32%</option>
+<option value="42%">42%</option>
+<option value="52%">52%</option>
+<option value="62%">62%</option>
+<option value="72%">72%</option>
+<option value="77%">77%</option>
+<option value="78%">78%</option>
+<option value="79%">79%</option>
+<option value="80%">80%</option>
+<option value="81%">81%</option>
+<option value="82%" selected="selected">82%</option>
+<option value="83%">83%</option>
+<option value="84%">84%</option>
+<option value="85%">85%</option>
+<option value="86%">86%</option>
+<option value="87%">87%</option>
+<option value="92%">92%</option>
+<option value="102%">102%</option>
+<option value="112%">112%</option>
+<option value="122%">122%</option>
+<option value="132%">132%</option>
+</select>
+<noscript>
+<input type="submit" value="Go" />
+</noscript>
+</form></li></ul></div></div><div id="main_pane_right"><div class="group"><h2>MySQL</h2><ul>
+<li id="li_server_info">Server: Localhost via UNIX socket</li><li id="li_server_version">Server version: 5.1.37-log</li><li id="li_mysql_proto">Protocol version: 10</li><li id="li_user_info">User: badalhoca@www.devinsampa.com.br</li>    <li id="li_select_mysql_charset">        MySQL charset:         <span xml:lang="en" dir="ltr">           UTF-8 Unicode
+           (utf8)
+        </span>
+    </li>
+  </ul> </div><div class="group"><h2>Web server</h2><ul><li id="li_web_server_software">Apache/2.0.63 (Unix) PHP/5.2.11 DAV/2</li><li id="li_mysql_client_version">MySQL client version: 5.1.37</li><li id="li_used_php_extension">PHP extension: mysql</li>  </ul> </div><div class="group"><h2>phpMyAdmin</h2><ul><li id="li_pma_version">Version information: 3.2.0.1</li><li id="li_pma_docs"><a href="javascript:alert('você achou mesmo que tinha invadido?');" target="_blank">Documentation</a>
+</li><li id="li_pma_wiki"><a href="javascript:alert('você achou mesmo que tinha invadido?');" target="_blank">Wiki</a>
+</li><li id="li_pma_homepage"><a href="javascript:alert('você achou mesmo que tinha invadido?');" target="_blank">Official Homepage</a>
+</li>    <li><bdo xml:lang="en" dir="ltr">
+        [<a href="javascript:alert('você achou mesmo que tinha invadido?');" target="_blank">ChangeLog</a>]
+        [<a href="javascript:alert('você achou mesmo que tinha invadido?');" target="_blank">Subversion</a>]
+        [<a href="javascript:alert('você achou mesmo que tinha invadido?');" target="_blank">Lists</a>]
+        </bdo>
+    </li>
+    </ul>
+ </div>
+
+</div>
+
+<br class="clearfloat">
+<br class="clearfloat">
+</div>
+
+<div class="notice">The additional features for working with linked tables have been deactivated. To find out why click <a href="javascript:alert('você achou mesmo que tinha invadido?');">here</a>.</div>
+<div id="selflink" class="print_ignore">
+<a href="javascript:alert('você achou mesmo que tinha invadido?');" title="Open new phpMyAdmin window" target="_blank"><img class="icon" src="main_data/window-new.png" alt="Open new phpMyAdmin window"></a>
+</div>
+<div id="mooRainbow" style="display: none; position: absolute; left: 134px; top: 327px;"><div class="moor-box" style="position: relative;"><div class="moor-overlayBox" style="overflow: hidden; position: absolute;"><img class="moor-overlay" src="main_data/moor_woverlay.png" style="background-color: rgb(0, 115, 255); position: relative; z-index: 2;" height="256" width="256"><img class="moor-overlay" src="main_data/moor_boverlay.png" style="position: absolute; top: 0px; left: 0px; z-index: 2;" height="256" width="256"><div class="moor-cursor" style="overflow: hidden; position: absolute; z-index: 2; top: 4px; left: 189px;"></div></div><div class="moor-arrows" style="position: absolute; z-index: 1; top: 110px;"></div><img class="moor-slider" src="main_data/moor_slider.png" style="position: absolute; z-index: 2;" height="256" width="19"><div class="moor-colorBox" style="position: absolute;"></div><div class="moor-chooseColor" style="z-index: 2; position: absolute; background-color: rgb(58, 142, 246);"></div><div class="moor-currentColor" style="z-index: 2; position: absolute; cursor: pointer; background-color: rgb(58, 142, 246);"></div><label class="moor-rLabel" style="position: absolute;">R: <input value="58" class="moor-rInput"></label><label class="moor-gLabel" style="position: absolute;">G: <input value="142" class="moor-gInput"></label><label class="moor-bLabel" style="position: absolute;">B: <input value="246" class="moor-bInput"></label><label class="moor-HueLabel" style="position: absolute;">H: <input value="213" class="moor-HueInput"></label><span class="moor-ballino" style="position: absolute;"> °</span><label class="moor-SatuLabel" style="position: absolute;">S: <input value="76" class="moor-SatuInput"> %</label><label class="moor-BrighLabel" style="position: absolute;">B: <input value="96" class="moor-BrighInput"> %</label><label class="moor-hexLabel" style="position: absolute;">#hex: <input value="#3a8ef6" class="moor-hexInput"></label><input class="moor-okButton" value="Select" style="position: absolute;" type="button"></div></div></body></html>
