@@ -1,7 +1,8 @@
-—-
+---
+  tls: true
   address: smtp.gmail.com
   port: 587
-  user_name: your@gmail.com 
-  password: drowssaPruoY
-  authentication: :plain
-  domain: yourdomain.com
+  domain: gmail.com
+  authentication: plain
+  user_name: user@gmail.com
+  password: p455w0rd

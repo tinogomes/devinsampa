@@ -48,20 +48,26 @@ end
 Rake.application.instance_variable_get('@tasks').delete('default')
 
 spec_prereq = File.exist?(File.join(RAILS_ROOT, 'config', 'database.yml')) ? "db:test:prepare" : :noop
-spec_pagseguro = !File.exist?(File.join(RAILS_ROOT, 'config', 'pagseguro.yml')) ? "copy_pagseguro_sample" : :noop
+spec_pagseguro = !File.exist?(File.join(RAILS_ROOT, 'config', 'pagseguro.yml')) ? "copy_config_pagseguro_sample" : :noop
+spec_mailer = !File.exist?(File.join(RAILS_ROOT, 'config', 'mailer.yml')) ? "copy_config_mailer_sample" : :noop
 task :noop do
 end
 
-task :copy_pagseguro_sample do
+task :copy_config_pagseguro_sample do
   config_dir = File.join(RAILS_ROOT, "config")
   FileUtils.cp(File.join(config_dir, "pagseguro.yml.sample"), File.join(config_dir, "pagseguro.yml"))  
+end
+
+task :copy_config_mailer_sample do
+  config_dir = File.join(RAILS_ROOT, "config")
+  FileUtils.cp(File.join(config_dir, "mailer.yml.sample"), File.join(config_dir, "mailer.yml"))  
 end
 
 task :default => :spec
 task :stats => "spec:statsetup"
 
 desc "Run all specs in spec directory (excluding plugin specs)"
-Spec::Rake::SpecTask.new(:spec => [spec_prereq, spec_pagseguro]) do |t|
+Spec::Rake::SpecTask.new(:spec => [spec_prereq, spec_pagseguro, spec_mailer]) do |t|
   t.spec_opts = ['--options', "\"#{RAILS_ROOT}/spec/spec.opts\""]
   t.spec_files = FileList['spec/**/*_spec.rb']
 end
@@ -91,14 +97,14 @@ namespace :spec do
 
   [:models, :controllers, :views, :helpers, :lib, :integration].each do |sub|
     desc "Run the code examples in spec/#{sub}"
-    Spec::Rake::SpecTask.new(sub => [spec_prereq, spec_pagseguro]) do |t|
+    Spec::Rake::SpecTask.new(sub => [spec_prereq, spec_pagseguro, spec_mailer]) do |t|
       t.spec_opts = ['--options', "\"#{RAILS_ROOT}/spec/spec.opts\""]
       t.spec_files = FileList["spec/#{sub}/**/*_spec.rb"]
     end
   end
 
   desc "Run the code examples in vendor/plugins (except RSpec's own)"
-  Spec::Rake::SpecTask.new(:plugins => [spec_prereq, spec_pagseguro]) do |t|
+  Spec::Rake::SpecTask.new(:plugins => [spec_prereq, spec_pagseguro, spec_mailer]) do |t|
     t.spec_opts = ['--options', "\"#{RAILS_ROOT}/spec/spec.opts\""]
     t.spec_files = FileList['vendor/plugins/**/spec/**/*_spec.rb'].exclude('vendor/plugins/rspec/*').exclude("vendor/plugins/rspec-rails/*")
   end
