@@ -17,15 +17,9 @@
     <h2>Inscrições encerradas</h2>
     
     <p>Infelizmente as vagas para participar do Dev in Sampa se esgotaram. Atualmente estamos processando as inscrições efetuadas, dentro disso pode ser que abra novamente, neste caso fique ligado no <a href="http://twitter.com/devinsampa">@devinsampa no twitter</a>, para saber sobre possíveis vagas.</p>
-    
-    <p><strong>Se você foi prejudicado pela abertura antecipada das vagas, pedimos mil desculpas, mas erros acontecem.</strong></p>
   <% else %>
     <h2>Formulário de inscrição</h2>
   
-    <% if no_time_to_register? %>
-    <p><strong>Na última sexta-feira, fizemos a contagem e limpamos as inscrições que não foram pagas. Então, na próxima segunda-feira, a partir dàs 11:00 (horário de Brasília) serão abertas as inscrições para o restante das vagas.</strong></p>
-    <% end %>
-    
     <%= render :partial => "form" %>
   <% end %>
 </div>
@@ -33,5 +27,5 @@
 <div class="box">
   <h2>Fiz a inscrição, mas ainda não consegui efetuar o pagamento, e agora? </h2>
   
-  <p>Se você não efetuou o pagamento até o último dia 13/11, perdeu a primeira change de garantir sua vaga para o Dev in Sampa. Agora, para a próxima leva de vagas, o prazo de pagamento será até o dia 19/11 (quinta-feira), às 16:00 (horário de Brasília).</p>
+  <p>Se você não efetuou o pagamento até o dia 13/11, perdeu a primeira chance de garantir sua vaga. Se você não efetuou o pagamento até o dia 19/11, perdeu a segunda chance de garantir sua vaga. Agora é a última oportunidade e o prazo de pagamento será até o dia 26/11 (quinta-feira), às 16:00 (horário de Brasília).</p>
 </div>
