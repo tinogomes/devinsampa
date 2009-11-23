@@ -1,5 +1,5 @@
 class AttendeesController < ApplicationController
-  OPEN_REGISTER_DATE = "2009/11/16 11:00:00"
+  OPEN_REGISTER_DATE = DateTime.new(2009, 11, 23, 13, 00, 00).utc
   
   skip_before_filter :verify_authenticity_token, :only => :pagseguro
 
@@ -94,7 +94,7 @@ class AttendeesController < ApplicationController
     end
     
     def no_time_to_register?
-      Time.now.utc <  OPEN_REGISTER_DATE.to_time.utc
+      Time.now.utc <  OPEN_REGISTER_DATE
     end
     
     def no_time_message
