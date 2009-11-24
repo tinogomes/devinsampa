@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091113121227) do
+ActiveRecord::Schema.define(:version => 20091124131847) do
 
   create_table "agendas", :force => true do |t|
     t.string   "start_time"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20091113121227) do
     t.datetime "updated_at"
     t.string   "email"
     t.string   "twitter"
+    t.string   "doc"
   end
 
   add_index "speakers", ["name"], :name => "index_speakers_on_name"

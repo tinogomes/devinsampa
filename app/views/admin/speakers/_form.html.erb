@@ -24,7 +24,10 @@
   <%= f.label :twitter, "Twitter (sem arroba, e para colocar mais de um, separe com #)" %><br />
   <%= f.text_field :twitter %>
 </p>
-
+<p>
+  <%= f.label :doc, "Documento" %><br />
+  <%= f.text_field :doc%>
+</p>
 <p>
   <%= f.label :uploaded_data, "Foto" %><br />
   <% unless @speaker.filename.blank? %>

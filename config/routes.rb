@@ -1,16 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
-    admin.resources :speakers
+    admin.resources :speakers,
+      :collection => { :report => :get }
     admin.resources :agendas
-    admin.resources :attendees, :member => { :resend => :get,
-                                             :completed => :put,
-                                             :pending => :put,
-                                             :approved => :put,
-                                             :verifying => :put,
-                                             :canceled => :put,
-                                             :refunded => :put,
-                                             :warning => :get
-                                              }
+    admin.resources :attendees, 
+      :member => { :resend => :get,
+                   :completed => :put,
+                   :pending => :put,
+                   :approved => :put,
+                   :verifying => :put,
+                   :canceled => :put,
+                   :refunded => :put,
+                   :warning => :get
+                    },
+      :collection => { :report => :get }
   end
   
   map.resources :user_sessions, :as => "admin/acesso"

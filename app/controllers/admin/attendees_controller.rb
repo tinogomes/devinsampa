@@ -1,10 +1,15 @@
 class Admin::AttendeesController < Admin::AdminController
-  before_filter :set_attendee, :except => [:index]
+  before_filter :set_attendee, :except => [:index, :report]
   
   def index
     session_admin_order(params[:o])
     @attendees = Attendee.all :order => (session[:admin_attendee_order])
     @attendees_counts = Attendee.count(:id, :group => "status")
+  end
+  
+  def report
+    @attendees = Attendee.all :order => :name
+    render :layout => false
   end
 
   def show

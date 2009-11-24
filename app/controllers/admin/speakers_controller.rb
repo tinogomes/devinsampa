@@ -1,9 +1,14 @@
 class Admin::SpeakersController < Admin::AdminController
   
-  before_filter :set_speaker, :except => [:index, :new, :create]
+  before_filter :set_speaker, :only => [:edit, :update, :destroy]
   
   def index
     @speakers = Speaker.all :select => "id, name, email, presentation, twitter", :order => "name"
+  end
+  
+  def report
+    @speakers = Speaker.all :select => "name, email, doc", :order => "name"
+    render :layout => false
   end
   
   def new

@@ -1,0 +1,17 @@
+<h1>Palestrantes</h1>
+
+<table border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <th>Nome</th>
+    <!-- <th>Email</th> -->
+    <% if params[:with_doc] %><th>Doc</th><% end %>
+  </tr>
+
+<% @speakers.each do |speaker| %>
+  <tr style="background-color: <%= cycle('#CCC', '#999') %>">
+    <td><%=h speaker.name %> </td>
+    <!-- <td><%=h speaker.email %> </td> -->
+    <% if params[:with_doc] %><td><%=h speaker.doc %> &nbsp;</td><% end %>
+  </tr>
+<% end %>
+</table>
