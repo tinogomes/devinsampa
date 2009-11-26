@@ -1,6 +1,8 @@
 class Attendee < ActiveRecord::Base
   LIMIT_ATTENDEE = 100
 
+  attr_accessor :free
+
   validates_presence_of   :name
   validates_presence_of   :email
   validates_uniqueness_of :email
@@ -11,10 +13,11 @@ class Attendee < ActiveRecord::Base
   
   after_update :send_emails_after_change_status
   before_create :set_token
+  before_create :set_status_free_for_courtesy
   after_create :send_mail_after_create
   before_destroy :send_mail_before_delete
   
-  symbolize :status, :allow_blank => true, :in => Hash[*PagSeguro::Notification::STATUS.map { |k,v| [v, v.to_s] }.flatten]
+  symbolize :status, :allow_blank => true, :in => Hash[*PagSeguro::Notification::STATUS.map { |k,v| [v, v.to_s] }.flatten].merge(:free => "free")
   symbolize :payment_method, :allow_blank => true, :in => Hash[*PagSeguro::Notification::PAYMENT_METHOD.map { |k,v| [v, v.to_s] }.flatten]
   
   def update_payment_data!(notification)
@@ -25,9 +28,13 @@ class Attendee < ActiveRecord::Base
     self.save!
   end
   
+  def free?
+    (self.status === :free) || @free
+  end
+  
   def final_status
     case self.status
-    when :completed, :approved
+    when :completed, :approved, :free
       :completed
     when :canceled, :refunded
       :canceled
@@ -102,6 +109,10 @@ class Attendee < ActiveRecord::Base
     
     def set_token
       self[:token] = Digest::SHA1.hexdigest("#{Time.now}#{email}").slice(0,30).upcase
+    end
+    
+    def set_status_free_for_courtesy
+      self.status = :free if free
     end
     
 end

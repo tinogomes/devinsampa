@@ -1,5 +1,5 @@
 class Admin::AttendeesController < Admin::AdminController
-  before_filter :set_attendee, :except => [:index, :report]
+  before_filter :set_attendee, :except => [:index, :report, :new, :create]
   
   def index
     session_admin_order(params[:o])
@@ -15,13 +15,29 @@ class Admin::AttendeesController < Admin::AdminController
   def show
   end
 
+  def new
+    @attendee = Attendee.new
+  end
+  
+  def create
+    @attendee = Attendee.new(params[:attendee])
+    @attendee.free = (params[:attendee][:free] === "1")
+    
+    if @attendee.valid? && @attendee.save
+      flash[:notice] = "Attendee was successfully created."
+      redirect_to admin_attendees_url
+    else
+      render :action => "new"
+    end
+  end
+  
   def edit
   end
 
   def update
     if @attendee.update_attributes(params[:attendee])
       flash[:notice] = 'Attendee was successfully updated.'
-      redirect_to([:admin, @attendee])
+      redirect_to admin_attendees_url
     else
       render :action => "edit"
     end

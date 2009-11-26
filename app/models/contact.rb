@@ -14,7 +14,7 @@ class Contact < ActionMailer::Base
     recipients   attendee.email
     from         "devinsampa@gmail.com"
     subject      "[devinsampa] Confirmação de inscrição"
-    body         :name => attendee.name, :link => payment_url(:token => attendee.token)
+    body         :name => attendee.name, :link => payment_url(:token => attendee.token), :free => attendee.free?
   end
   
   def attendee_confirmation(attendee)
