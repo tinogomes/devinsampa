@@ -104,7 +104,7 @@ pt-BR:
       attendee: "Inscrição"
     attributes:
       attendee:
-        doc: "Documento de indetificação"
+        doc: "Documento de identificação"
       _all:
         name: "Nome"
         email: "E-mail"
