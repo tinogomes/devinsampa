@@ -11,40 +11,9 @@
     <a href="http://bit.ly/devinsampawave" class="wave" title="Dev in Sampa no Google Wave">Dev in Sampa</a>
   </div>
 
-  <h3>Patrocinador Premium</h3>
-
-  <div id="gonow" class="sponsor">
-    <%= link_to image_tag("logo_gonow.png", :alt => "Gonow"), "http://www.gonow.com.br", :title => "Gonow - Respiramos tudo relacionado a tecnologia e design."%>
-  </div>
-
-  <h3>Patrocínio</h3>
+  <%= render :partial => '/layouts/sidebar/sponsors' %>
   
-  <div id="aspercom" class="sponsor">
-    <%= link_to image_tag("logo_aspercom.png", :alt => "Aspercom"), "http://www.aspercom.com.br", :title => "Aspercom Treinamentos"%>
-  </div>
-  
-  <div id="caelum" class="sponsor">
-    <%= link_to image_tag("logo_caelum.png", :alt => "Caelum"), "http://www.caelum.com.br", :title => "Caelum | Ensino e Inovação - Cursos de Java, Scrum, Ruby on Rails, Flex"%>
-  </div>
-  
-  <div id="locaweb" class="sponsor">
-    <%= link_to image_tag("logo_locaweb.png", :alt => "Locaweb"), "http://www.locaweb.com.br", :title => "Locaweb - Hospedagem de Sites e Serviços de Internet"%>
-  </div>
-  
-  <h3>Apoio</h3>
-  
-  <div id="guru-sp" class="supporter">
-    <%= link_to image_tag("logo_guru.png", :alt => "Guru-SP"), "http://www.guru-sp.org", :title => "GURU SP - Grupo de Usuários Ruby de SP"%>
-  </div>
-  
-  <div id="ruby-inside-brasil" class="supporter">
-    <%= link_to image_tag("logo_rubyinside.png", :alt => "Ruby Inside Brasil"), "http://www.rubyinside.com.br", :title => "Ruby Inside Brasil: Notícias, links, códigos e dicas diárias sobre Ruby"%>
-  </div>
-  
-  <div id="infoq" class="supporter">
-    <%= link_to image_tag("logo_infoq.png", :alt => "InfoQ Brasil"), "http://www.infoq.com/br", :title => "InfoQ: Rastreando mudança e inovação na comunidade de desenvolvimento de software corporativo"%>
-  </div>
-
+  <%= render :partial => '/layouts/sidebar/supporters' %>
   
   <h3>Idealização</h3>
   
