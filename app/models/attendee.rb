@@ -91,7 +91,7 @@ class Attendee < ActiveRecord::Base
   
     def send_emails_after_change_status
       if self.changed.include?("status")
-        if self.completed?
+        if self.status === :approved
           spawn do
             Contact.deliver_attendee_confirmation(self)
           end
