@@ -32,9 +32,9 @@ ActionController::Routing::Routes.draw do |map|
     pages.home       "/",                :action => "index"
     pages.contact    "/contato",         :action => "contact"
     pages.banners    "/divulgar",        :action => "banners"
-    pages.wanna_talk "/quero-palestrar", :action => "talker"
     pages.speakers   "/palestrantes",    :action => "speakers"
     pages.agenda     "/programacao",     :action => "agenda"
+    pages.feedback   "/feedback",        :action => "feedback"
   end
   
   map.admin "/admin", :controller => "Admin::Admin", :action => "index"
