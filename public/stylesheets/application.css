@@ -93,8 +93,7 @@ ul#navigation li {
 ul#navigation li.selected {
   color: #fff;
   background: #666;
-  padding: 0;
-  padding: 10px 0px;
+  padding: 10px 5px;
 }
 
 ul#navigation li.selected a {
@@ -155,7 +154,7 @@ ul#navigation li a:hover {
   background: url('/images/ico_wave.png') left center no-repeat;
   padding: 2px 0 0 35px;
   margin-bottom: 20px;
-  
+
 }
 
 #sidebar a.twitter:hover {
@@ -196,7 +195,7 @@ ul#navigation li a:hover {
   width: 740px;
   float: left;
 }
-  
+
 #content .box {
   background: #eee;
   padding-bottom: 5px;
@@ -397,7 +396,7 @@ ul#navigation li a:hover {
 
 /* Bellow the list of tweets "<li>" */
 
-#juitterContainer .twittLI{list-style:none;margin:0;border-bottom:dashed 1px;padding:6px 3px;clear:both;background-color:#FCFFBA;} 
+#juitterContainer .twittLI{list-style:none;margin:0;border-bottom:dashed 1px;padding:6px 3px;clear:both;background-color:#FCFFBA;}
 #juitterContainer .twittList SPAN.time{color:#777;font-size:10px}
 #juitterContainer .twittList A{color:#3D3BEF;} /*Links inside the tweets list */
 

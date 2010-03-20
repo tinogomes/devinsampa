@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :speakers,
       :collection => { :report => :get }
     admin.resources :agendas
-    admin.resources :attendees, 
+    admin.resources :attendees,
       :member => { :resend => :get,
                    :completed => :put,
                    :pending => :put,
@@ -15,14 +15,14 @@ ActionController::Routing::Routes.draw do |map|
                     },
       :collection => { :report => :get }
   end
-  
+
   map.resources :user_sessions, :as => "admin/acesso"
-  
-  map.resources :attendees, :as => "inscricao", :only => [:create]
-  map.register '/inscricao', :controller => "attendees", :action => "new"
-  map.payment  '/inscricao/pagamento/:token', :controller => "attendees", :action => "payment"
-  map.pagseguro_confirmation "/inscricao/pagseguro/confirmacao", :controller => "attendees", :action => "pagseguro"
-  
+
+  # map.resources :attendees, :as => "inscricao", :only => [:create]
+  # map.register '/inscricao', :controller => "attendees", :action => "new"
+  # map.payment  '/inscricao/pagamento/:token', :controller => "attendees", :action => "payment"
+  # map.pagseguro_confirmation "/inscricao/pagseguro/confirmacao", :controller => "attendees", :action => "pagseguro"
+
   map.with_options :controller => 'user_sessions' do |user_sessions|
     user_sessions.login         "/login",        :action => "new"
     user_sessions.logout        "/logout",       :action => "destroy"
@@ -30,13 +30,14 @@ ActionController::Routing::Routes.draw do |map|
 
   map.with_options :controller => 'pages' do |pages|
     pages.home       "/",                :action => "index"
+    pages.send_presentation "/quero-palestrar", :action => 'send_presentation'
     pages.contact    "/contato",         :action => "contact"
-    pages.banners    "/divulgar",        :action => "banners"
-    pages.speakers   "/palestrantes",    :action => "speakers"
-    pages.agenda     "/programacao",     :action => "agenda"
-    pages.feedback   "/feedback",        :action => "feedback"
+    # pages.banners    "/divulgar",        :action => "banners"
+    # pages.speakers   "/palestrantes",    :action => "speakers"
+    # pages.agenda     "/programacao",     :action => "agenda"
+    # pages.feedback   "/feedback",        :action => "feedback"
   end
-  
+
   map.admin "/admin", :controller => "Admin::Admin", :action => "index"
 end
 

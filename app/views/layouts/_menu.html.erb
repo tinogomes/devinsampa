@@ -1,10 +1,7 @@
 <div id="menu">
   <ul id="navigation" class="clearfix">
-    <li class="<%= class_selected("pages", "index") %>"><%= link_to "Página inicial", home_path %></li>
-    <li class="<%= class_selected("pages", "feedback") %>"><%= link_to "Feedback", feedback_path %></li>
-    <li class="<%= class_selected("pages", "agenda") %>"><%= link_to "Programação", agenda_path %></li>
-    <li class="<%= class_selected("pages", "speakers") %>"><%= link_to "Palestrantes", speakers_path %></li>
-    <li class="<%= class_selected("pages", "banners") %>"><%= link_to "Divulgar", banners_path %></li>
-    <li class="<%= class_selected("pages", "contact") %>"><%= link_to "Contato", contact_path %></li>
+    <li class="<%= class_selected("pages", "index") %>"><%= link_to "Página inicial", home_url %></li>
+    <li class="<%= class_selected("pages", "send_presentation") %>"><%= link_to "Quero palestrar", send_presentation_url %></li>
+    <li class="<%= class_selected("pages", "contact") %>"><%= link_to "Contato", contact_url %></li>
   </ul>
 </div>
