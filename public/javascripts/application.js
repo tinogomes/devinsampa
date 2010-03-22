@@ -6,7 +6,7 @@ $(document).ready(function() {
 		$("#map-zoom-in").toggle();
 		$("#map-zoom-out").toggle();
 	});
-  
+
 	$("#map-zoom-in").click(function () {
 		$("#map-zoom-out").toggle();
 		$("#map-zoom-in").toggle();
@@ -18,23 +18,12 @@ $(document).ready(function() {
      		this.select();
     	}
 	});
-	
+
 	$(".banner textarea, .banner-quadrado textarea").click(function() {
 		// only select if the text has not changed
 		if(this.value == this.defaultValue) {
 			this.select();
 		}
-	});
-	
-  // $("table.agenda tr:odd").addClass('odd');
-  	$.Juitter.start({
-		searchType:"searchWord", 
-		searchObject:"devinsampa",
-		live:"live-20", 
-		placeHolder:"juitterContainer", 
-		loadMSG: "Carregando mensagens...", 
-		total: 30,
-		openExternalLinks:"newWindow"
 	});
 
 })
