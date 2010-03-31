@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.with_options :controller => 'pages' do |pages|
     pages.home       "/",                :action => "index"
-    pages.send_presentation "/quero-palestrar", :action => 'send_presentation'
+    # pages.send_presentation "/quero-palestrar", :action => 'send_presentation'
     pages.contact    "/contato",         :action => "contact"
     # pages.banners    "/divulgar",        :action => "banners"
     # pages.speakers   "/palestrantes",    :action => "speakers"
