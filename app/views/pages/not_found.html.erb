@@ -1,0 +1,12 @@
+<% title "Página não encontrada", false %>
+
+<% current_404_image = rand(5) %>
+
+<% if current_404_image == 0 %>
+    <p>
+      <a href="http://pt.wikipedia.org/wiki/HTTP_404">http://pt.wikipedia.org/wiki/HTTP_404</a><br/>
+      <%= image_tag "404/#{current_404_image}.jpg", :alt => '404' %>
+    </p>
+<% else %>
+  <%= image_tag "404/#{current_404_image}.jpg", :alt => '404' %>
+<% end %>

@@ -32,6 +32,10 @@ class PagesController < ApplicationController
     @agenda = Agenda.all :order => "start_time"
   end
 
+  def not_found
+    render :status => :not_found, :layout => true
+  end
+
   private
     def contact_valid?(contact)
       contact.errors = []
