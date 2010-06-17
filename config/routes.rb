@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.with_options :controller => 'pages' do |pages|
     pages.home       "/",                :action => "index"
-    pages.send_presentation "/quero-palestrar", :action => 'send_presentation'
+    # pages.send_presentation "/quero-palestrar", :action => 'send_presentation'
     pages.contact    "/contato",         :action => "contact"
     # pages.banners    "/divulgar",        :action => "banners"
     # pages.speakers   "/palestrantes",    :action => "speakers"
@@ -39,7 +39,23 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.admin "/admin", :controller => "Admin::Admin", :action => "index"
+
+  map.not_found "*invalid_route", :controller => 'pages', :action => 'not_found'
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # The priority is based upon order of creation: first created -> highest priority.
 
