@@ -1,7 +1,7 @@
 require "ostruct"
 
 class PagesController < ApplicationController
-  caches_page :index, :send_presentation
+  caches_page :index
 
   def contact
     @contact = OpenStruct.new
