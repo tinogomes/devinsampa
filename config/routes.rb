@@ -29,9 +29,10 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.with_options :controller => 'pages' do |pages|
-    pages.home       "/",                :action => "index"
+    pages.home                   "/",                :action => "index"
+    pages.contact                "/contato",         :action => "contact"
+    pages.photos_and_videos_2009 "/2009",            :action => "photos_and_videos_2009"
     # pages.send_presentation "/quero-palestrar", :action => 'send_presentation'
-    pages.contact    "/contato",         :action => "contact"
     # pages.banners    "/divulgar",        :action => "banners"
     # pages.speakers   "/palestrantes",    :action => "speakers"
     # pages.agenda     "/programacao",     :action => "agenda"
@@ -40,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.admin "/admin", :controller => "Admin::Admin", :action => "index"
 
-  map.not_found "*invalid_route", :controller => 'pages', :action => 'not_found'
+  map.not_found "*minvalid_route", :controller => 'pages', :action => 'not_found'
 end
 
 

@@ -225,6 +225,10 @@ ul#navigation li a:hover {
   padding: 0 15px;
 }
 
+div.box ul, div.box li {
+  margin-left: 20px;
+}
+
 #content .box p#p-zoom {
   font-size: 9pt;
   color: #666;
@@ -386,4 +390,16 @@ ul#navigation li a:hover {
 
 .pagseguro div {
 	text-align: center;
+}
+
+.box .box-videos {
+  margin: 5px 15px;
+  font-size: 8px;
+  overflow: auto;
+}
+.box-blip {
+  float: left;
+  padding: 5px;
+  width: 120px;
+  min-height: 140px;
 }
