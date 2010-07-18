@@ -8,21 +8,14 @@
       <th>Horário</th>
       <th>O que rola?</th>
     </tr>
-    
+
     <% @agenda.each_with_index do |item, i| %>
       <tr class="<%= cycle('odd', 'pair') %>">
         <td><%= item.start_time %> - <%= item.end_time %></td>
         <td>
-          <%= item.what_happen %>
+          <%= what_happen(item.what_happen) %>
         </td>
       </tr>
     <% end %>
   </table>
 </div>
-
-<div class="box">
-  <h2>Observações</h2>
-  <p><strong>* Almoço não incluso, infelizmente... :(</strong></p>
-  <p>Em breve, vamos disponiblizar uma lista de restaurantes na região</p>
-</div>
-

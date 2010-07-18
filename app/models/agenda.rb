@@ -1,8 +1,8 @@
 class Agenda < ActiveRecord::Base
-  belongs_to :speaker
+  belongs_to :presentation
 
   def what_happen
-    speaker ? "<a href='/palestrantes#speaker-#{speaker.id}'>#{speaker.name} - #{speaker.presentation}</a>" : self.event
+    presentation || self.event
   end
 
 end

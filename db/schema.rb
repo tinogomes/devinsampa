@@ -9,13 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091124131847) do
+ActiveRecord::Schema.define(:version => 20100717214323) do
 
   create_table "agendas", :force => true do |t|
     t.string   "start_time"
     t.string   "end_time"
     t.string   "event"
-    t.integer  "speaker_id"
+    t.integer  "presentation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,19 +41,32 @@ ActiveRecord::Schema.define(:version => 20091124131847) do
 
   add_index "attendees", ["token"], :name => "index_attendees_on_token"
 
+  create_table "presentation_speakers", :force => true do |t|
+    t.integer  "presentation_id"
+    t.integer  "speaker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "presentations", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "speakers", :force => true do |t|
     t.string   "name"
     t.text     "bio"
-    t.string   "presentation"
-    t.text     "description"
-    t.string   "filename"
-    t.integer  "size"
-    t.string   "content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
     t.string   "twitter"
     t.string   "doc"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "speakers", ["name"], :name => "index_speakers_on_name"

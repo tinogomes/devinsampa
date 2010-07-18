@@ -1,0 +1,26 @@
+<% title "Palestras", false %>
+<div class='box'>
+  <h2>Palestrantes</h2>
+  <p>Segue abaixo a lista de palestras e detalhes de suas palestras.</p>
+</div>
+
+<% if @presentations.size > 0 %>
+<div class='box'>
+<% @presentations.each do |presentation| %>
+  <a name="presentation-<%= presentation.id %>"></a>
+  <div class="presentation">
+    <h2 class="presentation-title"><%=h presentation.title %></h2>
+    <p class="presentation-description"><%=textilize presentation.description %></p>
+    <% presentation.speakers.each do |speaker| %>
+      <h3 class="speaker-name"><%= link_or_name_for speaker %></h3>
+      <p class="speaker-bio">
+        <% if speaker.avatar? %>
+          <%= image_tag speaker.avatar.url, :alt => "Foto de #{speaker.name}", :class => cycle("float-left", "float-right") %>
+        <% end %>
+        <%=textilize speaker.bio, :filter_html %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
+</div>
+<% end %>

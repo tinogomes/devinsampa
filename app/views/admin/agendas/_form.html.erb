@@ -16,7 +16,7 @@
 </p>
 
 <p>
-  <%= f.label :speaker, "Quem vai falar?" %><br />
-  <%= f.collection_select(:speaker_id, @speakers, :id, :name, :include_blank => true)  %>
+  <%= f.label :presentation, "Qual palestra?" %><br />
+  <%= f.collection_select(:presentation_id, @presentations, :id, :title, :include_blank => true)  %>
 </p>
 

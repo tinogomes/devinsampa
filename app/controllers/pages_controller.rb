@@ -24,8 +24,8 @@ class PagesController < ApplicationController
     end
   end
 
-  def speakers
-    @speakers = Speaker.all :order => "name"
+  def presentations
+    @presentations = Presentation.all :order => "title"
   end
 
   def agenda

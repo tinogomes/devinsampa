@@ -3,29 +3,23 @@
 <div class="box">
   <h2>Inscrição</h2>
 
-  <p>Todos estão perguntado: O Evento será gratuíto? Qual o valor da inscrição? Bom, gostaríamos de fazer o evento gratuíto, mas devido a limitação de vagas (apenas 100), vamos cobrar uma taxa simbólica, que usaremos para limitar as inscrições.</p>
+  <p>Todos estão perguntado: O Evento será gratuíto? Qual o valor da inscrição? Bom, gostaríamos de fazer o evento gratuíto, mas devido a limitação de vagas (apenas 120), vamos cobrar uma taxa simbólica, que usaremos para limitar as inscrições.</p>
 </div>
 
 <div class="box">
   <h2>Valor da inscrição</h2>
-  
-  <p>R$ 35,00 (trinta e cinco reais).</p>
+
+  <p>R$ 40,00 (quarenta reais).</p>
 </div>
 
 <div class="box">
   <% if Attendee.overload? %>
     <h2>Inscrições encerradas</h2>
-    
+
     <p>Infelizmente as vagas para participar do Dev in Sampa se esgotaram. Atualmente estamos processando as inscrições efetuadas, dentro disso pode ser que abra novamente, neste caso fique ligado no <a href="http://twitter.com/devinsampa">@devinsampa no twitter</a>, para saber sobre possíveis vagas.</p>
   <% else %>
     <h2>Formulário de inscrição</h2>
-  
+
     <%= render :partial => "form" %>
   <% end %>
-</div>
-
-<div class="box">
-  <h2>Fiz a inscrição, mas ainda não consegui efetuar o pagamento, e agora? </h2>
-  
-  <p>Se você não efetuou o pagamento até o dia 13/11, perdeu a primeira chance de garantir sua vaga. Se você não efetuou o pagamento até o dia 19/11, perdeu a segunda chance de garantir sua vaga. Agora é a última oportunidade e o prazo de pagamento será até o dia 26/11 (quinta-feira), às 16:00 (horário de Brasília).</p>
 </div>

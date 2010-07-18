@@ -30,14 +30,6 @@ a { text-decoration: underline; }
 .clearfix { height: 1%; }
 .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 
-.float-left {
-  float: left;
-}
-
-.float-right {
-  float: right;
-}
-
 #container {
   width: 980px;
   margin: 0 auto;
@@ -184,7 +176,7 @@ ul#navigation li a:hover {
 }
 
 #sidebar #validator-html {
-	float:left;
+  float:left;
 }
 
 #sidebar .sponsor, #sidebar .supporter {
@@ -200,6 +192,10 @@ ul#navigation li a:hover {
   background: #eee;
   padding-bottom: 5px;
   margin-bottom: 50px;
+}
+
+#content .box div {
+  overflow: hidden;
 }
 
 #content .box.last {
@@ -257,32 +253,40 @@ div.box ul, div.box li {
 }
 
 #content .box table.agenda {
-	width: 96%;
-	text-align: left;
-	margin: 0 15px 15px 15px;
-	border: 0;
+  width: 96%;
+  text-align: left;
+  margin: 0 15px 15px 15px;
+  border: 0;
 }
 
 #content .box table.agenda tr.head {
-	background: #ccc;
-	border-top: 0;
-	padding: 5px;
+  background: #ccc;
+  border-top: 0;
+  padding: 5px;
 }
 
 #content .box table.agenda td, #content .box table.agenda th {
-	font-size: 11pt;
-	border-bottom: 1px solid #ccc;
-	border-top: 1px solid #fff;
-	padding: 4px 5px;
+  font-size: 11pt;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  padding: 4px 5px;
 }
 
 #content .box table.agenda tr.odd {
-	background: #e5e5e5;
+  background: #e5e5e5;
 }
 
-#content .speaker img {
+#content .box .speaker-bio img {
   max-width: 300px;
-  margin: 25px 15px 5px;
+  margin-right: 10px;
+}
+
+#content .box .speaker-bio img.float-left {
+  float: left;
+}
+
+#content .box .speaker-bio img.float-right {
+  float: right;
 }
 
 #content #warning {
@@ -297,7 +301,7 @@ div.box ul, div.box li {
 }
 
 #content .banner {
-	height: 160px;
+  height: 160px;
 }
 
 #content .banner-quadrado {
@@ -305,9 +309,9 @@ div.box ul, div.box li {
 }
 
 #content .banner textarea, #content .banner-quadrado textarea {
-	float: left;
-	margin: 25px;
-	height: 90px;
+  float: left;
+  margin: 25px;
+  height: 90px;
 }
 
 #footer {
@@ -346,7 +350,7 @@ div.box ul, div.box li {
 }
 
 .fieldWithErrors label {
-	color: #CF0000;
+  color: #CF0000;
 }
 
 .box #errorExplanation, #errorExplanation {
@@ -389,13 +393,12 @@ div.box ul, div.box li {
 }
 
 .pagseguro div {
-	text-align: center;
+  text-align: center;
 }
 
 .box .box-videos {
   margin: 5px 15px;
   font-size: 8px;
-  overflow: auto;
 }
 .box-blip {
   float: left;

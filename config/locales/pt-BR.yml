@@ -93,10 +93,15 @@ pt-BR:
       format:
         precision: 1
         delimiter: '.'
-  support:
-    array:
-      sentence_connector: "e"
-      skip_last_comma: true
+  # support:
+  #   array:
+  #     sentence_connector: "e"
+  #     skip_last_comma: true
+  support: 
+    array: 
+      words_connector: ", " 
+      two_words_connector: " e " 
+      last_word_connector: " e "
     
   # Active Record
   activerecord:

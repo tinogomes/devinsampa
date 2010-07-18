@@ -13,3 +13,4 @@ public/palestrantes.html
 public/programacao.html
 public/system
 db/dump/
+*_dump.sql

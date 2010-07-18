@@ -4,18 +4,18 @@
   <tr>
     <th>Name</th>
     <th>Email</th>
-	<th>Twitter</th>
-    <th>Presentation</th>
+    <th>Twitter</th>
+    <th>Presentations</th>
     <th colspan="2">Actions</th>
-    
+
   </tr>
 
 <% @speakers.each do |speaker| %>
   <tr style="background-color: <%= cycle('#CCC', '#999') %>">
     <td><%=h speaker.name %> </td>
     <td><%=h speaker.email %> </td>
-	<td><%=h speaker.twitter %> </td>
-    <td><%=h speaker.presentation %></td> 
+    <td><%=h speaker.twitter %> </td>
+    <td><%=h speaker.presentations.map {|p| p.title }.to_sentence %></td>
 
     <td><%= link_to 'Edit', edit_admin_speaker_path(speaker) %></td>
     <td><%= link_to 'Destroy', admin_speaker_path(speaker), :confirm => 'Are you sure?', :method => :delete %></td>

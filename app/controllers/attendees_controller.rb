@@ -1,19 +1,19 @@
 class AttendeesController < ApplicationController
-  OPEN_REGISTER_DATE = DateTime.new(2009, 11, 23, 13, 00, 00).utc
-  
+  OPEN_REGISTER_DATE = DateTime.new(2010, 8, 1, 00, 00, 00).utc
+
   skip_before_filter :verify_authenticity_token, :only => :pagseguro
 
   helper_method :no_time_to_register?
-    
+
   def payment
     @attendee = Attendee.find_by_token(params[:token])
-    
+
     if @attendee && @attendee.completed?
       flash[:notice] = "#{@attendee.name}, o pagamento da sua inscrição foi confirmada"
       redirect_to(register_path)
     elsif @attendee
       flash[:notice] = "#{@attendee.name}, estamos esperando a confirmação de pagamento pelo PagSeguro" if @attendee.really_pending?
-      
+
       # Instanciando o objeto para geração do formulário
       @order = PagSeguro::Order.new(@attendee.token)
       @order.add :id => 1, :price => 3500, :description => "Inscrição do devinsampa"
@@ -34,7 +34,7 @@ class AttendeesController < ApplicationController
       @attendee = Attendee.new(params[:attendee])
       render :action => "new" and return
     end
-    
+
     Attendee.transaction do
       if Attendee.overload?
         flash[:error] = "Vagas encerradas, mas tenha esperança ;)"
@@ -48,7 +48,7 @@ class AttendeesController < ApplicationController
         end
       end
     end
-    
+
   end
 
   def pagseguro
@@ -60,7 +60,7 @@ class AttendeesController < ApplicationController
       rescue
         redirect_to(register_path) and return
       end
-      
+
       if @attendee.completed?
         flash[:notice] = "#{@attendee.name}, o pagamento da sua inscrição foi confirmada."
         session[:token] = nil
@@ -73,9 +73,9 @@ class AttendeesController < ApplicationController
       end
     end
   end
-  
+
   private
-  
+
     def capture_information
       notification = PagSeguro::Notification.new(params)
       begin
@@ -92,11 +92,11 @@ class AttendeesController < ApplicationController
         RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
       end
     end
-    
+
     def no_time_to_register?
       Time.now.utc <  OPEN_REGISTER_DATE
     end
-    
+
     def no_time_message
       messages = [
         "Apressado você hein!?",

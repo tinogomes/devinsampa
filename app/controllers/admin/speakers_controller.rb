@@ -1,20 +1,20 @@
 class Admin::SpeakersController < Admin::AdminController
-  
+
   before_filter :set_speaker, :only => [:edit, :update, :destroy]
-  
+
   def index
-    @speakers = Speaker.all :select => "id, name, email, presentation, twitter", :order => "name"
+    @speakers = Speaker.all :order => "name", :select => 'id, name, email, twitter', :include => [:presentations]
   end
-  
+
   def report
-    @speakers = Speaker.all :select => "name, email, doc", :order => "name"
+    @speakers = Speaker.all :order => "name", :select => 'name, doc'
     render :layout => false
   end
-  
+
   def new
     @speaker = Speaker.new
   end
-  
+
   def create
     @speaker = Speaker.new(params[:speaker])
     if @speaker.valid? && @speaker.save
@@ -25,10 +25,10 @@ class Admin::SpeakersController < Admin::AdminController
     end
 
   end
-  
+
   def edit
   end
-  
+
   def update
     @speaker.attributes = params[:speaker]
     if @speaker.valid? && @speaker.save
@@ -38,12 +38,12 @@ class Admin::SpeakersController < Admin::AdminController
       render :action => "edit"
     end
   end
-  
+
   def destroy
     @speaker.destroy
     redirect_to(admin_speakers_url)
   end
-  
+
   private
     def set_speaker
       @speaker = Speaker.find(params[:id])

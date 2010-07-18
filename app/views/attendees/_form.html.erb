@@ -1,10 +1,10 @@
 <% form_for(@attendee) do |f| %>
     <p>Para se inscrever preencha o formulário a baixo, em seguida você recebera um e-mail confirmando sua inscrição, e será redirecionado a página do PagSeguro para proceder com o processo de pagamento.</p>
-  
-    <p><strong>* Campos em negrito são de preenchimento obrigatório.</strong></p>    
+
+    <p><strong>* Campos em negrito são de preenchimento obrigatório.</strong></p>
 
     <%= f.error_messages :object_name => 'a inscrição', :header_message => 'Ops! Alguma coisa errada.' %>
-    
+
     <p>
       <strong><%= f.label :name, "Nome:" %></strong><br />
       <%= f.text_field :name %><span>(Nome completo e, se possível, use o mesmo no PagSeguro)</span>
@@ -25,9 +25,9 @@
       <% if no_time_to_register? && !params[:attendee].nil?%>
         <%= f.submit 'Tá com muita pressa, hein!?' %>
       <% elsif no_time_to_register? %>
-        <%= f.submit 'Inscrição somente após às 11:00' %>
+        <%= f.submit 'Ainda não!' %>
       <% else %>
-        <%= f.submit 'Estou com sorte!' %>
+        <%= f.submit 'Confirmar inscrição' %>
       <% end %>
     </p>
 <% end %>
