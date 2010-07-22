@@ -272,7 +272,7 @@ div.box ul, div.box li {
 }
 
 #content .box table.agenda td, #content .box table.agenda th {
-  font-size: 11pt;
+  font-size: 0.6em;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #fff;
   padding: 4px 5px;

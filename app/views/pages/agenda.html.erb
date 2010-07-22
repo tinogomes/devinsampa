@@ -16,7 +16,11 @@
       <tr class="<%= cycle('odd', 'pair') %>">
         <td><%= item.start_time %> - <%= item.end_time %></td>
         <td>
-          <%= what_happen(item.what_happen) %>
+          <% if item.presentation %>
+            <%= link_to what_happen(item.what_happen), presentations_path + "#presentation-#{item.presentation_id}" %>
+          <% else %>
+            <%= what_happen(item.what_happen) %>
+          <% end %>
         </td>
       </tr>
     <% end %>
