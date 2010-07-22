@@ -35,7 +35,9 @@ ActionController::Routing::Routes.draw do |map|
     pages.photos_and_videos_2009 "/2009",            :action => "photos_and_videos_2009"
     pages.presentations          "/palestras",       :action => "presentations"
     pages.agenda                 "/programacao",     :action => "agenda"
-    # pages.feedback               "/feedback",        :action => "feedback"
+    pages.speakers               "/palestrantes",    :action => "redirecting", :to => "/palestras"
+    pages.speakers               "/divulgar",        :action => "redirecting", :to => "/"
+    pages.feedback               "/feedback",        :action => "redirecting", :to => "/contato"
   end
 
   map.admin "/admin", :controller => "Admin::Admin", :action => "index"
