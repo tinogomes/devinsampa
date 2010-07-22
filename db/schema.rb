@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100721184332) do
+ActiveRecord::Schema.define(:version => 20100722015547) do
 
   create_table "agendas", :force => true do |t|
     t.string   "start_time"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20100721184332) do
     t.integer  "presentation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "segment"
   end
 
   add_index "agendas", ["start_time"], :name => "index_agendas_on_start_time"

@@ -260,7 +260,13 @@ div.box ul, div.box li {
 }
 
 #content .box table.agenda tr.head {
-  background: #ccc;
+  background: #999;
+  border-top: 0;
+  padding: 5px;
+}
+
+#content .box table.agenda tr.segment {
+  background: #CCC;
   border-top: 0;
   padding: 5px;
 }

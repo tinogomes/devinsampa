@@ -3,7 +3,7 @@ class Admin::AgendasController < Admin::AdminController
   before_filter :set_agenda, :only => [:edit, :update]
 
   def index
-    @agendas = Agenda.find :all, :order => 'start_time'
+    @agendas = Agenda.all
   end
 
   def new

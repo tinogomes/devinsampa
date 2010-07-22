@@ -29,7 +29,7 @@ class PagesController < ApplicationController
   end
 
   def agenda
-    @agenda = Agenda.all :order => "start_time"
+    @agenda = Agenda.all
   end
 
   def not_found

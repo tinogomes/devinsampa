@@ -9,7 +9,10 @@
       <th>O que rola?</th>
     </tr>
 
-    <% @agenda.each_with_index do |item, i| %>
+    <% segment = nil; @agenda.each do |item| %>
+    <% if segment != item.segment; segment = item.segment %>
+      <tr class="segment"><td colspan="2"><%= segment %></td></tr>
+    <% end %>
       <tr class="<%= cycle('odd', 'pair') %>">
         <td><%= item.start_time %> - <%= item.end_time %></td>
         <td>
