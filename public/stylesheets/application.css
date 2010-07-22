@@ -277,15 +277,18 @@ div.box ul, div.box li {
 }
 
 #content .box .speaker-bio img {
-  max-width: 300px;
-  margin-right: 10px;
+  max-height: 200px;
+  border: 8px solid #FFF;
+
 }
 
 #content .box .speaker-bio img.float-left {
+  margin: 0 10px 10px 0;
   float: left;
 }
 
 #content .box .speaker-bio img.float-right {
+  margin: 0 0 10px 10px;
   float: right;
 }
 

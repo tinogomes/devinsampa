@@ -1,0 +1,8 @@
+<% title "Cadastro de #{@presentation.title}", false %>
+
+<% form_for(:presentation, :url => { :action => "update" }, :html => { :method => "PUT" }) do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <%= f.submit "Alterar", :disable_with => 'Aguarde...' %>
+<% end %>
+
+<%= link_to 'Voltar', admin_presentations_path %>

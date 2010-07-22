@@ -1,0 +1,12 @@
+<% @presentation.presentation_speakers.each do |presentation_speaker| %>
+  <% f.fields_for "presentation_speakers[]", presentation_speaker, :index => nil do |ps| -%>
+    <p class="speakers">
+      <%= ps.label :speaker_id, "Selecione um palestrante" %><br />
+      <%= ps.collection_select(:speaker_id, @speakers, :id, :name, {:include_blank => true})  %>
+      <% unless @presentation.new_record? %>
+        <%= ps.check_box :_destroy %>
+        <%= ps.label :_destroy, "Remover" %>
+      <% end %>
+    </p>
+  <% end -%>
+<% end %>

@@ -2,7 +2,7 @@
   <ul id="navigation" class="clearfix">
     <li class="<%= class_selected("pages", "index") %>"><%= link_to "Página inicial", home_path %></li>
     <li class="<%= class_selected("pages", "agenda") %>"><%= link_to "Programação", agenda_path %></li>
-    <%- if false %><li class="<%= class_selected("pages", "presentations") %>"><%= link_to "Palestras", presentations_path %></li><% end -%>
+    <li class="<%= class_selected("pages", "presentations") %>"><%= link_to "Palestras", presentations_path %></li>
     <li class="<%= attendee_class_select %>"><%= link_to "Inscrição", register_path %></li>
     <li class="<%= class_selected("pages", "photos_and_videos_2009") %>"><%= link_to "2009", photos_and_videos_2009_path %></li>
     <li class="<%= class_selected("pages", "contact") %>"><%= link_to "Contato", contact_path %></li>

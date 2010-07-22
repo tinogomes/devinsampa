@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :speakers,
       :collection => { :report => :get }
     admin.resources :agendas
+    admin.resources :presentations
     admin.resources :attendees,
       :member => { :resend => :get,
                    :completed => :put,

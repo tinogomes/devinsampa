@@ -45,6 +45,6 @@ class Admin::AgendasController < Admin::AdminController
     end
 
     def set_presentation
-      @presentations = PresentationSpeaker.all :select => "presentation_speakers.id, presentations.title", :order => "presentations.title", :joins => [:presentation]
+      @presentations = Presentation.all :select => "id, title", :order => "title"
     end
 end

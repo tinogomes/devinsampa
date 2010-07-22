@@ -3,11 +3,11 @@ class Admin::SpeakersController < Admin::AdminController
   before_filter :set_speaker, :only => [:edit, :update, :destroy]
 
   def index
-    @speakers = Speaker.all :order => "name", :select => 'id, name, email, twitter', :include => [:presentations]
+    @speakers = Speaker.all :select => 'id, name, email, twitter'
   end
 
   def report
-    @speakers = Speaker.all :order => "name", :select => 'name, doc'
+    @speakers = Speaker.all :select => 'name, doc'
     render :layout => false
   end
 
@@ -23,7 +23,6 @@ class Admin::SpeakersController < Admin::AdminController
     else
       render :action => "new"
     end
-
   end
 
   def edit

@@ -1,0 +1,17 @@
+<%= f.error_messages %>
+<p>
+  <%= f.label :title, "Titulo" %><br />
+  <%= f.text_field :title %>
+</p>
+<p>
+  <%= f.label :description, "Descrição da palestra <span>(Textile)</span>" %><br />
+  <%= f.text_area :description %>
+</p>
+<p>
+  <%= f.label :principal_speaker_id, "1º Palestrante" %>
+  <%= f.collection_select(:principal_speaker_id, @speakers, :id, :name, {:include_blank => true})  %>
+</p>
+<p>
+  <%= f.label :other_speaker_id, "2º Palestrante" %>
+  <%= f.collection_select(:other_speaker_id, @speakers, :id, :name, {:include_blank => true})  %>
+</p>

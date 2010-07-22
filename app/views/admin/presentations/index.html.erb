@@ -1,0 +1,22 @@
+<h1>Listing presentations</h1>
+
+<table border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <th>Titulo</th>
+    <th>Palestrantes</th>
+    <th colspan="2">Actions</th>
+
+  </tr>
+
+<% @presentations.each do |presentation| %>
+  <tr style="background-color: <%= cycle('#CCC', '#999') %>">
+    <td><%=h presentation.title %> </td>
+    <td><%=h presentation.speakers.map {|s| s.name }.to_sentence %> &nbsp;</td>
+
+    <td><%= link_to 'Edit', edit_admin_presentation_path(presentation) %></td>
+    <td><%= link_to 'Destroy', admin_presentation_path(presentation), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to "New", new_admin_presentation_path %>
