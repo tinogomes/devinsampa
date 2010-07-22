@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
       :collection => { :report => :get }
     admin.resources :agendas
     admin.resources :presentations
+    admin.settings "settings/edit", :controller => "system_configurations", :action => "edit"
+    admin.update_settings "settings/update", :controller => "system_configurations", :action => "update", :conditions => {:method => :put}
     admin.resources :attendees,
       :member => { :resend => :get,
                    :completed => :put,

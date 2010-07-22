@@ -1,0 +1,15 @@
+<h1>System Configurations</h1>
+
+<% form_for :system_configuration, :url => admin_update_settings_path, :html => {:method => :put} do |f| -%>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :limit_attendee, "Max attendee <span>(0 until 1.000.000)</span>" %>
+    <%= f.text_field :limit_attendee %>
+  </p>
+  <p>
+    <%= f.check_box :can_register_attendee %>
+    <%= f.label :can_register_attendee, "Can Register Attendee? <span>Check to YES</span>" %>
+  </p>
+
+  <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+<% end -%>

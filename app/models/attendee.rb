@@ -1,6 +1,4 @@
 class Attendee < ActiveRecord::Base
-  LIMIT_ATTENDEE = 100
-
   attr_accessor :free
 
   validates_presence_of   :name
@@ -8,18 +6,18 @@ class Attendee < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_format_of :email, :with => User::EMAIL_REGEX
   validates_presence_of :doc
-  
+
   attr_accessible :name, :email, :doc, :company
-  
+
   after_update :send_emails_after_change_status
   before_create :set_token
   before_create :set_status_free_for_courtesy
   after_create :send_mail_after_create
   before_destroy :send_mail_before_delete
-  
+
   symbolize :status, :allow_blank => true, :in => Hash[*PagSeguro::Notification::STATUS.map { |k,v| [v, v.to_s] }.flatten].merge(:free => "free")
   symbolize :payment_method, :allow_blank => true, :in => Hash[*PagSeguro::Notification::PAYMENT_METHOD.map { |k,v| [v, v.to_s] }.flatten]
-  
+
   def update_payment_data!(notification)
     self.payment_method = notification.payment_method
     self.status = notification.status
@@ -27,11 +25,11 @@ class Attendee < ActiveRecord::Base
     self.buyer = notification.buyer.to_json
     self.save!
   end
-  
+
   def free?
     (self.status === :free) || @free
   end
-  
+
   def final_status
     case self.status
     when :completed, :approved, :free
@@ -42,33 +40,33 @@ class Attendee < ActiveRecord::Base
       :pending
     end
   end
-  
+
   def pending?
     final_status == :pending
   end
-  
+
   def completed?
     final_status == :completed
   end
-  
+
   def canceled?
     final_status == :canceled
   end
-  
+
   def really_pending?
     (!status.nil? && final_status == :pending)
   end
-  
+
   def self.overload?
-    Attendee.count(:id) >= LIMIT_ATTENDEE
+    Attendee.count(:id) >= SystemConfiguration.limit_attendee
   end
-  
+
   def send_mail_after_create
     spawn do
       Contact.deliver_attendee_created(self)
     end
   end
-  
+
   def send_mail_will_unregister
     return false unless status.nil?
     self.will_unregister = true
@@ -82,13 +80,13 @@ class Attendee < ActiveRecord::Base
   end
 
   private
-  
+
     def send_mail_before_delete
       spawn do
         Contact.deliver_attendee_unregister(self)
       end
     end
-  
+
     def send_emails_after_change_status
       if self.changed.include?("status")
         if self.status === :approved
@@ -106,13 +104,13 @@ class Attendee < ActiveRecord::Base
         end
       end
     end
-    
+
     def set_token
       self[:token] = Digest::SHA1.hexdigest("#{Time.now}#{email}").slice(0,30).upcase
     end
-    
+
     def set_status_free_for_courtesy
       self.status = :free if free
     end
-    
+
 end

@@ -1,9 +1,7 @@
 class AttendeesController < ApplicationController
-  OPEN_REGISTER_DATE = DateTime.new(2010, 8, 1, 00, 00, 00).utc
-
   skip_before_filter :verify_authenticity_token, :only => :pagseguro
 
-  helper_method :no_time_to_register?
+  helper_method :can_register_new_attendees?, :cannot_register_new_attendees?
 
   def payment
     @attendee = Attendee.find_by_token(params[:token])
@@ -29,7 +27,7 @@ class AttendeesController < ApplicationController
   end
 
   def create
-    if ( no_time_to_register? )
+    if ( can_register_new_attendees? )
       flash[:error] = no_time_message
       @attendee = Attendee.new(params[:attendee])
       render :action => "new" and return
@@ -93,8 +91,12 @@ class AttendeesController < ApplicationController
       end
     end
 
-    def no_time_to_register?
-      Time.now.utc <  OPEN_REGISTER_DATE
+    def can_register_new_attendees?
+      SystemConfiguration.can_register_attendee
+    end
+
+    def cannot_register_new_attendees?
+      !can_register_new_attendees?
     end
 
     def no_time_message

@@ -22,9 +22,9 @@
       <%= f.text_field :company %><span>(Não é obrigatório, mas você poderia preencher, né?)</span>
     </p>
     <p>
-      <% if no_time_to_register? && !params[:attendee].nil?%>
+      <% if cannot_register_new_attendees? && !params[:attendee].nil?%>
         <%= f.submit 'Tá com muita pressa, hein!?' %>
-      <% elsif no_time_to_register? %>
+      <% elsif cannot_register_new_attendees? %>
         <%= f.submit 'Ainda não!' %>
       <% else %>
         <%= f.submit 'Confirmar inscrição' %>

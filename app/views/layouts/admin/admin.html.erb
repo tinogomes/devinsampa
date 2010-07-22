@@ -12,6 +12,7 @@
     <li><%= link_to "Speakers", admin_speakers_path %></li>
     <li><%= link_to "Agendas", admin_agendas_path %></li>
     <li><%= link_to "Attendees", admin_attendees_path %></li>
+    <li><%= link_to "Settings", admin_settings_path %></li>
     <li><%= link_to "Logout", logout_path %></li>
   </ul>
   <% end %>
@@ -20,6 +21,6 @@
     <%= content_tag :div, msg, :id => "flash_#{name}" %>
   <%- end -%>
 
-  <%= yield %>  
+  <%= yield %>
 </body>
 </html>
