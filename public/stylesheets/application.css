@@ -7,6 +7,10 @@ h1, h2, h3, h4 {
   clear: both;
 }
 
+p {
+  text-align: justify;
+}
+
 body {
   color: #000;
   font-family: "Lucida Grande", arial, verdana, sans-serif;
