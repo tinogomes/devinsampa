@@ -235,7 +235,19 @@ describe PagSeguro::Notification do
       @notification.should be_valid(:nocache)
     end
     
-    it "should set the authenticity token" do
+    it "should set the authenticity token from the initialization" do
+      notification = PagSeguro::Notification.new(@the_params, 'ABCDEF')
+      
+      post = mock("post").as_null_object
+      post.should_receive(:set_form_data).with({:Comando => "validar", :Token => "ABCDEF"})
+      
+      Net::HTTP.should_receive(:new).and_return(mock("http").as_null_object)
+      Net::HTTP::Post.should_receive(:new).and_return(post)
+      
+      notification.valid?
+    end
+
+    it "should set the authenticity token from the configuration" do
       PagSeguro.stub!(:config).and_return("authenticity_token" => "ABCDEF")
       
       post = mock("post").as_null_object
@@ -265,6 +277,23 @@ describe PagSeguro::Notification do
       
       @notification.valid?
     end
+
+    it "should propagate params in ISO-8859-1" do
+      param!("CliNome", "João Doão")
+      PagSeguro.stub!(:config).and_return("authenticity_token" => "ABCDEF")
+      
+      post = mock("post").as_null_object
+      post.should_receive(:set_form_data).with({
+        :Comando => "validar", 
+        :Token => "ABCDEF", 
+        "CliNome" => to_iso("João Doão")
+      })
+      
+      Net::HTTP.should_receive(:new).and_return(mock("http").as_null_object)
+      Net::HTTP::Post.should_receive(:new).and_return(post)
+      
+      @notification.valid?
+    end
   end
   
   private
@@ -280,6 +309,10 @@ describe PagSeguro::Notification do
       @notification.params.merge!(name => value)
     end
     
+    def to_iso(str)
+      str.unpack('U*').pack('C*')
+    end
+
     def set_product!(options={})
       @__products ||= []
       

@@ -8,7 +8,7 @@ SOBRE O PAGSEGURO
 
 ### Carrinho Próprio
 
-Trabalhando com carrinho próprio, sua loja mantém os dados do carrinho. O processo de inclusão de produtos no carrinho de compras acontece todo na loja. Ao final do processo, quando o comprador está satisfeito com sua compra, ele é enviado ao PagSeguro uma única vez com todos os dados de seu pedido. Aqui também, você tem duas opções. Pode enviar os dados do pedido e deixar o PagSeguro solicitar os dados do comprador, ou pode solicitar todos os dados necessários para a compra em sua loja e enviá-los ao PagSeguro.
+Trabalhando com carrinho próprio, sua loja mantém os dados do carrinho. O processo de inclusão de produtos no carrinho de compras acontece no próprio site da loja. Quando o comprador quiser finalizar sua compra, ele é enviado ao PagSeguro uma única vez com todos os dados de seu pedido. Aqui também, você tem duas opções. Pode enviar os dados do pedido e deixar o PagSeguro solicitar os dados do comprador, ou pode solicitar todos os dados necessários para a compra em sua loja e enviá-los ao PagSeguro.
 
 ### Retorno Automático
 
@@ -49,7 +49,7 @@ O arquivo de configuração gerado será parecido com isto:
 	  email: user@example.com
 	  return_to: "/pedido/efetuado"
 
-Este plugin possui um modo de desenvolvimento que permite simular a realização de pedidos e envio de notificações; basta adicionar ativar a opção `developer`. Ele é ativado por padrão nos ambientes de desenvolvimento e teste. Você deve configurar as opções `base`, que deverá apontar para o seu servidor e a URL de retorno. A URL de retorno deverá ser configurada no próprio [PagSeguro](https://pagseguro.uol.com.br/?ind=689659), na página <https://pagseguro.uol.com.br/Security/ConfiguracoesWeb/RetornoAutomatico.aspx>.
+Este plugin possui um modo de desenvolvimento que permite simular a realização de pedidos e envio de notificações; basta utilizar a opção `developer`. Ela é ativada por padrão nos ambientes de desenvolvimento e teste. Você deve configurar as opções `base`, que deverá apontar para o seu servidor e a URL de retorno, que deverá ser configurada no próprio [PagSeguro](https://pagseguro.uol.com.br/?ind=689659), na página <https://pagseguro.uol.com.br/Security/ConfiguracoesWeb/RetornoAutomatico.aspx>.
 
 Para o ambiente de produção, que irá efetivamente enviar os dados para o [PagSeguro](https://pagseguro.uol.com.br/?ind=689659), você precisará adicionar o e-mail cadastrado como vendedor e o `authenticity_token`, que é o Token para Conferência de Segurança, que pode ser conseguido na página <https://pagseguro.uol.com.br/Security/ConfiguracoesWeb/RetornoAutomatico.aspx>.
 
@@ -62,13 +62,13 @@ Para montar o seu formulário, você deverá utilizar a classe `PagSeguro::Order
 	    # Busca o pedido associado ao usuário; esta lógica deve
 	    # ser implementada por você, da maneira que achar melhor
 		@invoice = current_user.invoices.last
-		
+
 		# Instanciando o objeto para geração do formulário
 	    @order = PagSeguro::Order.new(@invoice.id)
-	
+
 	    # adicionando os produtos do pedido ao objeto do formulário
 	    @invoice.products.each do |product|
-	      # Estes são os atributos necessários. Por padrão, peso (:weight) é definido para 0, 
+	      # Estes são os atributos necessários. Por padrão, peso (:weight) é definido para 0,
 		  # quantidade é definido como 1 e frete (:shipping) é definido como 0.
 	      @order.add :id => product.id, :price => product.price, :description => product.title
 	    end
@@ -80,15 +80,15 @@ Se você precisar, pode definir o tipo de frete com o método `shipping_type`.
 	@order.shipping_type = "SD" # Sedex
 	@order.shipping_type = "EN" # PAC
 	@order.shipping_type = "FR" # Frete Próprio
-	
+
 Depois que você definiu os produtos do pedido, você pode exibir o formulário.
 
 	<!-- app/views/cart/checkout.html.erb -->
 	<%= pagseguro_form @order, :submit => "Efetuar pagamento!" %>
 
-Por padrão, o formulário é enviado como UTF-8; você pode mudar a codificação com a opção `:encoding`.
+Por padrão, o formulário é enviado para o email no arquivo de configuração. Você pode mudar o email com a opção `:email`.
 
-	<%= pagseguro_form @order, :submit => "Efetuar pagamento!", :encoding => "ISO-8859-1" %>
+	<%= pagseguro_form @order, :submit => "Efetuar pagamento!", :email => @account.email %>
 
 ### Recebendo notificações
 
@@ -96,16 +96,33 @@ Toda vez que o status de pagamento for alterado, o [PagSeguro](https://pagseguro
 
 	class CartController < ApplicationController
 	  skip_before_filter :verify_authenticity_token
-	
+
 	  def confirm
 	    return unless request.post?
-		
+
 		pagseguro_notification do |notification|
 		  # Aqui você deve verificar se o pedido possui os mesmos produtos
 		  # que você cadastrou. O produto só deve ser liberado caso o status
 		  # do pedido seja "completed" ou "approved"
 		end
-		
+
+		render :nothing => true
+	  end
+	end
+
+O método `pagseguro_notification` também pode receber como parâmetro o `authenticity_token` que será usado pra verificar a autenticação.
+
+	class CartController < ApplicationController
+	  skip_before_filter :verify_authenticity_token
+
+	  def confirm
+	    return unless request.post?
+		# Se você receber pagamentos de contas diferentes, pode passar o
+		# authenticity_token adequado como parâmetro para pagseguro_notification
+		account = Account.find(params[:seller_id])
+		pagseguro_notification(account.authenticity_token) do |notification|
+		end
+
 		render :nothing => true
 	  end
 	end
@@ -126,15 +143,15 @@ O objeto `notification` possui os seguintes métodos:
 
 Toda vez que você enviar o formulário no modo de desenvolvimento, um arquivo YAML será criado em `tmp/pagseguro-#{RAILS_ENV}.yml`. Esse arquivo conterá todos os pedidos enviados.
 
-Depois, você será redirecionado para a URL de retorna que você configurou no arquivo `config/pagseguro.yml`. Para simular o envio de notificações, você deve utilizar a rake `pagseguro:notify`.
+Depois, você será redirecionado para a URL de retorno que você configurou no arquivo `config/pagseguro.yml`. Para simular o envio de notificações, você deve utilizar a rake `pagseguro:notify`.
 
 	$ rake pagseguro:notify ID=<id do pedido>
-	
-O ID do pedido deve ser o mesmo que foi informado quando você instanciou a class `PagSeguro::Order`. Por padrão, o status do pedido será `completed` e o tipo de pagamento `credit_card`. Você pode especificar esses parâmetros como os exemplos abaixo.
 
-	$ rake pagamento:notify ID=1 PAYMENT_TYPE=invoice STATUS=canceled NOTE="Enviar por motoboy" NAME="José da Silva"
+O ID do pedido deve ser o mesmo que foi informado quando você instanciou a class `PagSeguro::Order`. Por padrão, o status do pedido será `completed` e o tipo de pagamento `credit_card`. Você pode especificar esses parâmetros como o exemplo abaixo.
 
-#### PAYMENT_TYPE
+	$ rake pagamento:notify ID=1 PAYMENT_METHOD=invoice STATUS=canceled NOTE="Enviar por motoboy" NAME="José da Silva"
+
+#### PAYMENT_METHOD
 
 * `credit_card`: Cartão de crédito
 * `invoice`: Boleto
@@ -156,6 +173,12 @@ AUTOR:
 Nando Vieira (<http://simplesideias.com.br>)
 
 Recomendar no [Working With Rails](http://www.workingwithrails.com/person/7846-nando-vieira)
+
+COLABORADORES:
+--------------
+
+* Elomar (<http://github.com/elomar>)
+* Rafael (<http://github.com/rafaels>)
 
 LICENÇA:
 --------
