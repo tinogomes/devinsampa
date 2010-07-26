@@ -16,3 +16,4 @@ db/dump/
 *_dump.sql
 db/devinsampa_test.db
 .rvmrc
+*.patch
