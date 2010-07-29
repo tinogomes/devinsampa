@@ -183,8 +183,12 @@ ul#navigation li a:hover {
   float:left;
 }
 
-#sidebar .sponsor, #sidebar .supporter {
-  padding: 5px 0 5px 0;
+#sidebar #sponsor, #sidebar #supporter {
+/*  padding: 5px 0 5px 0;*/
+}
+
+#sidebar #sponsor a img, #sidebar #supporter a img {
+  max-width: 200px;
 }
 
 #content {
