@@ -183,8 +183,12 @@ ul#navigation li a:hover {
   float:left;
 }
 
-#sidebar .sponsor, #sidebar .supporter {
-  padding: 5px 0 5px 0;
+#sidebar #sponsor, #sidebar #supporter {
+/*  padding: 5px 0 5px 0;*/
+}
+
+#sidebar #sponsor a img, #sidebar #supporter a img {
+  max-width: 200px;
 }
 
 #content {
@@ -303,14 +307,14 @@ div.box ul, div.box li {
 }
 
 #content #warning {
-  height: 70px;
+  height: 100px;
   background: #FFDB70 url('/images/bg_warning.jpg') no-repeat;
   margin: 0 0 40px 0;
 }
 
 #content #warning p {
   font-size: 12pt;
-  padding: 22px 0 0 80px;
+  padding: 10px 10px 0 80px;
 }
 
 #content .banner {
