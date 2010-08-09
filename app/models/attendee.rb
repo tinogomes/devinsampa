@@ -97,7 +97,7 @@ class Attendee < ActiveRecord::Base
           spawn do
             Contact.deliver_attendee_problem(self)
           end
-        elsif !self.status.nil?
+        elsif !self.completed?
           spawn do
             Contact.deliver_attendee_pending(self)
           end
