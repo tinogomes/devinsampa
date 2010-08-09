@@ -5,6 +5,7 @@
     <th>Nome</th>
     <% if params[:with_doc] %><th>Documento</th><% end %>
     <th>Empresa</th>
+	<th>Documento RG</th>
     
   </tr>
 
@@ -13,6 +14,7 @@
     <td><%=h attendee.name %> </td>
     <% if params[:with_doc] %><td><%=h attendee.doc %> &nbsp;</td> <% end %>
     <td><%=h attendee.company %> &nbsp;</td>
+	<td><%=h attendee.doc %> &nbsp;</td>
   </tr>
 <% end %>
 </table>
