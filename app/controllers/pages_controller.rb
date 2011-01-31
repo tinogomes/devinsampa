@@ -1,7 +1,11 @@
 require "ostruct"
 
 class PagesController < ApplicationController
-  caches_page :index, :photos_and_videos_2009
+  caches_page :index, :photos_and_videos_2009, :php
+
+  def php
+    render :text => "Quer invadir? Primeiro vai ler o código em http://github.com/tinogomes/devinsampa e depois a gente conversa, ok?"
+  end
 
   def contact
     @contact = OpenStruct.new
