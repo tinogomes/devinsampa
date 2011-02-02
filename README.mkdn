@@ -1,0 +1,7 @@
+# Dev in Sampa Project
+
+[Dev in Sampa](http://www.devinsamp.com.br) implementation
+
+## Maintainer and Contributors
+
+See on commits!
