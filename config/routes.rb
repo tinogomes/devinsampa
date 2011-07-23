@@ -1,49 +1,52 @@
-ActionController::Routing::Routes.draw do |map|
-  map.namespace :admin do |admin|
-    admin.resources :speakers,
-      :collection => { :report => :get }
-    admin.resources :agendas
-    admin.resources :presentations
-    admin.settings "settings/edit", :controller => "system_configurations", :action => "edit"
-    admin.update_settings "settings/update", :controller => "system_configurations", :action => "update", :conditions => {:method => :put}
-    admin.resources :attendees,
-      :member => { :resend => :get,
-                   :completed => :put,
-                   :pending => :put,
-                   :approved => :put,
-                   :verifying => :put,
-                   :canceled => :put,
-                   :refunded => :put,
-                   :warning => :get
-                    },
-      :collection => { :report => :get }
+# encoding: utf-8
+Devinsampa::Application.routes.draw do
+  root :to => "pages#index"
+
+  namespace :admin do
+    resources :agendas, :presentations
+
+    resources :speakers do
+      get "report", :on => :collection
+    end
+
+    get "settings/edit" => "system_configurations#edit", :as => "settings"
+    put "settings/update" => "system_configurations#update", :as => "update_settings"
+
+    resources :attendees do
+      member do
+        get "resend"
+        put "completed"
+        put "pending"
+        put "approved"
+        put "verifying"
+        put "canceled"
+        put "refunded"
+        get "warning"
+      end
+
+      get "report", :on => :collection
+    end
   end
+  get "/admin" => "Admin::Admin#index"
 
-  map.resources :user_sessions, :as => "admin/acesso"
+  resources :user_sessions, :path => "admin/acesso"
+  get "/login" => "user_sessions#new", :as => "login"
+  delete "/logout" => "user_sessions#destroy", :as => "logout"
 
-  map.resources :attendees, :as => "inscricao", :only => [:create]
-  map.register '/inscricao', :controller => "attendees", :action => "new"
-  map.payment  '/inscricao/pagamento/:token', :controller => "attendees", :action => "payment"
-  map.pagseguro_confirmation "/inscricao/pagseguro/confirmacao", :controller => "attendees", :action => "pagseguro"
+  resources :attendees, :only => [:create], :path => "inscricao"
+  get "/inscricao" => "attendees#new", :as => "register"
+  get "/inscricao/pagamento/:token" => "attendees#payment", :as => "payment"
+  match "/inscricao/pagseguro/confirmacao" => "attendees#pagseguro", :via => [:get, :post], :as => "pagseguro_confirmation"
 
-  map.with_options :controller => 'user_sessions' do |user_sessions|
-    user_sessions.login         "/login",        :action => "new"
-    user_sessions.logout        "/logout",       :action => "destroy"
-  end
+  get "/contato" => "pages#contact", :as => "contact"
+  get "/2009" => "pages#photos_and_videos_2009", :as => "photos_and_videos_2009"
+  get "/palestras" => "pages#presentations", :as => "presentations"
+  get "/programacao" => "pages#agenda", :as => "agenda"
 
-  map.with_options :controller => 'pages' do |pages|
-    pages.home                   "/",                :action => "index"
-    pages.contact                "/contato",         :action => "contact"
-    pages.photos_and_videos_2009 "/2009",            :action => "photos_and_videos_2009"
-    pages.presentations          "/palestras",       :action => "presentations"
-    pages.agenda                 "/programacao",     :action => "agenda"
-    pages.speakers               "/palestrantes",    :action => "redirecting", :to => "/palestras"
-    pages.speakers               "/divulgar",        :action => "redirecting", :to => "/"
-    pages.feedback               "/feedback",        :action => "redirecting", :to => "/contato"
-  end
+  match "/palestrantes" => redirect("/palestras")
+  match "/divulgar" => redirect("/")
+  match "/feedback" =>  redirect("/contato")
 
-  map.admin "/admin", :controller => "Admin::Admin", :action => "index"
-
-  map.not_found "*minvalid_route.php", :controller => 'pages', :action => 'php'
-  map.not_found "*minvalid_route", :controller => 'pages', :action => 'not_found'
+  match "*minvalid_route.php" => "pages#php"
+  match "*minvalid_route" => "pages#not_found", :as => "not_found"
 end

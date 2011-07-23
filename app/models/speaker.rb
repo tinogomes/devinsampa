@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Speaker < ActiveRecord::Base
   default_scope :order => 'name'
 

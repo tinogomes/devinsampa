@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Admin::SystemConfigurationsController < Admin::AdminController
   before_filter :load_system_configuration
 

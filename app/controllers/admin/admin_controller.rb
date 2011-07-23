@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Admin::AdminController < ApplicationController
   layout "admin/admin"
 
@@ -30,7 +31,7 @@ class Admin::AdminController < ApplicationController
       end
       unless admin?
         flash[:error] = "Sai daqui, pois você não tem envergadura moral!"
-        redirect_to home_path and return
+        redirect_to root_path and return
       end
     end
 end

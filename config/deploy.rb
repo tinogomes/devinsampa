@@ -1,3 +1,4 @@
+# encoding: utf-8
 set :application, "devinsampa"
 set :user, "devinsampa"
 

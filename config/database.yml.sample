@@ -1,8 +1,9 @@
+# encoding: utf-8
 login: &login
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: 
+  database:
   pool: 5
   username: root
   password:

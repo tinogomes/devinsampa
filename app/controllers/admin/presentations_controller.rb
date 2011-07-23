@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Admin::PresentationsController < Admin::AdminController
   before_filter :set_presentation, :only => [:edit, :update, :destroy]
   before_filter :load_speakers, :only => [:new, :edit]

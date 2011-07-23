@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SystemConfiguration < ActiveRecord::Base
   DEFAULT_KEYS = {:limit_attendee => 130, :can_register_attendee => false}
 

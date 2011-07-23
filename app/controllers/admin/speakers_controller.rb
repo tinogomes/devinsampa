@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Admin::SpeakersController < Admin::AdminController
 
   before_filter :set_speaker, :only => [:edit, :update, :destroy]

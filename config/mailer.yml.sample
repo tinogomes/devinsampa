@@ -1,3 +1,4 @@
+# encoding: utf-8
 ---
   tls: true
   address: smtp.gmail.com

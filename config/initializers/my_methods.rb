@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Object
   def not_nil?
     !self.nil?

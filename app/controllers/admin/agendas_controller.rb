@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Admin::AgendasController < Admin::AdminController
   before_filter :set_presentation, :only => [:new, :edit]
   before_filter :set_agenda, :only => [:edit, :update]
@@ -16,7 +17,7 @@ class Admin::AgendasController < Admin::AdminController
 
     if @agenda.valid? && @agenda.save
       flash[:notice] = "#{@agenda.event} cadastrado"
-      redirect_to admin_agendas_path
+      redirect_to admin_agenda_path
     else
       set_presentation
       render :action => "new", :agenda => params[:agenda]
@@ -32,7 +33,7 @@ class Admin::AgendasController < Admin::AdminController
     @agenda.attributes = params[:agenda]
     if @agenda.valid? && @agenda.save
       flash[:notice] = "Os dados de #{@agenda.event} foram atualizados"
-      redirect_to admin_agendas_path
+      redirect_to admin_agenda_path
     else
       set_presentation
       render :action => "edit"

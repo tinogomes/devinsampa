@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AttendeesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :pagseguro
 
@@ -14,7 +15,7 @@ class AttendeesController < ApplicationController
 
       # Instanciando o objeto para geração do formulário
       @order = PagSeguro::Order.new(@attendee.token)
-      @order.add :id => 1, :price => 3500, :description => "Inscrição do devinsampa"
+      @order.add :id => 11, :price => 7000, :description => "Inscrição do devinsampa 2011"
       session[:token] = @attendee.token
     else
       flash[:error] = "Não encontramos seu cadastro, sua chave está correta?"
@@ -36,7 +37,7 @@ class AttendeesController < ApplicationController
     Attendee.transaction do
       if Attendee.overload?
         flash[:error] = "Vagas encerradas, mas tenha esperança ;)"
-        redirect_to(home_path) and return
+        redirect_to(root_path) and return
       else
         @attendee = Attendee.new(params[:attendee])
         if @attendee.save
