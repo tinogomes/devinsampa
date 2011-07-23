@@ -45,6 +45,5 @@ ActionController::Routing::Routes.draw do |map|
   map.admin "/admin", :controller => "Admin::Admin", :action => "index"
 
   map.not_found "*minvalid_route.php", :controller => 'pages', :action => 'php'
-  # map.not_found "*minvalid_route", :controller => 'pages', :action => 'not_found'
-  map.not_found "*minvalid_route", :controller => 'pages', :action => 'aacd'
+  map.not_found "*minvalid_route", :controller => 'pages', :action => 'not_found'
 end
