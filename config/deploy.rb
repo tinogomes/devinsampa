@@ -31,17 +31,17 @@ namespace :deploy do
 
   desc "[internal] Copy config files to current_release"
   task :copy_config_files do
-    run "cp #{shared_path}/config/*.yml #{current_release}/config/"
+    run "cp #{shared_path}/config/*.yml #{release_path}/config/"
   end
-  
+
   desc "[internal] Create symlink to speaker images"
   task :create_speaker_images_symlink do
-    run "cd #{current_release}/public/images && /bin/ln -s #{shared_path}/speakers"
+    run "cd #{release_path}/public/images && /bin/ln -s #{shared_path}/speakers"
   end
 
   desc "[internal] Create symlink to public files"
   task :create_public_files_symlink do
-    run "cd #{current_release}/public && /bin/ln -s #{shared_path}/public/googlehostedservice.html"
+    run "cd #{release_path}/public && /bin/ln -s #{shared_path}/public/googlehostedservice.html"
   end
 end
 
