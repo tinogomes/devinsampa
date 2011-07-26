@@ -6,7 +6,7 @@
   <title><%= action_name %> <%= controller_name %> - Dev in Sampa</title>
 </head>
 <body>
-  <% if current_user %>
+  <% if admin_user? %>
   <ul>
     <li><%= link_to "Presentations", admin_presentations_path %></li>
     <li><%= link_to "Speakers", admin_speakers_path %></li>

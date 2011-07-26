@@ -1,26 +1,23 @@
 # encoding: utf-8
 class UserSessionsController < ApplicationController
-  layout 'admin/admin'
+  layout "admin/admin"
 
   def new
-    @user_session = UserSession.new
   end
 
   def create
-    @user_session = UserSession.new(params[:user_session])
-    if @user_session.save
-      redirect_to admin_url
-    else
-      render :action => 'new'
-    end
+    user = User.authenticate(params[:user][:username], params[:user][:password])
+    raise unless user
+    session[:user_id] = user.id
+    return_to = user.admin? ? admin_url : root_path
+    redirect_to return_to, :notice => t("user_sessions.logged_successful")
+  rescue
+    flash.now.alert = t("user_sessions.invalid_username_or_password")
+    render "new"
   end
 
   def destroy
-    if current_user
-      @user_session = UserSession.find
-      @user_session.destroy
-    end
-
-    redirect_to home_url
+    session[:user_id] = nil
+    redirect_to root_url, :notice => t("user_sessions.logout_successful")
   end
 end

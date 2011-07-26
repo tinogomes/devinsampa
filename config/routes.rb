@@ -29,9 +29,9 @@ Devinsampa::Application.routes.draw do
   end
   get "/admin" => "Admin::Admin#index"
 
-  resources :user_sessions, :path => "admin/acesso"
   get "/login" => "user_sessions#new", :as => "login"
   delete "/logout" => "user_sessions#destroy", :as => "logout"
+  resources :user_sessions, :only => [:new, :create, :destroy]
 
   resources :attendees, :only => [:create], :path => "inscricao"
   get "/inscricao" => "attendees#new", :as => "register"

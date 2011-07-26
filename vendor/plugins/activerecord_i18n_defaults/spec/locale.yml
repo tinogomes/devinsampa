@@ -1,8 +1,0 @@
-aa-BB:
-  hey: 'jo'
-  activerecord:
-    attributes:
-      _all:
-        login: "global login"
-      admin:
-        login: "custom login"

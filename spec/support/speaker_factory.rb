@@ -1,5 +1,5 @@
 require 'action_controller'
-require 'action_controller/test_process.rb'
+# require 'action_controller/test_process.rb'
 
 Factory.define :speaker do |speaker|
   path = "#{Rails.root}/spec/fixtures/rails.png"
@@ -8,6 +8,6 @@ Factory.define :speaker do |speaker|
   speaker.name { Faker::Name.name }
   speaker.bio { Faker::Lorem.paragraph }
   speaker.email { Faker::Internet.email }
-  speaker.avatar { ActionController::TestUploadedFile.new(path, mimetype) }
+  speaker.avatar { fixture_file_upload(path, mimetype) }
   speaker.twitter { |s| Faker::Internet.user_name(s.name) }
 end

@@ -3,12 +3,9 @@
 .bundle
 .DS_Store
 .rvmrc
-config/database.yml
-config/mailer.yml
-config/pagseguro.yml
-db/devinsampa_test.db
-db/dump/
-log
+config/*.yml
+db/*.db
+log/*.log
 public/divulgar.html
 public/googlehostedservice.html
 public/images/speakers

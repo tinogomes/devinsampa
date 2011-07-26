@@ -1,11 +1,11 @@
-<% form_for @user_session do |f| %>
+<%= form_for User.new, :as => :user, :url => user_sessions_path do |f| %>
   <p>
-    <%= f.label :username, "Usuário" %><br />
+    <%= f.label :username %><br />
     <%= f.text_field :username %>
   </p>
   <p>
-    <%= f.label :password, "Senha" %><br />
+    <%= f.label :password %><br />
     <%= f.password_field :password %>
   </p>
-  <p><%= f.submit "Login" %></p>
+  <p><%= f.submit t(".login") %></p>
 <% end %>

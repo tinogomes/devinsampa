@@ -10,14 +10,12 @@ class CreateUsers < ActiveRecord::Migration
       t.string :role, :default => "attendee"
       t.timestamps
     end
-    
+
     add_index :users, :email, :unique => true
     add_index :users, :username, :unique => true
   end
-  
+
   def self.down
-    remove_index :users, :column => :email
-    remove_index :users, :column => :username
     drop_table :users
   end
 end
