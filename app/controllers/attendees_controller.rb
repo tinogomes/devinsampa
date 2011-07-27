@@ -106,7 +106,7 @@ class AttendeesController < ApplicationController
         "Já vi que você não sabe esperar.",
         "Ainda não deu a hora.",
         "Rails não escala?",
-        "Quer que eu conte uma piada para descontrair?"
+        "Quer <a href='http://piadas-infames.blogspot.com/' title='Site do Piadas Infames'>uma piada</a> para descontrair?"
       ]
       messages[rand(messages.size)]
     end
