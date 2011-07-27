@@ -1,5 +1,6 @@
 var fbPageURL = "http%3A%2F%2Fwww.facebook.com%2Fpages%2FDev-in-Sampa%2F227427707295333"
 var fbLikeURL = "http://www.facebook.com/plugins/likebox.php?href=" + fbPageURL + "&amp;width=200&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23ccc&amp;stream=false&amp;header=false&amp;height=62"
+var fbIFrame = '<iframe src="' + fbLikeURL + '" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:62px;" allowTransparency="true"></iframe>'
 
 $(function() {
 	$('.box').corners('10px');
@@ -28,7 +29,8 @@ $(function() {
 			this.select();
 		}
 	});
-	
 
-	$("#fb-iframe").attr("src", fbLikeURL);
+	$("#fb-iframe").replaceWith(fbIFrame);
+	
+	$("#gplus").replaceWith("<g:plusone></g:plusone>")
 });
