@@ -14,7 +14,7 @@ class AttendeesController < ApplicationController
 
       # Instanciando o objeto para geração do formulário
       @order = PagSeguro::Order.new(@attendee.token)
-      @order.add :id => 1, :price => 3500, :description => "Inscrição do devinsampa"
+      @order.add :id => 11, :price => 7500, :description => "Inscrição para o Dev in Sampa 2011"
       session[:token] = @attendee.token
     else
       flash[:error] = "Não encontramos seu cadastro, sua chave está correta?"
