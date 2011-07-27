@@ -11,6 +11,10 @@
     <td><%= qtde %></td>
   </tr>
 <% end %>
+	<tr>
+		<td>Total:</td>
+		<td><%= @attendees_counts.sum {|i| i[1]} %></td>
+	</tr>
 </table>
 
 <p><%= link_to "New attendee", new_admin_attendee_path %></p>
