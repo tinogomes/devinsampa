@@ -36,13 +36,13 @@ class Contact < ActionMailer::Base
   end
 
   def attendee_unregister(attendee)
-    common_settings "[devinsampa] Cancelamento de inscrição"
+    common_settings "Cancelamento de inscrição"
     recipients      attendee.email
     body            :attendee => attendee
   end
 
   def attendee_will_unregister(attendee)
-    common_settings "[devinsampa] Sua inscrição será cancelada"
+    common_settings "Sua inscrição será cancelada"
     recipients      attendee.email
     body            :name => attendee.name, :link => payment_url(:token => attendee.token)
   end
