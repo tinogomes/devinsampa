@@ -17,6 +17,7 @@ server "devinsampa", :app, :web, :db, :primary => true
 after "deploy:update_code", "deploy:copy_config_files"
 before "deploy:symlink", "deploy:create_speaker_images_symlink"
 before "deploy:symlink", "deploy:create_public_files_symlink"
+after "deploy:update", "deploy:cleanup"
 
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
