@@ -74,40 +74,40 @@ class AttendeesController < ApplicationController
 
   private
 
-    def capture_information
-      notification = PagSeguro::Notification.new(params)
-      begin
-        if notification.valid?(true)
-          attendee = Attendee.find_by_token!(notification.order_id)
-          attendee.update_payment_data!(notification)
-        else
-          spawn do
-            Contact.alert_us(notification, request, params)
-          end
-          RAILS_DEFAULT_LOGGER.error("Alguém tentou simular um POST do PagSeguro: #{notification.inspect}")
+  def capture_information
+    notification = PagSeguro::Notification.new(params)
+    begin
+      if notification.valid?(true)
+        attendee = Attendee.find_by_token!(notification.order_id)
+        attendee.update_payment_data!(notification)
+      else
+        spawn do
+          Contact.alert_us(notification, request, params)
         end
-      rescue Exception => e
-        RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
+        RAILS_DEFAULT_LOGGER.error("Alguém tentou simular um POST do PagSeguro: #{notification.inspect}")
       end
+    rescue Exception => e
+      RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
     end
+  end
 
-    def can_register_new_attendees?
-      SystemConfiguration.can_register_attendee
-    end
+  def can_register_new_attendees?
+    SystemConfiguration.can_register_attendee
+  end
 
-    def cannot_register_new_attendees?
-      !can_register_new_attendees?
-    end
+  def cannot_register_new_attendees?
+    !can_register_new_attendees?
+  end
 
-    def no_time_message
-      messages = [
-        "Apressado você hein!?",
-        "De novo? Paciência.",
-        "Já vi que você não sabe esperar.",
-        "Ainda não deu a hora.",
-        "Rails não escala?",
-        "Quer <a href='http://piadas-infames.blogspot.com/' title='Site do Piadas Infames'>uma piada</a> para descontrair?"
-      ]
-      messages[rand(messages.size)]
-    end
+  def no_time_message
+    messages = [
+      "Apressado você hein!?",
+      "De novo? Paciência.",
+      "Já vi que você não sabe esperar.",
+      "Ainda não deu a hora.",
+      "Rails não escala?",
+      "Quer <a href='http://piadas-infames.blogspot.com/' title='Site do Piadas Infames'>uma piada</a> para descontrair?"
+    ]
+    messages[rand(messages.size)]
+  end
 end

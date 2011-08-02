@@ -80,37 +80,36 @@ class Attendee < ActiveRecord::Base
   end
 
   private
-
-    def send_mail_before_delete
-      spawn do
-        Contact.deliver_attendee_unregister(self)
-      end
+  def send_mail_before_delete
+    spawn do
+      Contact.deliver_attendee_unregister(self)
     end
+  end
 
-    def send_emails_after_change_status
-      if self.changed.include?("status")
-        if self.status === :approved
-          spawn do
-            Contact.deliver_attendee_confirmation(self)
-          end
-        elsif self.canceled?
-          spawn do
-            Contact.deliver_attendee_problem(self)
-          end
-        elsif !self.completed?
-          spawn do
-            Contact.deliver_attendee_pending(self)
-          end
+  def send_emails_after_change_status
+    if self.changed.include?("status")
+      if self.status === :approved
+        spawn do
+          Contact.deliver_attendee_confirmation(self)
+        end
+      elsif self.canceled?
+        spawn do
+          Contact.deliver_attendee_problem(self)
+        end
+      elsif !self.completed?
+        spawn do
+          Contact.deliver_attendee_pending(self)
         end
       end
     end
+  end
 
-    def set_token
-      self[:token] = Digest::SHA1.hexdigest("#{Time.now}#{email}").slice(0,30).upcase
-    end
+  def set_token
+    self[:token] = Digest::SHA1.hexdigest("#{Time.now}#{email}").slice(0,30).upcase
+  end
 
-    def set_status_free_for_courtesy
-      self.status = :free if free
-    end
-
+  def set_status_free_for_courtesy
+    self.status = :free if free
+    true
+  end
 end
