@@ -35,14 +35,14 @@
 		<td><%=h attendee.email %> </td>
 		<td><%= status_or_link(attendee) %> &nbsp; </td>
 
-		<td><%= link_to 'Completed', completed_admin_attendee_path(attendee), :method => :put %></td>
-		<td><%= link_to 'Pending', pending_admin_attendee_path(attendee), :method => :put %></td>
-		<td><%= link_to 'Approved', approved_admin_attendee_path(attendee), :method => :put %></td>
-		<td><%= link_to 'Verifying', verifying_admin_attendee_path(attendee), :method => :put %></td>
-		<td><%= link_to 'Canceled', canceled_admin_attendee_path(attendee), :method => :put %></td>
-		<td><%= link_to 'Refunded', refunded_admin_attendee_path(attendee), :method => :put %></td>
+		<td><%= link_to 'Completed', completed_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
+		<td><%= link_to 'Pending', pending_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
+		<td><%= link_to 'Approved', approved_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
+		<td><%= link_to 'Verifying', verifying_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
+		<td><%= link_to 'Canceled', canceled_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
+		<td><%= link_to 'Refunded', refunded_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
 
-		<td><%= link_to 'Resend', resend_admin_attendee_path(attendee) %></td>
+		<td><%= link_to 'Resend', resend_admin_attendee_path(attendee), :confirm => 'Are you sure?' %></td>
 		<td><%= link_to 'Edit', edit_admin_attendee_path(attendee) %></td>
 		<td><%= link_to 'Destroy', admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :delete %></td>
 	</tr>
