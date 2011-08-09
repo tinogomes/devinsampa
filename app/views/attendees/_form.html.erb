@@ -1,33 +1,37 @@
 <% form_for(@attendee) do |f| %>
-    <p>Para se inscrever preencha o formulário a baixo, em seguida você recebera um e-mail confirmando sua inscrição, e será redirecionado a página do PagSeguro para proceder com o processo de pagamento.</p>
+	<p>Para se inscrever preencha o formulário a baixo, em seguida você recebera um e-mail confirmando sua inscrição, e será redirecionado a página do PagSeguro para proceder com o processo de pagamento.</p>
 
-    <p><strong>* Campos em negrito são de preenchimento obrigatório.</strong></p>
+	<p><strong>* Campos em negrito são de preenchimento obrigatório.</strong></p>
 
-    <%= f.error_messages :object_name => 'a inscrição', :header_message => 'Ops! Alguma coisa errada.' %>
+	<%= f.error_messages :object_name => 'a inscrição', :header_message => 'Ops! Alguma coisa errada.' %>
 
-    <p>
-      <strong><%= f.label :name, "Nome:" %></strong><br />
-      <%= f.text_field :name %><span>(Nome completo e, se possível, use o mesmo no PagSeguro)</span>
-    </p>
-    <p>
-      <strong><%= f.label :email, "E-mail" %></strong><br />
-      <%= f.text_field :email %><span>(Se possível, use o mesmo no PagSeguro)</span>
-    </p>
-    <p>
-      <strong><%= f.label :doc, "Número do documento de identificação:" %></strong><br />
-      <%= f.text_field :doc %><span>(Deve ser apresentado no dia do evento)</span>
-    </p>
-    <p>
-      <%= f.label :company, "Nome da empresa:" %><br />
-      <%= f.text_field :company %><span>(Não é obrigatório, mas você poderia preencher, né?)</span>
-    </p>
-    <p>
-      <% if cannot_register_new_attendees? && !params[:attendee].nil?%>
-        <%= f.submit 'Tá com muita pressa, hein!?' %>
-      <% elsif cannot_register_new_attendees? %>
-        <%= f.submit 'Ainda não!' %>
-      <% else %>
-        <%= f.submit 'Confirmar inscrição' %>
-      <% end %>
-    </p>
+	<p>
+		<strong><%= f.label :name, "Nome:" %></strong><br />
+		<%= f.text_field :name %><span>(Nome completo e, se possível, use o mesmo no PagSeguro)</span>
+	</p>
+	<p>
+		<strong><%= f.label :email, "E-mail" %></strong><br />
+		<%= f.text_field :email %><span>(Se possível, use o mesmo no PagSeguro)</span>
+	</p>
+	<p>
+		<strong><%= f.label :doc, "Número do documento de identificação:" %></strong><br />
+		<%= f.text_field :doc %><span>(Deve ser apresentado no dia do evento)</span>
+	</p>
+	<p>
+		<%= f.label :company, "Nome da empresa:" %><br />
+		<%= f.text_field :company %><span>(Não é obrigatório, mas você poderia preencher, né?)</span>
+	</p>
+	<p class="last">
+		<%= f.label :phone, "Telefone:" %><br/>
+		<%= f.text_field :phone %>
+	</p>
+	<p>
+		<% if cannot_register_new_attendees? && !params[:attendee].nil?%>
+			<%= f.submit 'Tá com muita pressa, hein!?' %>
+		<% elsif cannot_register_new_attendees? %>
+			<%= f.submit 'Ainda não!' %>
+		<% else %>
+			<%= f.submit 'Confirmar inscrição' %>
+		<% end %>
+	</p>
 <% end %>

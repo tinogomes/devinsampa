@@ -27,7 +27,7 @@ class AttendeesController < ApplicationController
   end
 
   def create
-    if ( cannot_register_new_attendees? )
+    if ( cannot_register_new_attendees? || !params[:attendee].delete(:phone).blank? )
       flash[:error] = no_time_message
       @attendee = Attendee.new(params[:attendee])
       render :action => "new" and return

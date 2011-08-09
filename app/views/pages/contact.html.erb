@@ -25,12 +25,14 @@
 			<%= f.label :description, "Mensagem" %><br />
 			<%= f.text_area :description %>
 		</p>
-
 		<p>
 			<%= f.label :receive_a_copy, "Quero receber uma cópia" %>
 			<%= f.check_box :receive_a_copy %>
 		</p>
+		<p class="last">
+			<%= f.label :phone, "Telefone para Contato" %>
+			<%= f.text_field :phone %>
+		</p>
 		<p><%= f.submit "Submit" %></p>
 	<% end %>
-
 </div>

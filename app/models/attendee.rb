@@ -1,5 +1,5 @@
 class Attendee < ActiveRecord::Base
-  attr_accessor :free
+  attr_accessor :free, :phone
 
   validates_presence_of   :name
   validates_presence_of   :email

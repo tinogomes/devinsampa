@@ -12,7 +12,7 @@ class PagesController < ApplicationController
 
     load_contact_with_params
 
-    if request.post?
+    if request.post? && params[:contact].delete([:phone]).blank?
       if contact_valid?(@contact)
         spawn do
           logger.info "Trying send email from #{@contact.inspect}"
