@@ -3,16 +3,16 @@
 <table border="1" cellspacing="0" cellpadding="3" width="90%">
   <tr>
     <th>Nome</th>
-    <% if params[:with_doc] %><th>Documento</th><% end %>
+    <th>Documento</th>
     <th>Empresa</th>
 	<th>Documento RG</th>
-    
+
   </tr>
 
 <% @attendees.each do |attendee| %>
   <tr style="background-color: <%= cycle('#CCC', '#999') %>">
     <td><%=h attendee.name %> </td>
-    <% if params[:with_doc] %><td><%=h attendee.doc %> &nbsp;</td> <% end %>
+    <td><%=h attendee.doc %> &nbsp;</td>
     <td><%=h attendee.company %> &nbsp;</td>
 	<td><%=h attendee.doc %> &nbsp;</td>
   </tr>

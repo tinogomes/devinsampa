@@ -3,13 +3,13 @@
 <table border="1" cellspacing="0" cellpadding="3">
   <tr>
     <th>Nome</th>
-    <% if params[:with_doc] %><th>Doc</th><% end %>
+    <th>Doc</th>
   </tr>
 
 <% @speakers.each do |speaker| %>
   <tr style="background-color: <%= cycle('#CCC', '#999') %>">
     <td><%=h speaker.name %> </td>
-    <% if params[:with_doc] %><td><%=h speaker.doc %> &nbsp;</td><% end %>
+    <td><%=h speaker.doc %> &nbsp;</td>
   </tr>
 <% end %>
 </table>
