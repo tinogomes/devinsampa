@@ -10,7 +10,7 @@ class Contact < ActionMailer::Base
     common_settings "Confirmação de inscrição"
     recipients      attendee.email
     from            "devinsampa@gmail.com"
-    body            :name => attendee.name, :link => payment_url(:token => attendee.token), :free => attendee.free?
+    body            :name => attendee.name, :link => payment_url(:token => attendee.token), :free => attendee.free?, :doc => attendee.doc
   end
 
   def attendee_confirmation(attendee)
