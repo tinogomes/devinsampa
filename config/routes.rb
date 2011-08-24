@@ -34,7 +34,8 @@ ActionController::Routing::Routes.draw do |map|
   map.with_options :controller => 'pages' do |pages|
     pages.home                   "/",                :action => "index"
     pages.contact                "/contato",         :action => "contact"
-    pages.photos_and_videos_2009 "/2009",            :action => "photos_and_videos_2009"
+    pages.photos_and_videos_2009 "/2009",            :action => "redirecting", :to => "/museu"
+    pages.museum                 "/museu",           :action => "museum"
     pages.presentations          "/palestras",       :action => "presentations"
     pages.agenda                 "/programacao",     :action => "agenda"
     pages.speakers               "/palestrantes",    :action => "redirecting", :to => "/palestras"
