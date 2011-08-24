@@ -32,5 +32,5 @@ $(function() {
 
 	$("#fb-iframe").replaceWith(fbIFrame);
 	
-	$("#gplus").replaceWith("<g:plusone></g:plusone>");
+	$("#gplus").replaceWith("<g:plusone href='http://devinsampa.com.br'></g:plusone>");
 });
