@@ -1,6 +1,7 @@
 *.patch
 *_dump.sql
 .DS_Store
+.bundle
 .rvmrc
 config/*.yml
 db/devinsampa_test.db
