@@ -6,8 +6,7 @@ set :deploy_to, "/home/devinsampa/rails"
 set :scm, 'git'
 set :repository, "git://github.com/tinogomes/devinsampa.git"
 set :deploy_via, :remote_cache
-set :branch, 'master'
-set :git_shallow_clone, 1
+set :branch, 'versao-2011'
 set :scm_verbose, true
 
 set :use_sudo, false

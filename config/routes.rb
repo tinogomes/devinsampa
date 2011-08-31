@@ -40,7 +40,7 @@ ActionController::Routing::Routes.draw do |map|
     pages.agenda                 "/programacao",     :action => "agenda"
     pages.speakers               "/palestrantes",    :action => "redirecting", :to => "/palestras"
     pages.speakers               "/divulgar",        :action => "redirecting", :to => "/"
-    pages.feedback               "/feedback",        :action => "redirecting", :to => "/contato"
+    pages.feedback               "/feedback",        :action => "feedback"
   end
 
   map.admin "/admin", :controller => "Admin::Admin", :action => "index"
