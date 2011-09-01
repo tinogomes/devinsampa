@@ -25,7 +25,6 @@ class Admin::AdminController < ApplicationController
     end
 
     def only_admin
-      return true
       unless logged?
         redirect_to login_url and return
       end
