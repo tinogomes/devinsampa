@@ -1,10 +1,11 @@
 require "ostruct"
 
 class PagesController < ApplicationController
-  caches_page :index, :photos_and_videos_2009, :php
+  caches_page :index, :museum, :php, :agenda, :presentations, :feedback
 
   def php
-    render :text => "Quer invadir? Primeiro vai ler o código em http://github.com/tinogomes/devinsampa e depois a gente conversa, ok?"
+    text = auto_link("Quer invadir? Vai ler o código em http://github.com/tinogomes/devinsampa e depois a gente conversa, ok?")
+    render :text => text
   end
 
   def contact
