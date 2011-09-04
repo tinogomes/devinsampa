@@ -1,6 +1,9 @@
+# encoding: utf-8
 require "ostruct"
 
 class PagesController < ApplicationController
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::TextHelper
   caches_page :index, :museum, :php, :agenda, :presentations, :feedback
 
   def php
