@@ -15,6 +15,7 @@ class Admin::PresentationsController < Admin::AdminController
 
     if @presentation.valid? && @presentation.save
       flash[:notice] = "#{@presentation.title} cadastrado"
+      expire_page_caches!
       redirect_to admin_presentations_path
     else
       load_speakers
@@ -30,6 +31,7 @@ class Admin::PresentationsController < Admin::AdminController
 
     if @presentation.valid? && @presentation.save
       flash[:notice] = "Os dados de #{@presentation.title} foram atualizados"
+      expire_page_caches!
       redirect_to admin_presentations_path
     else
       load_speakers
@@ -37,19 +39,23 @@ class Admin::PresentationsController < Admin::AdminController
     end
   end
 
-
   def destroy
     @presentation.destroy
+    expire_page_caches!
     redirect_to(admin_presentations_url)
   end
 
   private
-    def set_presentation
-      @presentation = Presentation.find params[:id]
-    end
+  def set_presentation
+    @presentation = Presentation.find params[:id]
+  end
 
-    def load_speakers
-      @speakers = Speaker.all :select => 'id, name'
-    end
+  def load_speakers
+    @speakers = Speaker.all :select => 'id, name'
+  end
 
+  def expire_page_caches!
+    expire_page :controller => "/pages", :action => "agenda"
+    expire_page :controller => "/pages", :action => "presentations"
+  end
 end

@@ -1,43 +1,45 @@
 <div id="sidebar" class="clearfix">
-  <h3 class="first">Siga-me</h3>
+	<div id="fb-iframe"></div>
+	<div id="gplus"></div>
 
-  <a href="http://twitter.com/devinsampa" class="twitter" title="Siga-me no twitter">@devinsampa</a>
+	<h3 class="first">Siga-me</h3>
+	<a href="http://twitter.com/devinsampa" class="twitter" title="Siga-me no twitter">@devinsampa</a>
 
-  <script type="text/javascript" src="http://spaia.me/widgets.js"></script>
-  <script type="text/javascript">if (SpaiaMe) SpaiaMe.render("P");</script>
+	<h3>Idealização e Organização</h3>
+	<ul class="twitter-list">
+		<li><a href="http://twitter.com/tinogomes">Celestino Gomes</a></li>
+		<li><a href="http://twitter.com/nuxlli">Everton Ribeiro</a></li>
+		<li><a href="http://twitter.com/lfcipriani">Luis Cipriani</a></li>
+	</ul>
 
-  <%= render :partial => '/layouts/sidebar/sponsors' %>
+	<script type="text/javascript" src="http://spaia.me/widgets.js"></script>
+	<script type="text/javascript">if (SpaiaMe) SpaiaMe.render("2j");</script>
 
-  <%= render :partial => '/layouts/sidebar/supporters' %>
+	<%= render :partial => '/layouts/sidebar/sponsors' %>
 
-  <h3>Idealização e Organização</h3>
+	<%= render :partial => '/layouts/sidebar/supporters' %>
 
-  <ul class="twitter-list">
-    <li><a href="http://twitter.com/tinogomes">Celestino Gomes</a></li>
-    <li><a href="http://twitter.com/nuxlli">Everton Ribeiro</a></li>
-    <li><a href="http://twitter.com/lfcipriani">Luis Cipriani</a></li>
-  </ul>
+	<%= render :partial => '/layouts/sidebar/divulgation' %>
 
-  <h3>Divulgue</h3>
+	<h3>Fale pra todo mundo</h3>
 
-  <div id="eu-vou-no-twitter">
-    <a href="http://twitter.com/?status=Eu+vou+no+%23devinsampa" title="Divulgue o Dev in Sampa">
-      <%= image_tag 'banner_dev_in_sampa.jpg', :alt => 'Eu vou no #devinsampa' %>
-    </a>
-  </div>
+	<div id="eu-vou-no-twitter">
+		<a href="http://twitter.com/?status=http://devinsampa.com.br+-+Eu+vou+no+%23devinsampa" Divulguetitle="Divulgue o Dev in Sampa">
+			<%= image_tag 'banner_dev_in_sampa.jpg', :alt => 'Eu vou no #devinsampa' %>
+		</a>
+	</div>
 
-  <div id="validator">
-    <div id="validator-html">
-      <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fwww.devinsampa.com.br%2F"><img
-          src="http://www.w3.org/Icons/valid-xhtml10-blue"
-          alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
-    </div>
+	<div id="validator">
+		<div id="validator-html">
+			<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fwww.devinsampa.com.br%2F">
+				<img src="http://www.w3.org/Icons/valid-xhtml10-blue" alt="Valid XHTML 1.0 Strict" height="31" width="88" />
+			</a>
+		</div>
 
-    <div id="valitador-css">
-      <a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.devinsampa.com.br%2F
-      "><img style="border:0;width:88px;height:31px"
-              src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
-              alt="Valid CSS!" /></a>
-    </div>
-  </div>
+		<div id="valitador-css">
+			<a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.devinsampa.com.br%2F">
+				<img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!" />
+				</a>
+		</div>
+	</div>
 </div>

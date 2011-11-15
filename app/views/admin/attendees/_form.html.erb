@@ -1,0 +1,43 @@
+<p>
+	<%= f.label :name %><br />
+	<%= f.text_field :name %>
+</p>
+<p>
+	<%= f.label :email %><br />
+	<%= f.text_field :email %>
+</p>
+<p>
+	<%= f.label :doc %><br />
+	<%= f.text_field :doc %>
+</p>
+<p>
+	<%= f.label :company %><br />
+	<%= f.text_field :company %>
+</p>
+<% if @attendee.new_record? %>
+	<p>
+		<%= f.label :free %> <br />
+		<%= f.check_box :free %>
+	</p>
+<% else %>
+	<p>
+		<%= f.label :created_at %><br/>
+		<%= f.text_field :created_at, :readonly => true %>
+	</p>
+	<p>
+		<%= f.label :status %><br/>
+		<%= f.text_field :status, :readonly => true %>
+	</p>
+	<p>
+		<%= f.label :payment_method %><br/>
+		<%= f.text_field :payment_method, :readonly => true %>
+	</p>
+	<p>
+		<%= f.label :processed_at %><br/>
+		<%= f.text_field :processed_at, :readonly => true %>
+	</p>
+	<p>
+		<%= f.label :buyer %><br/>
+		<%= f.text_field :buyer, :readonly => true %>
+	</p>
+<% end %>

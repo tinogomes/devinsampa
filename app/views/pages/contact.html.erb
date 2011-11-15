@@ -1,36 +1,38 @@
 <% title "Contato", false %>
 
 <div class="box">
-  <h2>Contato</h2>
+	<h2>Contato</h2>
 
-  <p>No formulário abaixo você pode nos mandar uma mensagem, que será enviado para <a href="mailto:devisampa@gmail.com">devinsampa@gmail.com</a></p>
+	<p>No formulário abaixo você pode nos mandar uma mensagem, que será enviado para <a href="mailto:contato@devisampa.com.br">contato@devinsampa.com.br</a></p>
 
-  <p>
-    <strong>Todos os campos são obrigatórios.</strong>
-  </p>
-  <% form_for :contact do |f| %>
-    <p>
-      <%= f.label :name, "Nome" %><br />
-      <%= f.text_field :name %>
-    </p>
-    <p>
-      <%= f.label :email, "E-mail" %><br />
-      <%= f.text_field :email %>
-    </p>
-    <p>
-      <%= f.label :subject, "Assunto" %><br />
-      <%= f.text_field :subject %>
-    </p>
-    <p>
-      <%= f.label :description, "Mensagem" %><br />
-      <%= f.text_area :description %>
-    </p>
-
-    <p>
-      <%= f.label :receive_a_copy, "Quero receber uma cópia" %>
-      <%= f.check_box :receive_a_copy %>
-    </p>
-    <p><%= f.submit "Submit" %></p>
-  <% end %>
-
+	<p>
+		<strong>Todos os campos são obrigatórios.</strong>
+	</p>
+	<% form_for :contact do |f| %>
+		<p>
+			<%= f.label :name, "Nome" %><br />
+			<%= f.text_field :name %>
+		</p>
+		<p>
+			<%= f.label :email, "E-mail" %><br />
+			<%= f.text_field :email %>
+		</p>
+		<p>
+			<%= f.label :subject, "Assunto" %><br />
+			<%= f.text_field :subject %>
+		</p>
+		<p>
+			<%= f.label :description, "Mensagem" %><br />
+			<%= f.text_area :description %>
+		</p>
+		<p>
+			<%= f.label :receive_a_copy, "Quero receber uma cópia" %>
+			<%= f.check_box :receive_a_copy %>
+		</p>
+		<p class="last">
+			<%= f.label :phone, "Telefone para Contato" %>
+			<%= f.text_field :phone %>
+		</p>
+		<p><%= f.submit "Submit" %></p>
+	<% end %>
 </div>

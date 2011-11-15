@@ -1,14 +1,22 @@
+# encoding: utf-8
 require "ostruct"
 
 class PagesController < ApplicationController
-  caches_page :index, :photos_and_videos_2009
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::TextHelper
+  caches_page :index, :museum, :php, :agenda, :presentations, :feedback
+
+  def php
+    text = auto_link("Quer invadir? Vai ler o código em http://github.com/tinogomes/devinsampa e depois a gente conversa, ok?")
+    render :text => text
+  end
 
   def contact
     @contact = OpenStruct.new
 
     load_contact_with_params
 
-    if request.post?
+    if request.post? && params[:contact].delete([:phone]).blank?
       if contact_valid?(@contact)
         spawn do
           logger.info "Trying send email from #{@contact.inspect}"

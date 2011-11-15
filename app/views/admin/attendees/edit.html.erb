@@ -3,22 +3,8 @@
 <% form_for([:admin, @attendee]) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :doc %><br />
-    <%= f.text_field :doc %>
-  </p>
-  <p>
-    <%= f.label :company %><br />
-    <%= f.text_field :company %>
-  </p>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+
   <p>
     <%= f.submit 'Update' %>
   </p>

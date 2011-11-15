@@ -1,47 +1,49 @@
 <h1>Listing attendees</h1>
 
 <table border="1" cellspacing="0" cellpadding="3">
-  <tr>
-    <th>Status</th>
-    <th>Qtde</th>
-  </tr>
+	<tr>
+		<th>Status</th>
+		<th>Qtde</th>
+	</tr>
 <% @attendees_counts.each do |status,qtde| %>
-  <tr>
-    <td><%= status %></td>
-    <td><%= qtde %></td>
-  </tr>
+	<tr>
+		<td><%= status %></td>
+		<td><%= qtde %></td>
+	</tr>
 <% end %>
+	<tr>
+		<td>Total:</td>
+		<td><%= @attendees_counts.sum {|i| i[1]} %></td>
+	</tr>
 </table>
 
 <p><%= link_to "New attendee", new_admin_attendee_path %></p>
 
 <table border="1" cellspacing="0" cellpadding="3">
-  <tr>
-    <th><%= current_admin_attendee_order("Name") %></th>
-    <th><%= current_admin_attendee_order("Email") %></th>
-    <th><%= current_admin_attendee_order("Status", "status,name") %></th>
-    <th colspan="6">Change status</th>
-    <th colspan="3">Actions</th>
-    
-  </tr>
+	<tr>
+		<th><%= current_admin_attendee_order("Name") %></th>
+		<th><%= current_admin_attendee_order("Status", "status,name") %></th>
+		<th colspan="6">Change status</th>
+		<th colspan="3">Actions</th>
+
+	</tr>
 
 <% @attendees.each do |attendee| %>
-  <tr style="background-color: <%= cycle('#CCC', '#999') %>">
-    <td><%=h attendee.name %> </td>
-    <td><%=h attendee.email %> </td>
-    <td><%= status_or_link(attendee) %> &nbsp; </td> 
+	<tr style="background-color: <%= cycle('#CCC', '#999') %>">
+		<td><%=h "#{attendee.name.inspect} <#{attendee.email}>" %> </td>
+		<td><%= status_or_link(attendee) %> &nbsp; </td>
 
-    <td><%= link_to 'Completed', completed_admin_attendee_path(attendee), :method => :put %></td>
-    <td><%= link_to 'Pending', pending_admin_attendee_path(attendee), :method => :put %></td>
-    <td><%= link_to 'Approved', approved_admin_attendee_path(attendee), :method => :put %></td>
-    <td><%= link_to 'Verifying', verifying_admin_attendee_path(attendee), :method => :put %></td>
-    <td><%= link_to 'Canceled', canceled_admin_attendee_path(attendee), :method => :put %></td>
-    <td><%= link_to 'Refunded', refunded_admin_attendee_path(attendee), :method => :put %></td>
-    
-    <td><%= link_to 'Resend', resend_admin_attendee_path(attendee) %></td>
-    <td><%= link_to 'Edit', edit_admin_attendee_path(attendee) %></td>
-    <td><%= link_to 'Destroy', admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+		<td><%= link_to 'Completed', completed_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
+		<td><%= link_to 'Pending', pending_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
+		<td><%= link_to 'Approved', approved_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
+		<td><%= link_to 'Verifying', verifying_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
+		<td><%= link_to 'Canceled', canceled_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
+		<td><%= link_to 'Refunded', refunded_admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :put %></td>
+
+		<td><%= link_to 'Resend', resend_admin_attendee_path(attendee), :confirm => 'Are you sure?' %></td>
+		<td><%= link_to 'Edit', edit_admin_attendee_path(attendee) %></td>
+		<td><%= link_to 'Destroy', admin_attendee_path(attendee), :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
 <% end %>
 </table>
 

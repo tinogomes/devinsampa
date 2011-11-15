@@ -34,15 +34,17 @@ ActionController::Routing::Routes.draw do |map|
   map.with_options :controller => 'pages' do |pages|
     pages.home                   "/",                :action => "index"
     pages.contact                "/contato",         :action => "contact"
-    pages.photos_and_videos_2009 "/2009",            :action => "photos_and_videos_2009"
+    pages.photos_and_videos_2009 "/2009",            :action => "redirecting", :to => "/museu"
+    pages.museum                 "/museu",           :action => "museum"
     pages.presentations          "/palestras",       :action => "presentations"
     pages.agenda                 "/programacao",     :action => "agenda"
     pages.speakers               "/palestrantes",    :action => "redirecting", :to => "/palestras"
     pages.speakers               "/divulgar",        :action => "redirecting", :to => "/"
-    pages.feedback               "/feedback",        :action => "redirecting", :to => "/contato"
+    pages.feedback               "/feedback",        :action => "feedback"
   end
 
   map.admin "/admin", :controller => "Admin::Admin", :action => "index"
 
+  map.not_found "*minvalid_route.php", :controller => 'pages', :action => 'php'
   map.not_found "*minvalid_route", :controller => 'pages', :action => 'not_found'
 end

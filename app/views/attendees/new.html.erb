@@ -1,33 +1,15 @@
 <% title "Inscrição", false %>
 
 <div class="box">
-  <h2>Inscrição</h2>
-
-  <p>Todos estão perguntado: O Evento será gratuíto? Qual o valor da inscrição? Bom, gostaríamos de fazer o evento gratuíto, mas devido a limitação de vagas (apenas 120), vamos cobrar uma taxa simbólica, que usaremos para limitar as inscrições.</p>
+	<h2>Valor da inscrição</h2>
+	<p>R$ 75,00</p>
 </div>
 
 <div class="box">
-  <h2>Valor da inscrição</h2>
-
-  <p>R$ 35,00 (trinta e cinco reais).</p>
-</div>
-
-<div class="box">
-  <% if Attendee.overload? %>
-    <h2>Inscrições encerradas</h2>
-
-    <p>Infelizmente as vagas para participar do Dev in Sampa se esgotaram. Atualmente estamos processando as inscrições efetuadas, dentro disso pode ser que abra novamente, neste caso fique ligado no <a href="http://twitter.com/devinsampa">@devinsampa no twitter</a>, para saber sobre possíveis vagas.</p>
-  <% else %>
-    <h2>Formulário de inscrição</h2>
-
-    <p>As inscrições serão abertas hoje (29/7), a partir dàs 10:00 (Horário de Brasília)</p>
-
-    <%= render :partial => "form" %>
-  <% end %>
-</div>
-
-<div class="box">
-  <h2>Até quando posso efetuar o pagamento?</h2>
-
-  <p>O pagamento, independente da forma (Cartão/Débito/Boleto) e data de vencimento informado pelo PagSeguro, <strong>deverá ser realizado até o dia 30/7 (sexta-feira).</strong></p>
+	<h2>Formulário de inscrição</h2>
+	<% if Attendee.overload? %>
+		<p>Infelizmente as vagas para participar do Dev in Sampa se esgotaram. Atualmente estamos processando as inscrições efetuadas, dentro disso pode ser que abra novamente, neste caso fique ligado no <a href="http://twitter.com/devinsampa">@devinsampa no twitter</a>, para saber sobre possíveis vagas.</p>
+	<% else %>
+		<%= render :partial => "form" %>
+	<% end %>
 </div>

@@ -1,0 +1,3 @@
+# Dev in Sampa
+
+Esta é a implementação do site do [Dev in Sampa](http://www.devinsamp.com.br), onde você encontra um cadastro de palestrantes, palestras e congressistas, com controle de pagamento de inscrição via PagSeguro.

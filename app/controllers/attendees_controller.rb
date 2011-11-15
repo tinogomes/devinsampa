@@ -14,7 +14,7 @@ class AttendeesController < ApplicationController
 
       # Instanciando o objeto para geração do formulário
       @order = PagSeguro::Order.new(@attendee.token)
-      @order.add :id => 1, :price => 3500, :description => "Inscrição do devinsampa"
+      @order.add :id => 11, :price => 7500, :description => "Inscrição para o Dev in Sampa 2011"
       session[:token] = @attendee.token
     else
       flash[:error] = "Não encontramos seu cadastro, sua chave está correta?"
@@ -27,7 +27,7 @@ class AttendeesController < ApplicationController
   end
 
   def create
-    if ( cannot_register_new_attendees? )
+    if ( cannot_register_new_attendees? || !params[:attendee].delete(:phone).blank? )
       flash[:error] = no_time_message
       @attendee = Attendee.new(params[:attendee])
       render :action => "new" and return
@@ -74,40 +74,40 @@ class AttendeesController < ApplicationController
 
   private
 
-    def capture_information
-      notification = PagSeguro::Notification.new(params)
-      begin
-        if notification.valid?(true)
-          attendee = Attendee.find_by_token!(notification.order_id)
-          attendee.update_payment_data!(notification)
-        else
-          spawn do
-            Contact.alert_us(notification, request, params)
-          end
-          RAILS_DEFAULT_LOGGER.error("Alguém tentou simular um POST do PagSeguro: #{notification.inspect}")
+  def capture_information
+    notification = PagSeguro::Notification.new(params)
+    begin
+      if notification.valid?(true)
+        attendee = Attendee.find_by_token!(notification.order_id)
+        attendee.update_payment_data!(notification)
+      else
+        spawn do
+          Contact.alert_us(notification, request, params)
         end
-      rescue Exception => e
-        RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
+        RAILS_DEFAULT_LOGGER.error("Alguém tentou simular um POST do PagSeguro: #{notification.inspect}")
       end
+    rescue Exception => e
+      RAILS_DEFAULT_LOGGER.error("Ocorreu um erro no processo de captura da compra, error: #{e}, notification data: #{notification.inspect}")
     end
+  end
 
-    def can_register_new_attendees?
-      SystemConfiguration.can_register_attendee
-    end
+  def can_register_new_attendees?
+    SystemConfiguration.can_register_attendee
+  end
 
-    def cannot_register_new_attendees?
-      !can_register_new_attendees?
-    end
+  def cannot_register_new_attendees?
+    !can_register_new_attendees?
+  end
 
-    def no_time_message
-      messages = [
-        "Apressado você hein!?",
-        "De novo? Paciência.",
-        "Já vi que você não sabe esperar.",
-        "Ainda não deu a hora.",
-        "Rails não escala?",
-        "Quer que eu conte uma piada para descontrair?"
-      ]
-      messages[rand(messages.size)]
-    end
+  def no_time_message
+    messages = [
+      "Apressado você hein!?",
+      "De novo? Paciência.",
+      "Já vi que você não sabe esperar.",
+      "Ainda não deu a hora.",
+      "Rails não escala?",
+      "Quer <a href='http://piadas-infames.blogspot.com/' title='Site do Piadas Infames'>uma piada</a> para descontrair?"
+    ]
+    messages[rand(messages.size)]
+  end
 end
