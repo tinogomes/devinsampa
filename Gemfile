@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "RedCloth", "4.3.0", :require => "redcloth"
+gem "RedCloth", "4.3.3", :require => "redcloth"
 gem "rails", "2.3.14"
 gem "mysql"
 
